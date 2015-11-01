@@ -1,0 +1,96 @@
+$blue : #36bbe7;
+
+/* Radio ---------------------------------------------------*/
+input[type="radio"] {
+    display: none;
+
+    & + label {
+        display: block;
+        cursor: pointer;
+        margin: 20px;
+
+        /*’Êí‚ÌŒ©‚½–Ú*/
+        &::before {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            content: "";
+            border-radius: 17px;
+            vertical-align: middle;
+            border: 2px solid #dddddd;
+            background-color: #f0f0f0;
+            margin: -2px 5px 0 0;
+            -webkit-transition: .1s;
+                    transition: .1s;
+        }
+        /*hover‚ÌŒ©‚½–Ú*/
+        &:hover {
+            color: #808080;
+            &::before {
+                background-color: #fff;
+            }
+        }
+    }
+    /*checked‚ÌŒ©‚½–Ú*/
+    &:checked + label {
+        color: $blue;
+        cursor: default;
+
+        &::before {
+            border-color: $blue !important;
+            background-color: $blue !important;
+            box-shadow: inset 0 0 0 7px #fff;
+        }
+    }  
+}
+
+/* Checkbox ------------------------------------------------*/
+input[type="checkbox"] {
+    display: none;
+
+    & + label {
+        display: block;
+        cursor: pointer;
+        margin: 20px;
+
+        /*’Êí‚ÌŒ©‚½–Ú*/
+        &::before {
+            width: 34px;
+            height: 34px;
+            line-height: 32px;
+            font-size: 42px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            content: "\2713";
+            color: transparent;
+            padding: 0;
+            border-radius: 5px;
+            border: 2px solid #dddddd;
+            background: #f0f0f0;
+            margin: -2px 5px 0 0;
+            -webkit-transition: .1s;
+                    transition: .1s;
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+        /*hover‚ÌŒ©‚½–Ú*/
+        &:hover {
+            color: #808080;
+            &::before {
+                background-color: #fff;
+            }
+        }
+    }
+    /*checked‚ÌŒ©‚½–Ú*/
+    &:checked + label {
+        color: $blue;            
+        &::before {
+            font-size: 25px;
+            background: #fff !important;
+            border-color: $blue !important;
+            color: $blue !important;
+        }
+    }  
+}
