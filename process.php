@@ -63,25 +63,59 @@
     $rating_x = 767;
     $rating_y = 280;
 
-//    $font = 'font/mplus-2c-regular.ttf';
+    //色の指定
+    $black = ImageColorAllocate($img, 0x00, 0x00, 0x00);
+    $white = ImageColorAllocate($img, 0xFF, 0xFF, 0xFF);
+
+    //現在の最大曲数を入力しておく
+    $music_max = 33;
+    $music_max_masplus = 0;
+
+    //受け渡された文字列を代入
+    $p_rank = null;
+    $name = null;
+    $twitter = null;
+    $prp = null;
+    $debut = null;
+    $regular = null;
+    $pro = null;
+    $master = null;
+    $masplus = null;
 
 
-//画像読み込み
-$img = imagecreatefrompng('img/body.png');
-header('Content-Type: image/png');
-ImagePNG($img);
+    //フォントの指定
+    $font = 'font/mplus-2c-regular.ttf';
 
-//文字の描画
-$text = mb_convert_encoding('1145148101919', 'UTF-8', 'auto');
+    //以下デバッグ用----------------------------
+    $p_rank = 80;
+    $name = 'aki 秋雨';
+    $twitter = 'Slime_hatena';
+    $prp = 3340;
+    $debut = 33;
+    $regular = 22;
+    $pro = 11;
+    $master = 1;
+    $masplus = 0;
+    //デバッグ用ここまで---------------------------
 
-$black = ImageColorAllocate($img, 0x00, 0x00, 0x00);
-ImageTTFText($img, 16, 0, 5, 200, $black, 'font/mplus-2c-regular.ttf' , $text);
+    //画像読み込み
+    $img = imagecreatefrompng('img/body.png');
 
 
-// 画像の出力
-header('Content-Type: image/png');
-ImagePNG($img);
-?>
+    //文字の描画
+    $text = mb_convert_encoding('test test test', 'UTF-8', 'auto');
+
+
+
+    ImageTTFText($img, 32, 0, 200, 200, $black,'font/mplus-2c-regular.ttf', $text);
+
+
+
+    // 画像の出力
+    header('Content-Type: image/png');
+    ImagePNG($img);
+
+    ?>
 
 
 
