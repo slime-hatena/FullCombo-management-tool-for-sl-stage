@@ -32,17 +32,15 @@
 
     $song_1st_x = 131;
 
-
-
     // 各要素の位置を指定
     $p_rank_x = 4;
     $p_rank_y = 154;
 
-    $name_x = 75;
-    $zname_y = 160;
+    $name_x = 71;
+    $name_y = 210;
 
-    $twitter_x = 10;
-    $twitter_y = 225;
+    $twitter_x = 33;
+    $twitter_y = 251;
 
     $prp_x = 300;
     $prp_y = 270;
@@ -63,15 +61,12 @@
     $rating_x = 767;
     $rating_y = 280;
 
-    //色の指定
-    $black = ImageColorAllocate($img, 0x00, 0x00, 0x00);
-    $white = ImageColorAllocate($img, 0xFF, 0xFF, 0xFF);
-
     //現在の最大曲数を入力しておく
     $music_max = 33;
     $music_max_masplus = 0;
 
     //受け渡された文字列を代入
+    // ex) $name = mb_convert_encoding('秋雨', 'UTF-8', 'auto');
     $p_rank = null;
     $name = null;
     $twitter = null;
@@ -86,10 +81,12 @@
     //フォントの指定
     $font = 'font/mplus-2c-regular.ttf';
 
+
+
     //以下デバッグ用----------------------------
     $p_rank = 80;
-    $name = 'aki 秋雨';
-    $twitter = 'Slime_hatena';
+    $name = mb_convert_encoding('秋雨', 'UTF-8', 'auto');
+    $twitter = mb_convert_encoding('Slime_hatena', 'UTF-8', 'auto');
     $prp = 3340;
     $debut = 33;
     $regular = 22;
@@ -101,13 +98,16 @@
     //画像読み込み
     $img = imagecreatefrompng('img/body.png');
 
+   //色の指定
+    $black = ImageColorAllocate($img, 0x00, 0x00, 0x00);
+    $white = ImageColorAllocate($img, 0xFF, 0xFF, 0xFF);
 
-    //文字の描画
-    $text = mb_convert_encoding('test test test', 'UTF-8', 'auto');
 
 
 
-    ImageTTFText($img, 32, 0, 200, 200, $black,'font/mplus-2c-regular.ttf', $text);
+    //文字の描写
+    ImageTTFText($img, 46, 0, $name_x, $name_y, $black,'font/mplus-2c-regular.ttf', $name); //P名
+    ImageTTFText($img, 26, 0, $twitter_x, $twitter_y, $black,'font/mplus-2c-regular.ttf', $twitter); //Twitter
 
 
 
@@ -116,13 +116,3 @@
     ImagePNG($img);
 
     ?>
-
-
-
-
-    ?>
-
-<html>
-
-<img src="process.php">
-</html>
