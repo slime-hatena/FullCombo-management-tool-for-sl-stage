@@ -41,9 +41,3 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-
-#自分で追加したやつ
-.setting
-.gitattributes
-.gitignore
-.project
