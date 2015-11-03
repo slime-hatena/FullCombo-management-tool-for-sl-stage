@@ -37,7 +37,7 @@ $name_x = 71;
 $name_y = 205;
 
 $twitter_x = 33;
-$twitter_y = 251;
+$twitter_y = 250;
 
 $prp_x = 290;
 $prp_y = 293;
@@ -84,7 +84,7 @@ $regular = 11;
 $pro = 31;
 $master = 30;
 $masplus = 0;
-$rating = mb_convert_encoding('5.00', 'UTF-8', 'auto');
+$rating = 9.00;
 //デバッグ用ここまで---------------------------
 
 //全曲を出す処理
@@ -99,6 +99,7 @@ if ($all >= 0) {
 }
 
 //フルコン数が１桁の時に空白を入れる処理
+//                              そのうち簡素化したい
 if ($debut < 10) {
     $debut = ' ' . $debut;
 }
@@ -122,14 +123,13 @@ $r_pro = $pro . ' / ' . $music_max;
 $r_master = $master . ' / ' . $music_max;
 $r_masplus = $masplus . ' / ' . $music_max_masplus;
 $r_all = $all . ' / ' . $all_max . ' (' . $percent_all . '%)';
-$r_rating = 'Rating : ' . $rating;
+$r_rating = 'Rating : ' . sprintf('%.2f',$rating); //ratingの小数点以下は２位に指定しとく
 
 //P名の文字数を判断してフォントサイズ変える処理
-$name_characters = mb_strlen($name);
 //文字数取得
-if ($name_characters <= 5) {
+if (mb_strlen($name) <= 5) {
     $name_size = 40;
-} elseif ($name_characters <= 7) {
+} elseif (mb_strlen($name) <= 7) {
     $name_size = 32;
 } else {
     $name_size = 24;
@@ -144,7 +144,7 @@ $black = ImageColorAllocate($img, 0x00, 0x00, 0x00);
 //rate 0
 $pink = ImageColorAllocate($img, 0xDA, 0x70, 0x6D);
 //rate 3
-$purple = ImageColorAllocate($img, 0x80, 0x00, 0x80);
+$orange = ImageColorAllocate($img, 0xff, 0x9b, 0x38);
 //rate 5
 $blue = ImageColorAllocate($img, 0x41, 0x69, 0xE1);
 //rate 7
@@ -159,29 +159,36 @@ $dark_purple = ImageColorAllocate($img, 0x48, 0x3D, 0x8B);
 
 //rateで色変更
 //              時間がなかったのでだいぶヤバい実装の仕方してる
-$rate_clolor = $black;//rate 0
+
+$rate_clolor = $black; //rate 0
+
+if ( $rating < 3) {//rate 3
+
+    $rate_clolor = $pink;
+
+}
 
 if ($rating < 5) {//rate 3
 
     $rate_clolor = $pink;
 
-} elseif ($rating > 7) {//rate 5
+} elseif ($rating < 7) {//rate 5
 
-    $rate_clolor = $purple;
+    $rate_clolor = $orange;
 
-} elseif ($rating > 10) {//rate 7
+} elseif ($rating < 10) {//rate 7
 
     $rate_clolor = $green;
 
-} elseif ($rating > 12) {   //rate 10
+} elseif ($rating < 12) {   //rate 10
 
     $rate_clolor = $yellow;
 
-} elseif ($rating > 14) {//rate 12
+} elseif ($rating < 14) {//rate 12
 
     $rate_clolor = $red;
 
-} elseif ($rating > 15) {//rate 14
+} elseif ($rating = 15) {//rate 14
 
 } else {            //rate 15
     $rate_clolor = $dark_purple;
@@ -194,7 +201,7 @@ $font = 'font/mplus-2c-regular.ttf';
 //文字の描写
 ImageTTFText($img, $name_size, 0, $name_x, $name_y, $black, 'font/mplus-2c-regular.ttf', $name);
 //P名
-ImageTTFText($img, 26, 0, $twitter_x, $twitter_y, $black, 'font/mplus-2c-regular.ttf', $twitter);
+ImageTTFText($img, 24, 0, $twitter_x, $twitter_y, $black, 'font/mplus-2c-regular.ttf', $twitter);
 //Twitter
 ImageTTFText($img, 24, 0, $prp_x, $prp_y, $black, 'font/mplus-2c-regular.ttf', $prp);
 //PRP
@@ -211,7 +218,28 @@ ImageTTFText($img, 75, 0, $all_full_x, $all_full_y, $black, 'font/mplus-2c-regul
 ImageTTFText($img, 52, 0, $rating_x, $rating_y, $rate_clolor, 'font/mplus-2c-regular.ttf', $r_rating);
 //Rating
 
-// 画像の出力
-header('Content-Type: image/png');
-ImagePNG($img);
+//画像をbase64でimgタグに突っ込むための処理
+ob_start();
+imagePNG($img);
+$content = base64_encode(ob_get_contents());
+ob_end_clean();
+
+//ファイル消しておわり
+imagedestroy($img);
+
 ?>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>process.php</title>
+</head>
+
+<body  bgcolor="#EFEFEF" text="#000000">
+<p><font size="8">以下の画像を保存してお使いください。</font></p>
+<img src="data:image/jpeg;base64,<?php echo $content;?>" alt="img" />
+
+</body>
+</html>
