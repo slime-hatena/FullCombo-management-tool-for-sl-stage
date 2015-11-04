@@ -1,0 +1,13 @@
+input[type="checkbox"]{
+  -webkit-appearance: none;
+  width:15px;
+  height:15px;
+  border:2px solid #19283C;
+  border-radius:2px;
+  background:transparent;
+  opacity:0.5;
+}
+input[type="checkbox"]:checked{
+  background:#19283C;
+  opacity:1;
+}
