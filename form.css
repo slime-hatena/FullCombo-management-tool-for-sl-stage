@@ -1,16 +1,17 @@
+
+th{
+	width : 250px;
+
+}
+
+td{
+
+	width : 50px;
+	text-align : center;
+
+}
 *.index {
 	background: #f0f8ff;
 	text-align : center;
 	font-weight : bold;
 }
-th{
-	width : 250px;
-	
-}
-
-td{
-	
-	width : 200px;
-	
-}
-

@@ -2,29 +2,29 @@
 
 // わざとらしくLVごとにx-pxを指定
 $lv_map = array (
-		28 => 366,
+		28 => 370,
 		27 => 484,
 		26 => 602,
 		25 => 722,
 		24 => 838,
 		23 => 955,
 		22 => 1076,
-		21 => 1195,
-		20 => 1311,
-		19 => 1432,
-		18 => 1547,
-		17 => 1668,
-		16 => 1783,
-		15 => 1930,
-		14 => 2020,
-		13 => 2136,
-		12 => 2260,
-		11 => 2376,
+		21 => 1188,
+		20 => 1304,
+		19 => 1426,
+		18 => 1537,
+		17 => 1660,
+		16 => 1775,
+		15 => 1895,
+		14 => 2008,
+		13 => 2125,
+		12 => 2245,
+		11 => 2359,
 		10 => 2473,
-		9 => 2613,
-		8 => 2729,
+		9 => 2595,
+		8 => 2709,
 		7 => 2825,
-		6 => 2966,
+		6 => 2944,
 		5 => 3064
 );
 
@@ -64,78 +64,22 @@ $music_max = 33;
 $music_max_masplus = 0;
 
 // 受け渡された文字列を代入
-// ex) $name = mb_convert_encoding('秋雨', 'UTF-8', 'auto');
-$p_rank = null;
-$name = null;
-$twitter = null;
-$prp = null;
-$debut = null;
-$regular = null;
-$pro = null;
-$master = null;
-$masplus = null;
+$name = mb_convert_encoding ( $_POST["name"], 'UTF-8', 'auto' );
+
+$p_rank = mb_convert_encoding ( $_POST["p_rank"], 'UTF-8', 'auto' );
+$twitter = mb_convert_encoding ( $_POST["twitter"], 'UTF-8', 'auto' );;
+$prp = mb_convert_encoding ( $_POST["prp"], 'UTF-8', 'auto' );
+
+//後で使う変数をわかりやすくここで定義しておく
+$debut = 0;
+$regular = 0;
+$pro = 0;
+$master = 0;
+$masplus = 0;
 
 // 以下デバッグ用----------------------------
-$p_rank = 80;
-$name = mb_convert_encoding ( '秋雨', 'UTF-8', 'auto' );
-$twitter = mb_convert_encoding ( 'Slime_hatena', 'UTF-8', 'auto' );
-$prp = 645;
-$debut = 30;
-$regular = 11;
-$pro = 31;
-$master = 30;
-$masplus = 0;
-$rating = 15.00;
+$rating = 14.97;
 // デバッグ用ここまで---------------------------
-
-// 全曲を出す処理
-$all = $debut + $regular + $pro + $master;
-$all_max = ($music_max * 4) + $music_max_masplus;
-
-// 全体達成率を百分率で
-
-$percent_all = 0;
-if ($all >= 0) {
-	$percent_all = round ( ($all / $all_max) * 100, 2 );
-}
-
-// フルコン数が１桁の時に空白を入れる処理
-// そのうち簡素化したい
-if ($debut < 10) {
-	$debut = ' ' . $debut;
-}
-
-if ($regular < 10) {
-	$regular = ' ' . $regular;
-}
-
-if ($pro < 10) {
-	$pro = ' ' . $pro;
-}
-
-if ($master < 10) {
-	$master = ' ' . $master;
-}
-
-// フルコン曲数を 30 / 30みたいにする
-$r_debut = $debut . ' / ' . $music_max;
-$r_regular = $regular . ' / ' . $music_max;
-$r_pro = $pro . ' / ' . $music_max;
-$r_master = $master . ' / ' . $music_max;
-$r_masplus = $masplus . ' / ' . $music_max_masplus;
-$r_all = $all . ' / ' . $all_max . ' (' . $percent_all . '%)';
-$r_rating = 'Rating : ' . sprintf ( '%.2f', $rating );
-// ratingの小数点以下は２位に指定しとく
-
-// P名の文字数を判断してフォントサイズ変える処理
-// 文字数取得
-if (mb_strlen ( $name ) <= 5) {
-	$name_size = 40;
-} elseif (mb_strlen ( $name ) <= 7) {
-	$name_size = 32;
-} else {
-	$name_size = 24;
-}
 
 // 画像読み込み
 $img = imagecreatefrompng ( 'img/body.png' );
@@ -182,6 +126,83 @@ if (3.00 <= $rating && $rating < 5.00) { // rate 3
 	$rate_clolor = $dark_purple;
 }
 
+// P名の文字数を判断してフォントサイズ変える処理
+// 文字数取得
+if (mb_strlen ( $name ) <= 5) {
+	$name_size = 40;
+} elseif (mb_strlen ( $name ) <= 7) {
+	$name_size = 32;
+} else {
+	$name_size = 24;
+}
+
+// ここから画像に画像を合成する処理
+
+if (isset ( $_POST ['arr'] )) {
+	foreach ( $_POST ['arr'] as $key => $value ) {
+
+		$get_val = $value;
+
+		if (substr ( $get_val, 0, 1 ) == 0) { // 1桁目が"0"の時は2桁目のみを参照する処理
+			$id_lv = substr ( $get_val, 1, 1 );
+		} else {
+			$id_lv = substr ( $get_val, 0, 2 );
+		}
+
+		$id_column = substr ( $get_val, - 2 );
+
+		imagecopy ( $img, $img_stamp, $song_1st_x + (120 * ($id_column - 1)), $lv_map [$id_lv], 0, 0, 121, 100 );
+
+		// 合計曲数を出す処理
+		if ($id_lv <= 9) {
+			$debut ++;
+		} elseif ($id_lv <= 14) {
+			$regular ++;
+		} elseif ($id_lv <= 19) {
+			$pro ++;
+		} elseif ($id_lv <= 28) {
+			$master ++;
+		} elseif ($id_lv) {
+			$masplus ++;
+		}
+	}
+}
+
+// 全曲を出す処理
+$all = $debut + $regular + $pro + $master;
+$all_max = ($music_max * 4) + $music_max_masplus;
+
+// 全体達成率を百分率で
+
+$percent_all = 0;
+if ($all >= 0) {
+	$percent_all = round ( ($all / $all_max) * 100, 2 );
+}
+
+// フルコン数が１桁の時に空白を入れる処理
+// そのうち簡素化したい
+if ($debut < 10) {
+	$debut = ' ' . $debut;
+}
+if ($regular < 10) {
+	$regular = ' ' . $regular;
+}
+if ($pro < 10) {
+	$pro = ' ' . $pro;
+}
+if ($master < 10) {
+	$master = ' ' . $master;
+}
+
+// フルコン曲数を 30 / 30みたいにする
+$r_debut = $debut . ' / ' . $music_max;
+$r_regular = $regular . ' / ' . $music_max;
+$r_pro = $pro . ' / ' . $music_max;
+$r_master = $master . ' / ' . $music_max;
+$r_masplus = $masplus . ' / ' . $music_max_masplus;
+$r_all = $all . ' / ' . $all_max . ' (' . $percent_all . '%)';
+$r_rating = 'Rating : ' . sprintf ( '%.2f', $rating );
+
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
 
@@ -204,27 +225,6 @@ ImageTTFText ( $img, 75, 0, $all_full_x, $all_full_y, $black, $font, $r_all );
 // All
 ImageTTFText ( $img, 52, 0, $rating_x, $rating_y, $rate_clolor, $font, $r_rating );
 // Rating
-
-// ここから画像に画像を合成する処理
-
-if (isset ( $_POST ['arr'] )) {
-	foreach ( $_POST ['arr'] as $key => $value ) {
-
-		print "[Debug] $key: $value<br>";
-
-		$get_val = $value;
-
-		if (substr ( $get_val, 0, 1 ) == 0) { // 1桁目が"0"の時は2桁目のみを参照する処理
-			$id_lv = substr ( $get_val, 1, 1 );
-		} else {
-			$id_lv = substr ( $get_val, 0, 2 );
-		}
-
-		$id_column = substr ( $get_val, - 2 );
-
-		imagecopy ( $img, $img_stamp, $song_1st_x + (120 * ($id_column - 1)), $lv_map [$id_lv], 0, 0, 121, 100 );
-	}
-}
 
 // 画像をbase64でimgタグに突っ込むための処理
 ob_start ();

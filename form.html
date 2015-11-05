@@ -6,260 +6,432 @@
 <link rel="stylesheet" type="text/css" href="form.css">
 <link rel="stylesheet" type="text/css" href="check.css">
 
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$('.checkAll').on('change', function() {
+			$('.' + this.id).prop('checked', this.checked);
+		});
+	});
+</script>
+
 </head>
 
 <body>
 
-<form method="post" action="process.php">
+	<form method="post" action="process.php">
+
+		<p>
+			P名<br /> &ensp;<input type="text" name="name" size="14" maxlength="10"><br />
+			Twitter<br /> &ensp;＠<input type="text" name="twitter" size="19" maxlength="15"><br />
+			PRP<br /> &ensp;<input type="text" name="prp" size="1" maxlength="4"><br />
+
+			P Rank<br />
+			 &ensp;<select name="p_rank">
+				<option value="F">F : 見習いプロデューサー</option>
+				<option value="E">E : 駆け出しプロデューサー</option>
+				<option value="D">D : 新米プロデューサー</option>
+				<option value="C">C : 普通プロデューサー</option>
+				<option value="B">B : 中堅プロデューサー</option>
+				<option value="A">A : 敏腕プロデューサー</option>
+				<option value="S">S : 売れっ子プロデューサー</option>
+				<option value="SS">SS : 超売れっ子プロデューサー</option>
+</select>
 
 
-	<table cellspacing="1" cellpadding="5">
-		<tr>
-			<th class="index">-</th>
-			<td class="index">Debut</td>
-			<td class="index">Regular</td>
-			<td class="index">Pro</td>
-			<td class="index">Master</td>
-		</tr>
-		<tr>
-			<th class="index">お願い!シンデレラ</th>
-			<td><input id="01_1" type="checkbox" name="arr[]" value="0501"><label for="01_1">お願いd</label></td>
-			<td><input id="01_1" type="checkbox" name="arr[]" value="1001"><label for="01_1">お願いr</label></td>
-			<td>2-4</td>
-			<td>2-5</td>
-		</tr>
-		<tr>
-			<th class="index">とどけ！アイドル</th>
-			<td>3-2</td>
-			<td>3-3</td>
-			<td>3-4</td>
-			<td>3-5</td>
-		</tr>
-		<tr>
-			<th class="index">輝く世界の魔法</th>
-			<td>4-2</td>
-			<td>4-3</td>
-			<td>4-4</td>
-			<td>4-5</td>
-		</tr>
-		<tr>
-			<th class="index">We're the friends!</th>
-			<td>5-2</td>
-			<td>5-3</td>
-			<td>5-4</td>
-			<td>5-5</td>
-		</tr>
-		<tr>
-			<th class="index">メッセージ</th>
-			<td>6-2</td>
-			<td>6-3</td>
-			<td>6-4</td>
-			<td>6-5</td>
-		</tr>
-		<tr>
-			<th class="index">S(mile)ING!</th>
-			<td>7-2</td>
-			<td>7-3</td>
-			<td>7-4</td>
-			<td>7-5</td>
-		</tr>
-		<tr>
-			<th class="index">Never say never</th>
-			<td>8-2</td>
-			<td>8-3</td>
-			<td>8-4</td>
-			<td>8-5</td>
-		</tr>
-		<tr>
-			<th class="index">ミツボシ☆☆★</th>
-			<td>9-2</td>
-			<td>9-3</td>
-			<td>9-4</td>
-			<td>9-5</td>
-		</tr>
-		<tr>
-			<th class="index">おねだりShall We~?</th>
-			<td>10-2</td>
-			<td>10-3</td>
-			<td>10-4</td>
-			<td>10-5</td>
-		</tr>
-		<tr>
-			<th class="index">Twilight Sky</th>
-			<td>11-2</td>
-			<td>11-3</td>
-			<td>11-4</td>
-			<td>11-5</td>
-		</tr>
-		<tr>
-			<th class="index">DOKIDOKIリズム</th>
-			<td>12-2</td>
-			<td>12-3</td>
-			<td>12-4</td>
-			<td>12-5</td>
-		</tr>
-		<tr>
-			<th class="index">風色メロディ</th>
-			<td>13-2</td>
-			<td>13-3</td>
-			<td>13-4</td>
-			<td>13-5</td>
-		</tr>
-		<tr>
-			<th class="index">ましゅまろ☆キッス</th>
-			<td>14-2</td>
-			<td>14-3</td>
-			<td>14-4</td>
-			<td>14-5</td>
-		</tr>
-		<tr>
-			<th class="index">あんずのうた</th>
-			<td>15-2</td>
-			<td>15-3</td>
-			<td>15-4</td>
-			<td>15-5</td>
-		</tr>
-		<tr>
-			<th class="index">華蕾夢ミル狂詩曲～魂ノ導～</th>
-			<td>16-2</td>
-			<td>16-3</td>
-			<td>16-4</td>
-			<td>16-5</td>
-		</tr>
-		<tr>
-			<th class="index">ショコラ・ティアラ</th>
-			<td>17-2</td>
-			<td>17-3</td>
-			<td>17-4</td>
-			<td>17-5</td>
-		</tr>
-		<tr>
-			<th class="index">Star!!</th>
-			<td>18-2</td>
-			<td>18-3</td>
-			<td>18-4</td>
-			<td>18-5</td>
-		</tr>
-		<tr>
-			<th class="index">夕映えプレゼント</th>
-			<td>19-2</td>
-			<td>19-3</td>
-			<td>19-4</td>
-			<td>19-5</td>
-		</tr>
-		<tr>
-			<th class="index">Memories</th>
-			<td>20-2</td>
-			<td>20-3</td>
-			<td>20-4</td>
-			<td>20-5</td>
-		</tr>
-		<tr>
-			<th class="index">LEGNE 仇なす剣 光の旋律</th>
-			<td>21-2</td>
-			<td>21-3</td>
-			<td>21-4</td>
-			<td>21-5</td>
-		</tr>
-		<tr>
-			<th class="index">Happy×2 Days</th>
-			<td>22-2</td>
-			<td>22-3</td>
-			<td>22-4</td>
-			<td>22-5</td>
-		</tr>
-		<tr>
-			<th class="index">LET'S GO HAPPY!!</th>
-			<td>23-2</td>
-			<td>23-3</td>
-			<td>23-4</td>
-			<td>23-5</td>
-		</tr>
-		<tr>
-			<th class="index">ΦωΦver！！</th>
-			<td>24-2</td>
-			<td>24-3</td>
-			<td>24-4</td>
-			<td>24-5</td>
-		</tr>
-		<tr>
-			<th class="index">できたて Evo！Revo！Generation！</th>
-			<td>25-2</td>
-			<td>25-3</td>
-			<td>25-4</td>
-			<td>25-5</td>
-		</tr>
-		<tr>
-			<th class="index">GOIN'!!</th>
-			<td>26-2</td>
-			<td>26-3</td>
-			<td>26-4</td>
-			<td>26-5</td>
-		</tr>
-		<tr>
-			<th class="index">Shine!!</th>
-			<td>27-2</td>
-			<td>27-3</td>
-			<td>27-4</td>
-			<td>27-5</td>
-		</tr>
-		<tr>
-			<th class="index">Trancing Pulse</th>
-			<td>28-2</td>
-			<td>28-3</td>
-			<td>28-4</td>
-			<td>28-5</td>
-		</tr>
-		<tr>
-			<th class="index">ヴィーナスシンドローム</th>
-			<td>29-2</td>
-			<td>29-3</td>
-			<td>29-4</td>
-			<td>29-5</td>
-		</tr>
-		<tr>
-			<th class="index">ススメ☆オトメ ~jewel parade~</th>
-			<td>30-2</td>
-			<td>30-3</td>
-			<td>30-4</td>
-			<td>30-5</td>
-		</tr>
-		<tr>
-			<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cute Side.
-			</th>
-			<td>31-2</td>
-			<td>31-3</td>
-			<td>31-4</td>
-			<td>31-5</td>
-		</tr>
-		<tr>
-			<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cool Side.
-			</th>
-			<td>32-2</td>
-			<td>32-3</td>
-			<td>32-4</td>
-			<td>32-5</td>
-		</tr>
-		<tr>
-			<th class="index">ススメ☆オトメ ~jewel parade~ <br />Passion Side.
-			</th>
-			<td>33-2</td>
-			<td>33-3</td>
-			<td>33-4</td>
-			<td>33-5</td>
-		</tr>
-		<tr>
-			<th class="index">アタシポンコツアンドロイド</th>
-			<td>34-2</td>
-			<td>34-3</td>
-			<td>34-4</td>
-			<td>34-5</td>
-		</tr>
 
-	</table>
+		</p>
 
-	<p><input type="submit" value="送信する"></p>
-</form>
+
+		<table cellspacing="1" cellpadding="5">
+			<tr>
+				<th class="index">-</th>
+				<td class="index">Debut</td>
+				<td class="index">Regular</td>
+				<td class="index">Pro</td>
+				<td class="index">Master</td>
+			</tr>
+			<tr>
+				<th class="index">難易度ごとに全てチェック</th>
+				<td><input type="checkbox" id="Debut" class="checkAll"></td>
+				<td><input type="checkbox" id="Regular" class="checkAll"></td>
+				<td><input type="checkbox" id="Pro" class="checkAll"></td>
+				<td><input type="checkbox" id="Master" class="checkAll"></td>
+			</tr>
+			<tr>
+				<th class="index">お願い!シンデレラ</th>
+				<td><input id="01_1" class="Debut" type="checkbox" name="arr[]"
+					value="0501"></td>
+				<td><input id="01_2" class="Regular" type="checkbox"
+					name="arr[]" value="1001"></td>
+				<td><input id="01_3" class="Pro" type="checkbox" name="arr[]"
+					value="1501"></td>
+				<td><input id="01_4" class="Master" type="checkbox"
+					name="arr[]" value="2001"></td>
+			</tr>
+			<tr>
+				<th class="index">とどけ！アイドル</th>
+				<td><input id="02_1" class="Debut" type="checkbox" name="arr[]"
+					value="0502"></td>
+				<td><input id="02_2" class="Regular" type="checkbox"
+					name="arr[]" value="1101"></td>
+				<td><input id="02_3" class="Pro" type="checkbox" name="arr[]"
+					value="1502"></td>
+				<td><input id="02_4" class="Master" type="checkbox"
+					name="arr[]" value="2101"></td>
+			</tr>
+			<tr>
+				<th class="index">輝く世界の魔法</th>
+				<td><input id="03_1" class="Debut" type="checkbox" name="arr[]"
+					value="0702"></td>
+				<td><input id="03_2" class="Regular" type="checkbox"
+					name="arr[]" value="1304"></td>
+				<td><input id="03_3" class="Pro" type="checkbox" name="arr[]"
+					value="1804"></td>
+				<td><input id="03_1" class="Master" type="checkbox"
+					name="arr[]" value="2505"></td>
+			</tr>
+			<tr>
+				<th class="index">We're the friends!</th>
+				<td><input id="04_1" class="Debut" type="checkbox" name="arr[]"
+					value="0602"></td>
+				<td><input id="04_2" class="Regular" type="checkbox"
+					name="arr[]" value="1201"></td>
+				<td><input id="04_3" class="Pro" type="checkbox" name="arr[]"
+					value="1603"></td>
+				<td><input id="04_4" class="Master" type="checkbox"
+					name="arr[]" value="2202"></td>
+			</tr>
+			<tr>
+				<th class="index">メッセージ</th>
+				<td><input id="05_1" class="Debut" type="checkbox" name="arr[]"
+					value="0703"></td>
+				<td><input id="05_2" class="Regular" type="checkbox"
+					name="arr[]" value="1305"></td>
+				<td><input id="05_3" class="Pro" type="checkbox" name="arr[]"
+					value="1605"></td>
+				<td><input id="05_4" class="Master" type="checkbox"
+					name="arr[]" value="2504"></td>
+			</tr>
+			<tr>
+				<th class="index">S(mile)ING!</th>
+				<td><input id="06_1" class="Debut" type="checkbox" name="arr[]"
+					value="0601"></td>
+				<td><input id="06_2" class="Regular" type="checkbox"
+					name="arr[]" value="1102"></td>
+				<td><input id="06_3" class="Pro" type="checkbox" name="arr[]"
+					value="1503"></td>
+				<td><input id="06_4" class="Master" type="checkbox"
+					name="arr[]" value="2102"></td>
+			</tr>
+			<tr>
+				<th class="index">Never say never</th>
+				<td><input id="07_1" class="Debut" type="checkbox" name="arr[]"
+					value="0606"></td>
+				<td><input id="07_2" class="Regular" type="checkbox"
+					name="arr[]" value="1202"></td>
+				<td><input id="07_3" class="Pro" type="checkbox" name="arr[]"
+					value="1701"></td>
+				<td><input id="07_4" class="Master" type="checkbox"
+					name="arr[]" value="2502"></td>
+			</tr>
+			<tr>
+				<th class="index">ミツボシ☆☆★</th>
+				<td><input id="08_1" class="Debut" type="checkbox" name="arr[]"
+					value="0802"></td>
+				<td><input id="08_2" class="Regular" type="checkbox"
+					name="arr[]" value="1203"></td>
+				<td><input id="08_3" class="Pro" type="checkbox" name="arr[]"
+					value="1702"></td>
+				<td><input id="08_4" class="Master" type="checkbox"
+					name="arr[]" value="2401"></td>
+			</tr>
+			<tr>
+				<th class="index">おねだりShall We~?</th>
+				<td><input id="09_1" class="Debut" type="checkbox" name="arr[]"
+					value="0806"></td>
+				<td><input id="09_2" class="Regular" type="checkbox"
+					name="arr[]" value="1310"></td>
+				<td><input id="09_3" class="Pro" type="checkbox" name="arr[]"
+					value="1807"></td>
+				<td><input id="09_4" class="Master" type="checkbox"
+					name="arr[]" value="2503"></td>
+			</tr>
+			<tr>
+				<th class="index">Twilight Sky</th>
+				<td><input id="10_1" class="Debut" type="checkbox" name="arr[]"
+					value="0701"></td>
+				<td><input id="10_2" class="Regular" type="checkbox"
+					name="arr[]" value="1303"></td>
+				<td><input id="10_3" class="Pro" type="checkbox" name="arr[]"
+					value="1803"></td>
+				<td><input id="10_4" class="Master" type="checkbox"
+					name="arr[]" value="2402"></td>
+			</tr>
+			<tr>
+				<th class="index">DOKIDOKIリズム</th>
+				<td><input id="11_1" class="Debut" type="checkbox" name="arr[]"
+					value="0803"></td>
+				<td><input id="11_2" class="Regular" type="checkbox"
+					name="arr[]" value="1308"></td>
+				<td><input id="11_3" class="Pro" type="checkbox" name="arr[]"
+					value="1706"></td>
+				<td><input id="11_4" class="Master" type="checkbox"
+					name="arr[]" value="2403"></td>
+			</tr>
+			<tr>
+				<th class="index">風色メロディ</th>
+				<td><input id="12_1" class="Debut" type="checkbox" name="arr[]"
+					value="0604"></td>
+				<td><input id="12_2" class="Regular" type="checkbox"
+					name="arr[]" value="1104"></td>
+				<td><input id="12_3" class="Pro" type="checkbox" name="arr[]"
+					value="1602"></td>
+				<td><input id="12_4" class="Master" type="checkbox"
+					name="arr[]" value="2301"></td>
+			</tr>
+			<tr>
+				<th class="index">ましゅまろ☆キッス</th>
+				<td><input id="13_1" class="Debut" type="checkbox" name="arr[]"
+					value="0804"></td>
+				<td><input id="13_2" class="Regular" type="checkbox"
+					name="arr[]" value="1309"></td>
+				<td><input id="13_3" class="Pro" type="checkbox" name="arr[]"
+					value="1806"></td>
+				<td><input id="13_4" class="Master" type="checkbox"
+					name="arr[]" value="2404"></td>
+			</tr>
+			<tr>
+				<th class="index">あんずのうた</th>
+				<td><input id="14_1" class="Debut" type="checkbox" name="arr[]"
+					value="0902"></td>
+				<td><input id="14_2" class="Regular" type="checkbox"
+					name="arr[]" value="1402"></td>
+				<td><input id="14_3" class="Pro" type="checkbox" name="arr[]"
+					value="1901"></td>
+				<td><input id="14_4" class="Master" type="checkbox"
+					name="arr[]" value="2802"></td>
+			</tr>
+			<tr>
+				<th class="index">華蕾夢ミル狂詩曲～魂ノ導～</th>
+				<td><input id="15_1" class="Debut" type="checkbox" name="arr[]"
+					value="0608"></td>
+				<td><input id="15_2" class="Regular" type="checkbox"
+					name="arr[]" value="1302"></td>
+				<td><input id="15_3" class="Pro" type="checkbox" name="arr[]"
+					value="1802"></td>
+				<td><input id="15_4" class="Master" type="checkbox"
+					name="arr[]" value="2703"></td>
+			</tr>
+			<tr>
+				<th class="index">ショコラ・ティアラ</th>
+				<td><input id="16_1" class="Debut" type="checkbox" name="arr[]"
+					value="0607"></td>
+				<td><input id="16_2" class="Regular" type="checkbox"
+					name="arr[]" value="1301"></td>
+				<td><input id="16_3" class="Pro" type="checkbox" name="arr[]"
+					value="1801"></td>
+				<td><input id="16_4" class="Master" type="checkbox"
+					name="arr[]" value="2602"></td>
+			</tr>
+			<tr>
+				<th class="index">Star!!</th>
+				<td><input id="17_1" class="Debut" type="checkbox" name="arr[]"
+					value="0605"></td>
+				<td><input id="17_2" class="Regular" type="checkbox"
+					name="arr[]" value="1205"></td>
+				<td><input id="17_3" class="Pro" type="checkbox" name="arr[]"
+					value="1604"></td>
+				<td><input id="17_4" class="Master" type="checkbox"
+					name="arr[]" value="2501"></td>
+			</tr>
+			<tr>
+				<th class="index">夕映えプレゼント</th>
+				<td><input id="18_1" class="Debut" type="checkbox" name="arr[]"
+					value="0814"></td>
+				<td><input id="18_2" class="Regular" type="checkbox"
+					name="arr[]" value="1405"></td>
+				<td><input id="18_3" class="Pro" type="checkbox" name="arr[]"
+					value="1810"></td>
+				<td><input id="18_4" class="Master" type="checkbox"
+					name="arr[]" value="2601"></td>
+			</tr>
+			<tr>
+				<th class="index">Memories</th>
+				<td><input id="19_1" class="Debut" type="checkbox" name="arr[]"
+					value="0603"></td>
+				<td><input id="19_2" class="Regular" type="checkbox"
+					name="arr[]" value="1103"></td>
+				<td><input id="19_3" class="Pro" type="checkbox" name="arr[]"
+					value="1601"></td>
+				<td><input id="19_4" class="Master" type="checkbox"
+					name="arr[]" value="2201"></td>
+			</tr>
+			<tr>
+				<th class="index">LEGNE 仇なす剣 光の旋律</th>
+				<td><input id="20_1" class="Debut" type="checkbox" name="arr[]"
+					value="0903"></td>
+				<td><input id="20_2" class="Regular" type="checkbox"
+					name="arr[]" value="1403"></td>
+				<td><input id="20_3" class="Pro" type="checkbox" name="arr[]"
+					value="1904"></td>
+				<td><input id="20_4" class="Master" type="checkbox"
+					name="arr[]" value="2801"></td>
+			</tr>
+			<tr>
+				<th class="index">Happy×2 Days</th>
+				<td><input id="21_1" class="Debut" type="checkbox" name="arr[]"
+					value="0801"></td>
+				<td><input id="21_2" class="Regular" type="checkbox"
+					name="arr[]" value="1307"></td>
+				<td><input id="21_3" class="Pro" type="checkbox" name="arr[]"
+					value="1705"></td>
+				<td><input id="21_4" class="Master" type="checkbox"
+					name="arr[]" value="2302"></td>
+			</tr>
+			<tr>
+				<th class="index">LET'S GO HAPPY!!</th>
+				<td><input id="22_1" class="Debut" type="checkbox" name="arr[]"
+					value="0705"></td>
+				<td><input id="22_2" class="Regular" type="checkbox"
+					name="arr[]" value="1306"></td>
+				<td><input id="22_3" class="Pro" type="checkbox" name="arr[]"
+					value="1805"></td>
+				<td><input id="22_4" class="Master" type="checkbox"
+					name="arr[]" value="2702"></td>
+			</tr>
+			<tr>
+				<th class="index">ΦωΦver！！</th>
+				<td><input id="23_1" class="Debut" type="checkbox" name="arr[]"
+					value="0807"></td>
+				<td><input id="23_2" class="Regular" type="checkbox"
+					name="arr[]" value="1204"></td>
+				<td><input id="23_3" class="Pro" type="checkbox" name="arr[]"
+					value="1703"></td>
+				<td><input id="23_4" class="Master" type="checkbox"
+					name="arr[]" value="2604"></td>
+			</tr>
+			<tr>
+				<th class="index">できたて Evo！Revo！Generation！</th>
+				<td><input id="24_1" class="Debut" type="checkbox" name="arr[]"
+					value="0704"></td>
+				<td><input id="24_2" class="Regular" type="checkbox"
+					name="arr[]" value="1105"></td>
+				<td><input id="24_3" class="Pro" type="checkbox" name="arr[]"
+					value="1903"></td>
+				<td><input id="24_4" class="Master" type="checkbox"
+					name="arr[]" value="2605"></td>
+			</tr>
+			<tr>
+				<th class="index">GOIN'!!</th>
+				<td><input id="25_1" class="Debut" type="checkbox" name="arr[]"
+					value="0901"></td>
+				<td><input id="25_2" class="Regular" type="checkbox"
+					name="arr[]" value="1311"></td>
+				<td><input id="25_3" class="Pro" type="checkbox" name="arr[]"
+					value="1707"></td>
+				<td><input id="25_4" class="Master" type="checkbox"
+					name="arr[]" value="2701"></td>
+			</tr>
+			<tr>
+				<th class="index">Shine!!</th>
+				<td><input id="26_1" class="Debut" type="checkbox" name="arr[]"
+					value="0805"></td>
+				<td><input id="26_2" class="Regular" type="checkbox"
+					name="arr[]" value="1401"></td>
+				<td><input id="26_3" class="Pro" type="checkbox" name="arr[]"
+					value="1808"></td>
+				<td><input id="26_4" class="Master" type="checkbox"
+					name="arr[]" value="2507"></td>
+			</tr>
+			<tr>
+				<th class="index">Trancing Pulse</th>
+				<td><input id="27_1" class="Debut" type="checkbox" name="arr[]"
+					value="0904"></td>
+				<td><input id="27_2" class="Regular" type="checkbox"
+					name="arr[]" value="1404"></td>
+				<td><input id="27_3" class="Pro" type="checkbox" name="arr[]"
+					value="1905"></td>
+				<td><input id="27_4" class="Master" type="checkbox"
+					name="arr[]" value="2803"></td>
+			</tr>
+			<tr>
+				<th class="index">ヴィーナスシンドローム</th>
+				<td><input id="28_1" class="Debut" type="checkbox" name="arr[]"
+					value="0808"></td>
+				<td><input id="28_2" class="Regular" type="checkbox"
+					name="arr[]" value="1406"></td>
+				<td><input id="28_3" class="Pro" type="checkbox" name="arr[]"
+					value="1902"></td>
+				<td><input id="28_4" class="Master" type="checkbox"
+					name="arr[]" value="2603"></td>
+			</tr>
+			<tr>
+				<th class="index">ススメ☆オトメ ~jewel parade~</th>
+				<td><input id="51_1" class="Debut" type="checkbox" name="arr[]"
+					value="0810"></td>
+				<td><input id="51_2" class="Regular" type="checkbox"
+					name="arr[]" value="1312"></td>
+				<td><input id="51_3" class="Pro" type="checkbox" name="arr[]"
+					value="1809"></td>
+				<td><input id="51_4" class="Master" type="checkbox"
+					name="arr[]" value="2506"></td>
+			</tr>
+			<tr>
+				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cute Side.
+				</th>
+				<td><input id="52_1" class="Debut" type="checkbox" name="arr[]"
+					value="0811"></td>
+				<td><input id="52_2" class="Regular" type="checkbox"
+					name="arr[]" value="1313"></td>
+				<td><input id="52_3" class="Pro" type="checkbox" name="arr[]"
+					value="1708"></td>
+				<td><input id="52_4" class="Master" type="checkbox"
+					name="arr[]" value="2405"></td>
+			</tr>
+			<tr>
+				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cool Side.
+				</th>
+				<td><input id="53_1" class="Debut" type="checkbox" name="arr[]"
+					value="0812"></td>
+				<td><input id="53_2" class="Regular" type="checkbox"
+					name="arr[]" value="1314"></td>
+				<td><input id="53_3" class="Pro" type="checkbox" name="arr[]"
+					value="1709"></td>
+				<td><input id="53_4" class="Master" type="checkbox"
+					name="arr[]" value="2406"></td>
+			</tr>
+			<tr>
+				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Passion Side.
+				</th>
+				<td><input id="54_1" class="Debut" type="checkbox" name="arr[]"
+					value="0813"></td>
+				<td><input id="54_2" class="Regular" type="checkbox"
+					name="arr[]" value="1315"></td>
+				<td><input id="54_3" class="Pro" type="checkbox" name="arr[]"
+					value="1710"></td>
+				<td><input id="54_4" class="Master" type="checkbox"
+					name="arr[]" value="2407"></td>
+			</tr>
+			<tr>
+				<th class="index">アタシポンコツアンドロイド</th>
+				<td><input id="91_1" class="Debut" type="checkbox" name="arr[]"
+					value="0809"></td>
+				<td><input id="91_2" class="Regular" type="checkbox"
+					name="arr[]" value="1206"></td>
+				<td><input id="91_3" class="Pro" type="checkbox" name="arr[]"
+					value="1704"></td>
+				<td><input id="91_4" class="Master" type="checkbox"
+					name="arr[]" value="2606"></td>
+			</tr>
+
+		</table>
+
+		<p>
+			<input type="submit" value="送信する">
+		</p>
+	</form>
 
 </body>
 </html>
