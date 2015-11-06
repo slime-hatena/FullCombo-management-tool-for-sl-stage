@@ -7,6 +7,10 @@
 <link rel="stylesheet" type="text/css" href="check.css">
 
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/cookiesave.js"></script>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
 
 <script type="text/javascript">
 	$(function() {
@@ -20,15 +24,20 @@
 
 <body>
 
+	<h1 style="font-size: 40px">fcManagementTool 4 sl-stage</h1>
+	<h2 style="font-size: 20px">デレステのフルコン状況を画像に纏めます。</h2>
+
+	<h3>以下のフォームを入力して送信してください。</h3>
+
 	<form method="post" action="process.php">
 
 		<p>
-			P名<br /> &ensp;<input type="text" name="name" size="14" maxlength="10"><br />
-			Twitter<br /> &ensp;＠<input type="text" name="twitter" size="19" maxlength="15"><br />
-			PRP<br /> &ensp;<input type="text" name="prp" size="1" maxlength="4"><br />
+			P名<br /> &ensp;<input type="text" name="name" size="20"
+				maxlength="10"><br /> Twitter<br /> &ensp;＠<input
+				type="text" name="twitter" size="15" maxlength="15"><br />
+			PRP<br /> &ensp;<input type="text" name="prp" size="4" maxlength="4"><br />
 
-			P Rank<br />
-			 &ensp;<select name="p_rank">
+			P Rank<br /> &ensp;<select name="p_rank">
 				<option value="F">F : 見習いプロデューサー</option>
 				<option value="E">E : 駆け出しプロデューサー</option>
 				<option value="D">D : 新米プロデューサー</option>
@@ -37,7 +46,7 @@
 				<option value="A">A : 敏腕プロデューサー</option>
 				<option value="S">S : 売れっ子プロデューサー</option>
 				<option value="SS">SS : 超売れっ子プロデューサー</option>
-</select>
+			</select>
 
 
 
@@ -429,9 +438,51 @@
 		</table>
 
 		<p>
-			<input type="submit" value="送信する">
+			<input type="submit" value="送信する"><input
+				style="margin-left: 20px;" type="reset" value="リセット">
 		</p>
 	</form>
+
+	<br />
+
+	<h3>お借りしているもの</h3>
+
+	<h4>
+		<a href="http://massacre.s59.xrea.com/game/cookiesave/">CookieSave.js</a>
+		by <a href="http://massacre.s59.xrea.com/">猫と重金属</a>
+	</h4>
+	<h4>
+		<a href="https://jquery.com/">jQuery.js</a>
+	</h4>
+
+
+	<h4>
+		fcManagementTool 4 sl-stage Created by <a
+			href="https://twitter.com/Slime_hatena">@Slime_hatena</a>
+	</h4>
+	<div
+		onclick="obj=document.getElementById('open_2').style; obj.display=(obj.display=='none')?'block':'none';">
+		<a style="font-size: 12px; cursor: pointer;">▼ クリックでライセンスを表示</a>
+	</div>
+	<div id="open_2" style="font-size: 12px; display: none; clear: both;">
+	MIT license.<br />
+		Copyright (c) 2015 Slime_hatena All Rights Reserved. Permission is
+		hereby granted, free of charge, to any person obtaining a copy of this
+		software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the
+		rights to use, copy, modify, merge, publish, distribute, sublicense,
+		and/or sell copies of the Software, and to permit persons to whom the
+		Software is furnished to do so, subject to the following conditions: <br />
+		The above copyright notice and this permission notice shall be
+		included in all copies or substantial portions of the Software. <br />
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+		MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+		IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+		CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+	</div>
 
 </body>
 </html>

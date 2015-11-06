@@ -62,28 +62,38 @@ $rating_y = 235;
 // 現在の最大曲数を入力しておく
 $music_max = 33;
 $music_max_masplus = 0;
+$rating_all = 2043; //全曲のレベルを足した数値
 
 // 受け渡された文字列を代入
-$name = mb_convert_encoding ( $_POST["name"], 'UTF-8', 'auto' );
+$name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
+$p_rank = mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' );
+$twitter = mb_convert_encoding ( $_POST ["twitter"], 'UTF-8', 'auto' );
+$prp = mb_convert_encoding ( $_POST ["prp"], 'UTF-8', 'auto' );
+$rating =0;
+$p_rank =  $_POST ["p_rank"];
 
-$p_rank = mb_convert_encoding ( $_POST["p_rank"], 'UTF-8', 'auto' );
-$twitter = mb_convert_encoding ( $_POST["twitter"], 'UTF-8', 'auto' );;
-$prp = mb_convert_encoding ( $_POST["prp"], 'UTF-8', 'auto' );
 
-//後で使う変数をわかりやすくここで定義しておく
+
+// 後で使う変数をわかりやすくここで定義しておく
 $debut = 0;
 $regular = 0;
 $pro = 0;
 $master = 0;
 $masplus = 0;
 
-// 以下デバッグ用----------------------------
-$rating = 14.97;
-// デバッグ用ここまで---------------------------
+
 
 // 画像読み込み
 $img = imagecreatefrompng ( 'img/body.png' );
 $img_stamp = imagecreatefrompng ( 'img/stamp.png' );
+$img_ss = imagecreatefrompng ( 'img/ss.png' );
+$img_s = imagecreatefrompng ( 'img/s.png' );
+$img_a = imagecreatefrompng ( 'img/a.png' );
+$img_b = imagecreatefrompng ( 'img/b.png' );
+$img_c = imagecreatefrompng ( 'img/c.png' );
+$img_d = imagecreatefrompng ( 'img/d.png' );
+$img_e = imagecreatefrompng ( 'img/e.png' );
+$img_f = imagecreatefrompng ( 'img/f.png' );
 
 // 色の指定
 $white = ImageColorAllocate ( $img, 0xFF, 0xFF, 0xFF );
@@ -96,45 +106,7 @@ $yellow = ImageColorAllocate ( $img, 0xBD, 0xB7, 0x6B );
 $red = ImageColorAllocate ( $img, 0xDC, 0x14, 0x3C );
 $dark_purple = ImageColorAllocate ( $img, 0x48, 0x3D, 0x8B );
 
-// rateで色変更
-// 時間がなかったのでだいぶヤバい実装の仕方してる
-// 何回も x<$<y で書いてるのは見てたらだんだん意味がわからなくなってきたのでわかりやすいようにそうしておく
 
-$rate_clolor = $black;
-// rate 0
-
-if (3.00 <= $rating && $rating < 5.00) { // rate 3
-
-	$rate_clolor = $pink;
-} elseif (5.00 <= $rating && $rating < 7.00) { // rate 5
-
-	$rate_clolor = $orange;
-} elseif (7.00 <= $rating && $rating < 10.00) { // rate 7
-
-	$rate_clolor = $blue;
-} elseif (10.00 <= $rating && $rating < 12.00) { // rate 10
-
-	$rate_clolor = $green;
-} elseif (12.00 <= $rating && $rating < 14.00) { // rate 12
-
-	$rate_clolor = $yellow;
-} elseif (14.00 <= $rating && $rating < 15.00) { // rate 14
-
-	$rate_clolor = $red;
-} elseif (15.00 <= $rating) { // rate 15
-
-	$rate_clolor = $dark_purple;
-}
-
-// P名の文字数を判断してフォントサイズ変える処理
-// 文字数取得
-if (mb_strlen ( $name ) <= 5) {
-	$name_size = 40;
-} elseif (mb_strlen ( $name ) <= 7) {
-	$name_size = 32;
-} else {
-	$name_size = 24;
-}
 
 // ここから画像に画像を合成する処理
 
@@ -153,6 +125,8 @@ if (isset ( $_POST ['arr'] )) {
 
 		imagecopy ( $img, $img_stamp, $song_1st_x + (120 * ($id_column - 1)), $lv_map [$id_lv], 0, 0, 121, 100 );
 
+
+
 		// 合計曲数を出す処理
 		if ($id_lv <= 9) {
 			$debut ++;
@@ -165,8 +139,48 @@ if (isset ( $_POST ['arr'] )) {
 		} elseif ($id_lv) {
 			$masplus ++;
 		}
+
+		//ratingを求める処理
+		$rating += $id_lv;
 	}
 }
+
+//ratingの演算
+$r_rating = round ( ($rating / $rating_all)*15   ,  2);
+
+
+// rateで色変更
+// 時間がなかったのでだいぶヤバい実装の仕方してる
+// 何回も x<$<y で書いてるのは見てたらだんだん意味がわからなくなってきたのでわかりやすいようにそうしておく
+
+$rate_clolor = $black;
+// rate 0
+
+if (3.00 <= $r_rating && $r_rating < 5.00) { // rate 3
+
+	$rate_clolor = $pink;
+} elseif (5.00 <= $r_rating && $r_rating < 7.00) { // rate 5
+
+	$rate_clolor = $orange;
+} elseif (7.00 <= $r_rating && $r_rating < 10.00) { // rate 7
+
+	$rate_clolor = $blue;
+} elseif (10.00 <= $r_rating && $r_rating < 12.00) { // rate 10
+
+	$rate_clolor = $green;
+} elseif (12.00 <= $r_rating && $r_rating < 14.00) { // rate 12
+
+	$rate_clolor = $yellow;
+} elseif (14.00 <= $r_rating && $r_rating < 15.00) { // rate 14
+
+	$rate_clolor = $red;
+} elseif (15.00 <= $r_rating) { // rate 15
+
+	$rate_clolor = $dark_purple;
+}
+
+
+
 
 // 全曲を出す処理
 $all = $debut + $regular + $pro + $master;
@@ -200,11 +214,51 @@ $r_regular = $regular . ' / ' . $music_max;
 $r_pro = $pro . ' / ' . $music_max;
 $r_master = $master . ' / ' . $music_max;
 $r_masplus = $masplus . ' / ' . $music_max_masplus;
-$r_all = $all . ' / ' . $all_max . ' (' . $percent_all . '%)';
-$r_rating = 'Rating : ' . sprintf ( '%.2f', $rating );
+$r_all = $all . ' / ' . $all_max . ' (' . sprintf ( '%.2f', $percent_all ) . '%)';
+$r_rating = 'Rating : ' . sprintf ( '%.2f', $r_rating );
+
+
+
+// P名の文字数を判断してフォントサイズ変える処理
+// 文字数取得
+if (mb_strlen ( $name ) <= 5) {
+	$name_size = 40;
+} elseif (mb_strlen ( $name ) <= 7) {
+	$name_size = 32;
+} else {
+	$name_size = 24;
+}
 
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
+
+//プロデユーサーランクを合成する処理
+switch ($p_rank) {
+	case "SS":
+		imagecopy ( $img, $img_ss, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "S":
+		imagecopy ( $img, $img_s, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "A":
+		imagecopy ( $img, $img_a, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "B":
+		imagecopy ( $img, $img_b, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "C":
+		imagecopy ( $img, $img_c, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "D":
+		imagecopy ( $img, $img_d, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "E":
+		imagecopy ( $img, $img_e, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+	case "F":
+		imagecopy ( $img, $img_f, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
+		break;
+}
 
 // 文字の描写
 ImageTTFText ( $img, $name_size, 0, $name_x, $name_y, $black, $font, $name );
@@ -243,14 +297,25 @@ imagedestroy ( $img_stamp );
 
 <head>
 <meta charset="utf-8">
-<title>process.php</title>
+<title>result - fcManagementTool 4 sl-stage</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 </head>
 
+
+
 <body bgcolor="#EFEFEF" text="#000000">
+
 	<p>
-		<font size="8">以下の画像を保存してお使いください。</font>
+以下の画像を保存してお使いください。
 	</p>
-	<img src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+
+	<p>
+
+
+
+	</p>
+
+	<img style=" width: 100%;"  src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
 
 </body>
 </html>
