@@ -1,4 +1,5 @@
 <?php
+$version = "ver." . "151108";
 
 // わざとらしくLVごとにx-pxを指定
 $lv_map = array (
@@ -62,17 +63,15 @@ $rating_y = 235;
 // 現在の最大曲数を入力しておく
 $music_max = 33;
 $music_max_masplus = 0;
-$rating_all = 2043; //全曲のレベルを足した数値
+$rating_all = 2043; // 全曲のレベルを足した数値
 
 // 受け渡された文字列を代入
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
 $p_rank = mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' );
 $twitter = mb_convert_encoding ( $_POST ["twitter"], 'UTF-8', 'auto' );
 $prp = mb_convert_encoding ( $_POST ["prp"], 'UTF-8', 'auto' );
-$rating =0;
-$p_rank =  $_POST ["p_rank"];
-
-
+$rating = 0;
+$p_rank = $_POST ["p_rank"];
 
 // 後で使う変数をわかりやすくここで定義しておく
 $debut = 0;
@@ -80,8 +79,6 @@ $regular = 0;
 $pro = 0;
 $master = 0;
 $masplus = 0;
-
-
 
 // 画像読み込み
 $img = imagecreatefrompng ( 'img/body.png' );
@@ -106,8 +103,6 @@ $yellow = ImageColorAllocate ( $img, 0xBD, 0xB7, 0x6B );
 $red = ImageColorAllocate ( $img, 0xDC, 0x14, 0x3C );
 $dark_purple = ImageColorAllocate ( $img, 0x48, 0x3D, 0x8B );
 
-
-
 // ここから画像に画像を合成する処理
 
 if (isset ( $_POST ['arr'] )) {
@@ -125,8 +120,6 @@ if (isset ( $_POST ['arr'] )) {
 
 		imagecopy ( $img, $img_stamp, $song_1st_x + (120 * ($id_column - 1)), $lv_map [$id_lv], 0, 0, 121, 100 );
 
-
-
 		// 合計曲数を出す処理
 		if ($id_lv <= 9) {
 			$debut ++;
@@ -140,14 +133,13 @@ if (isset ( $_POST ['arr'] )) {
 			$masplus ++;
 		}
 
-		//ratingを求める処理
+		// ratingを求める処理
 		$rating += $id_lv;
 	}
 }
 
-//ratingの演算
-$r_rating = round ( ($rating / $rating_all)*15   ,  2);
-
+// ratingの演算
+$r_rating = round ( ($rating / $rating_all) * 15, 2 );
 
 // rateで色変更
 // 時間がなかったのでだいぶヤバい実装の仕方してる
@@ -179,11 +171,8 @@ if (3.00 <= $r_rating && $r_rating < 5.00) { // rate 3
 	$rate_clolor = $dark_purple;
 }
 
-
-
-
 // 全曲を出す処理
-$all = $debut + $regular + $pro + $master;
+$all = $debut + $regular + $pro + $master + $masplus;
 $all_max = ($music_max * 4) + $music_max_masplus;
 
 // 全体達成率を百分率で
@@ -192,6 +181,9 @@ $percent_all = 0;
 if ($all >= 0) {
 	$percent_all = round ( ($all / $all_max) * 100, 2 );
 }
+
+// Twitter用テンプレ生成
+$tweet = $name . "さんのフルコンボ曲数は" . $all . "/" . $all_max . "(" . sprintf ( '%.2f', $percent_all ) . "%) " . " , Ratingは" . $r_rating . "です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage/form.html";
 
 // フルコン数が１桁の時に空白を入れる処理
 // そのうち簡素化したい
@@ -217,8 +209,6 @@ $r_masplus = $masplus . ' / ' . $music_max_masplus;
 $r_all = $all . ' / ' . $all_max . ' (' . sprintf ( '%.2f', $percent_all ) . '%)';
 $r_rating = 'Rating : ' . sprintf ( '%.2f', $r_rating );
 
-
-
 // P名の文字数を判断してフォントサイズ変える処理
 // 文字数取得
 if (mb_strlen ( $name ) <= 5) {
@@ -232,30 +222,30 @@ if (mb_strlen ( $name ) <= 5) {
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
 
-//プロデユーサーランクを合成する処理
+// プロデユーサーランクを合成する処理
 switch ($p_rank) {
-	case "SS":
+	case "SS" :
 		imagecopy ( $img, $img_ss, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "S":
+	case "S" :
 		imagecopy ( $img, $img_s, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "A":
+	case "A" :
 		imagecopy ( $img, $img_a, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "B":
+	case "B" :
 		imagecopy ( $img, $img_b, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "C":
+	case "C" :
 		imagecopy ( $img, $img_c, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "D":
+	case "D" :
 		imagecopy ( $img, $img_d, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "E":
+	case "E" :
 		imagecopy ( $img, $img_e, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
-	case "F":
+	case "F" :
 		imagecopy ( $img, $img_f, $p_rank_x, $p_rank_y, 0, 0, 61, 61 );
 		break;
 }
@@ -279,6 +269,7 @@ ImageTTFText ( $img, 75, 0, $all_full_x, $all_full_y, $black, $font, $r_all );
 // All
 ImageTTFText ( $img, 52, 0, $rating_x, $rating_y, $rate_clolor, $font, $r_rating );
 // Rating
+ImageTTFText ( $img, 14, 0, 720, 3164, $black, $font, $version );
 
 // 画像をbase64でimgタグに突っ込むための処理
 ob_start ();
@@ -298,24 +289,29 @@ imagedestroy ( $img_stamp );
 <head>
 <meta charset="utf-8">
 <title>result - fcManagementTool 4 sl-stage</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
 </head>
 
 
 
 <body bgcolor="#EFEFEF" text="#000000">
 
-	<p>
-以下の画像を保存してお使いください。
-	</p>
 
-	<p>
+		<a href="twitter://post?message=<?php echo $tweet; ?> %23デレステ"><img src="img/tweetbutton.png"  height="30" alt="ツイートする"></a>
+		<p style="font-size : 12px;">画像を保存してから押してください。<br />
+		公式クライアントがインストールされている必要があります。<br />
+		ツイート欄が開いたら画像を添付してツイートしてください。
+
+
+	<p style="font-size : 12px;">以下コピペ用<br />
+	公式クライアントをインストールしていない時などにお使いください。<br />
+	<textarea name="copybox" cols="40" rows="5" readonly><?php echo $tweet; ?></textarea></p>
 
 
 
-	</p>
-
-	<img style=" width: 100%;"  src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+	<img style="width: 100%;"
+		src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
 
 </body>
 </html>

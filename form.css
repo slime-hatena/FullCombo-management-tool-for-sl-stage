@@ -14,3 +14,17 @@ td{
 	text-align : center;
 	font-weight : bold;
 }
+
+*.index {
+	background: #f0f8ff;
+	text-align : center;
+	font-weight : bold;
+}
+
+*.limited {
+	background: #faf0ff;
+	text-align : center;
+	font-weight : bold;
+}
+
+

@@ -9,7 +9,12 @@
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="js/cookiesave.js"></script>
 
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<script type="text/javascript">
+	CookieSave.expires = 360 * 24 * 60 * 60 * 1000;
+</script>
+
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 
 
 <script type="text/javascript">
@@ -20,12 +25,31 @@
 	});
 </script>
 
+<!-- favicon -->
+<link rel="shortcut icon" href="img/icon/favicon.ico">
+<!-- iOS Safari -->
+<link rel="apple-touch-icon" sizes="120x120" href="img/icon/apple-touch-icon.png">
+<!-- iOS Safari(旧) / Android標準ブラウザ(一部) -->
+<link rel="apple-touch-icon-precomposed" href="img/icon/apple-touch-icon.png">
+<!-- Android標準ブラウザ(一部) -->
+<link rel="shortcut icon" href="img/icon/apple-touch-icon.png">
+<!-- Android Chrome -->
+<link rel="icon" sizes="120x120" href="img/icon/apple-touch-icon.png">
+
 </head>
 
 <body>
 
-	<h1 style="font-size: 40px">fcManagementTool 4 sl-stage</h1>
-	<h2 style="font-size: 20px">デレステのフルコン状況を画像に纏めます。</h2>
+	<h1 style="font-size: 32px">fcManagementTool 4 sl-stage</h1>
+	<h2 style="font-size: 18px">デレステのフルコン状況を画像に纏めます。</h2>
+	<p>
+		入力内容はお使いの端末のCookieを使用して保存されます。<br />
+		保存期間は360日ですがCookieの削除等をしてしまうと消えてしまうのでご注意ください。
+	</p>
+
+	<p>
+		使用条件等はページ下部に記述してあるライセンスの通りです。<br /> 使用する前に目を通して同意いただける場合はお使いください。
+	</p>
 
 	<h3>以下のフォームを入力して送信してください。</h3>
 
@@ -245,6 +269,17 @@
 					name="arr[]" value="2602"></td>
 			</tr>
 			<tr>
+				<th class="index">ヴィーナスシンドローム</th>
+				<td><input id="28_1" class="Debut" type="checkbox" name="arr[]"
+					value="0808"></td>
+				<td><input id="28_2" class="Regular" type="checkbox"
+					name="arr[]" value="1406"></td>
+				<td><input id="28_3" class="Pro" type="checkbox" name="arr[]"
+					value="1902"></td>
+				<td><input id="28_4" class="Master" type="checkbox"
+					name="arr[]" value="2603"></td>
+			</tr>
+			<tr>
 				<th class="index">Star!!</th>
 				<td><input id="17_1" class="Debut" type="checkbox" name="arr[]"
 					value="0605"></td>
@@ -355,7 +390,7 @@
 					name="arr[]" value="2507"></td>
 			</tr>
 			<tr>
-				<th class="index">Trancing Pulse</th>
+				<th class="limited">Trancing Pulse</th>
 				<td><input id="27_1" class="Debut" type="checkbox" name="arr[]"
 					value="0904"></td>
 				<td><input id="27_2" class="Regular" type="checkbox"
@@ -366,18 +401,7 @@
 					name="arr[]" value="2803"></td>
 			</tr>
 			<tr>
-				<th class="index">ヴィーナスシンドローム</th>
-				<td><input id="28_1" class="Debut" type="checkbox" name="arr[]"
-					value="0808"></td>
-				<td><input id="28_2" class="Regular" type="checkbox"
-					name="arr[]" value="1406"></td>
-				<td><input id="28_3" class="Pro" type="checkbox" name="arr[]"
-					value="1902"></td>
-				<td><input id="28_4" class="Master" type="checkbox"
-					name="arr[]" value="2603"></td>
-			</tr>
-			<tr>
-				<th class="index">ススメ☆オトメ ~jewel parade~</th>
+				<th class="limited">ススメ☆オトメ ~jewel parade~</th>
 				<td><input id="51_1" class="Debut" type="checkbox" name="arr[]"
 					value="0810"></td>
 				<td><input id="51_2" class="Regular" type="checkbox"
@@ -388,7 +412,7 @@
 					name="arr[]" value="2506"></td>
 			</tr>
 			<tr>
-				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cute Side.
+				<th class="limited">ススメ☆オトメ ~jewel parade~ <br />Cute Side.
 				</th>
 				<td><input id="52_1" class="Debut" type="checkbox" name="arr[]"
 					value="0811"></td>
@@ -400,7 +424,7 @@
 					name="arr[]" value="2405"></td>
 			</tr>
 			<tr>
-				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Cool Side.
+				<th class="limited">ススメ☆オトメ ~jewel parade~ <br />Cool Side.
 				</th>
 				<td><input id="53_1" class="Debut" type="checkbox" name="arr[]"
 					value="0812"></td>
@@ -412,7 +436,7 @@
 					name="arr[]" value="2406"></td>
 			</tr>
 			<tr>
-				<th class="index">ススメ☆オトメ ~jewel parade~ <br />Passion Side.
+				<th class="limited">ススメ☆オトメ ~jewel parade~ <br />Passion Side.
 				</th>
 				<td><input id="54_1" class="Debut" type="checkbox" name="arr[]"
 					value="0813"></td>
@@ -424,7 +448,7 @@
 					name="arr[]" value="2407"></td>
 			</tr>
 			<tr>
-				<th class="index">アタシポンコツアンドロイド</th>
+				<th class="limited">アタシポンコツアンドロイド</th>
 				<td><input id="91_1" class="Debut" type="checkbox" name="arr[]"
 					value="0809"></td>
 				<td><input id="91_2" class="Regular" type="checkbox"
@@ -442,8 +466,15 @@
 				style="margin-left: 20px;" type="reset" value="リセット">
 		</p>
 	</form>
-
 	<br />
+
+	<p style="font-size: 13px;">
+		権利者からの申立て等は速やかに対応します。<br /> <br />不具合報告やご意見などは<a
+			href="https://twitter.com/Slime_hatena">Twitter</a>または<a
+			href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/issues">Github
+			Issues</a>にお気軽にどうぞ。<br />TwitterのDMはフォローしていなくても送れると思います。</p>
+			<p style="font-size: 9px;">現在は入力されたデータの収集はしていませんが、今後○○のフルコンレートは○○%みたいな機能を実装したいなとは思ってます。予定ですが。
+	</p>
 
 	<h3>お借りしているもの</h3>
 
@@ -465,15 +496,15 @@
 		<a style="font-size: 12px; cursor: pointer;">▼ クリックでライセンスを表示</a>
 	</div>
 	<div id="open_2" style="font-size: 12px; display: none; clear: both;">
-	MIT license.<br />
-		Copyright (c) 2015 Slime_hatena All Rights Reserved. Permission is
-		hereby granted, free of charge, to any person obtaining a copy of this
-		software and associated documentation files (the "Software"), to deal
-		in the Software without restriction, including without limitation the
-		rights to use, copy, modify, merge, publish, distribute, sublicense,
-		and/or sell copies of the Software, and to permit persons to whom the
-		Software is furnished to do so, subject to the following conditions: <br />
-		The above copyright notice and this permission notice shall be
+		MIT license.<br /> <br />Copyright (c) 2015 Slime_hatena All Rights
+		Reserved. Permission is hereby granted, free of charge, to any person
+		obtaining a copy of this software and associated documentation files
+		(the "Software"), to deal in the Software without restriction,
+		including without limitation the rights to use, copy, modify, merge,
+		publish, distribute, sublicense, and/or sell copies of the Software,
+		and to permit persons to whom the Software is furnished to do so,
+		subject to the following conditions: <br />
+		<br /> The above copyright notice and this permission notice shall be
 		included in all copies or substantial portions of the Software. <br />
 		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 		EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
@@ -481,7 +512,17 @@
 		IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 		CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+		SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE<br />
+		<br />
+		<br /> 以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、
+		ソフトウェアを無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、
+		サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。<br />
+		<br /> 上記の著作権表示および本許諾表示を、ソフトウェアのすべての複製または重要な部分に記載するものとします。
+
+		ソフトウェアは「現状のまま」で、明示であるか暗黙であるかを問わず、何らの保証もなく提供されます。ここでいう保証とは、
+		商品性、特定の目的への適合性、および権利非侵害についての保証も含みますが、それに限定されるものではありません。<br />
+		作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、
+		あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、 その他の義務について何らの責任も負わないものとします。<br />
 	</div>
 
 </body>
