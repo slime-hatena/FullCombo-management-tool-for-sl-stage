@@ -1,5 +1,8 @@
 <?php
-$version = "ver." . "151108";
+
+// 更新時に真っ先に変えなきゃいけないゾーン
+$version = "ver." . "151110";
+$rating_all = 2177;            // 全曲のレベルを足した数値
 
 // わざとらしくLVごとにx-pxを指定
 $lv_map = array (
@@ -63,7 +66,6 @@ $rating_y = 235;
 // 現在の最大曲数を入力しておく
 $music_max = 33;
 $music_max_masplus = 0;
-$rating_all = 2043; // 全曲のレベルを足した数値
 
 // 受け渡された文字列を代入
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
@@ -291,6 +293,14 @@ imagedestroy ( $img_stamp );
 <title>result - fcManagementTool 4 sl-stage</title>
 <meta name="viewport"
 	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
+	<title>クリックするとクリップボードにコピー</title>
+<script language="JavaScript">
+<!--
+function select() {
+document.form.copybox.select();
+}
+//-->
+</script>
 </head>
 
 
@@ -298,15 +308,21 @@ imagedestroy ( $img_stamp );
 <body bgcolor="#EFEFEF" text="#000000">
 
 
-		<a href="twitter://post?message=<?php echo $tweet; ?> %23デレステ"><img src="img/tweetbutton.png"  height="30" alt="ツイートする"></a>
-		<p style="font-size : 12px;">画像を保存してから押してください。<br />
-		公式クライアントがインストールされている必要があります。<br />
+	<a href="twitter://post?message=<?php echo $tweet; ?> %23デレステ"><img
+		src="img/tweetbutton.png" height="30" alt="ツイートする"></a>
+	<p style="font-size: 12px;">
+		画像を保存してから押してください。<br /> 公式クライアントがインストールされている必要があります。<br />
 		ツイート欄が開いたら画像を添付してツイートしてください。
 
 
-	<p style="font-size : 12px;">以下コピペ用<br />
-	公式クライアントをインストールしていない時などにお使いください。<br />
-	<textarea name="copybox" cols="40" rows="5" readonly><?php echo $tweet; ?></textarea></p>
+	<p style="font-size: 12px;">
+		以下コピペ用<br /> 公式クライアントをインストールしていない時などにお使いください。	</p>
+
+<form name="form">
+		<textarea name="copybox" cols="40" rows="5"  readonly  onClick="select()"><?php echo $tweet; ?> #デレステ</textarea>
+
+</form>
+
 
 
 
