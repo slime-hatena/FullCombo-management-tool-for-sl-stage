@@ -1,13 +1,17 @@
-input[type="checkbox"]{
-  -webkit-appearance: none;
-  width:15px;
-  height:15px;
-  border:2px solid #19283C;
-  border-radius:2px;
-  background:transparent;
-  opacity:0.5;
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	width: 30px;
+	height: 30px;
+	border: 2px solid #19283C;
+	border-radius: 2px;
+	background: transparent;
+	opacity: 0.3;
 }
-input[type="checkbox"]:checked{
-  background:#19283C;
-  opacity:1;
+
+input[type="checkbox"]:checked {
+	border: 1px solid #ffffff;
+	background: url("img/ok.png");
+	background-size: contain;
+		opacity: 1;
 }

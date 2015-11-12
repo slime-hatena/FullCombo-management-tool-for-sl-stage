@@ -1,8 +1,10 @@
 <?php
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "ver." . "151110";
+$version = "ver." . "151113";
 $rating_all = 2177;            // 全曲のレベルを足した数値
+$music_max = 35;
+$music_max_masplus = 0;
 
 // わざとらしくLVごとにx-pxを指定
 $lv_map = array (
@@ -63,9 +65,6 @@ $all_full_y = 340;
 $rating_x = 740;
 $rating_y = 235;
 
-// 現在の最大曲数を入力しておく
-$music_max = 33;
-$music_max_masplus = 0;
 
 // 受け渡された文字列を代入
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
@@ -314,14 +313,14 @@ document.form.copybox.select();
 		画像を保存してから押してください。<br /> 公式クライアントがインストールされている必要があります。<br />
 		ツイート欄が開いたら画像を添付してツイートしてください。
 
-
+<hr>
 	<p style="font-size: 12px;">
 		以下コピペ用<br /> 公式クライアントをインストールしていない時などにお使いください。	</p>
 
-<form name="form">
-		<textarea name="copybox" cols="40" rows="5"  readonly  onClick="select()"><?php echo $tweet; ?> #デレステ</textarea>
 
-</form>
+		<p style="font-size: 9px"><?php echo $tweet; ?> #デレステ</p>
+
+<hr>
 
 
 

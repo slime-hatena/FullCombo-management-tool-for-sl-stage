@@ -1,0 +1,112 @@
+th {
+	width: 250px;
+}
+
+td {
+	width: 60px;
+	height: 30px;
+	text-align: center;
+}
+
+*.index {
+	background: #f0f8ff;
+	text-align: center;
+	font-weight: bold;
+}
+
+*.limited {
+	background: #faf0ff;
+	text-align: center;
+	font-weight: bold;
+}
+
+/*
+.01 {
+	background: url("bg/01.jpg");
+}
+
+tr.02 {
+	background: url("bg/02.jpg");
+}
+
+tr.03 {
+	background: url("bg/03.jpg");
+}
+
+tr.04 {
+	background: url("bg/04.jpg");
+}
+
+tr.05 {
+	background: url("bg/05.jpg");
+}
+
+tr.06 {
+	background: url("bg/06.jpg");
+}
+
+tr.07 {
+	background: url("bg/07.jpg");
+}
+
+tr.08 {
+	background: url("bg/08.jpg");
+}
+
+tr.09 {
+	background: url("bg/09.jpg");
+}
+
+tr.10 {
+	background: url("bg/10.jpg");
+}
+
+tr.11 {
+	background: url("bg/11.jpg");
+}
+
+tr.12 {
+	background: url("bg/12.jpg");
+}
+
+tr.13 {
+	background: url("bg/13.jpg");
+}
+
+tr.14 {
+	background: url("bg/14.jpg");
+}
+
+tr.15 {
+	background: url("bg/15.jpg");
+}
+
+tr.16 {
+	background: url("bg/16.jpg");
+}
+
+tr.17 {
+	background: url("bg/17.jpg");
+}
+
+tr.18 {
+	background: url("bg/18.jpg");
+}
+
+tr.19 {
+	background: url("bg/19.jpg");
+}
+
+tr.20 {
+	background: url("bg/20.jpg");
+}
+
+tr {
+	background-position: center  !important;
+	background-attachment: fixed !important;
+}
+
+
+‚æ‚±240
+‚½‚Ä 48
+*/
