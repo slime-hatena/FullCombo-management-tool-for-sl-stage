@@ -192,7 +192,11 @@ td {
 
 tr {
 	background-attachment: scroll !important;
-	background-position: right bottom !important;
+		background-position: right center !important;
+	/* background-position: right bottom !important; */
+	background-repeat : no-repeat !important;
+
+
 }
 
 /*
