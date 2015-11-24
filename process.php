@@ -1,10 +1,10 @@
 <?php
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "ver." . "151113";
-$rating_all = 2177;            // 全曲のレベルを足した数値
-$music_max = 35;
-$music_max_masplus = 0;
+$version = "ver." . "151125";
+$rating_all = 2245; // 全曲のレベルを足した数値
+$music_max = 36;  //全曲数
+$music_max_masplus = 0; //マスプラの曲数
 
 // わざとらしくLVごとにx-pxを指定
 $lv_map = array (
@@ -64,7 +64,6 @@ $all_full_x = 740;
 $all_full_y = 340;
 $rating_x = 740;
 $rating_y = 235;
-
 
 // 受け渡された文字列を代入
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
@@ -184,7 +183,7 @@ if ($all >= 0) {
 }
 
 // Twitter用テンプレ生成
-$tweet = $name . "さんのフルコンボ曲数は" . $all . "/" . $all_max . "(" . sprintf ( '%.2f', $percent_all ) . "%) " . " , Ratingは" . $r_rating . "です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage/form.html";
+$tweet = $name . "さんのフルコンボ曲数は" . $all . "/" . $all_max . "(" . sprintf ( '%.2f', $percent_all ) . "％) " . " , Ratingは" . sprintf ( '%.2f', $r_rating  ). "です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage/form.html";
 
 // フルコン数が１桁の時に空白を入れる処理
 // そのうち簡素化したい
@@ -292,13 +291,8 @@ imagedestroy ( $img_stamp );
 <title>result - fcManagementTool 4 sl-stage</title>
 <meta name="viewport"
 	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
-	<title>クリックするとクリップボードにコピー</title>
+<title>クリックするとクリップボードにコピー</title>
 <script language="JavaScript">
-<!--
-function select() {
-document.form.copybox.select();
-}
-//-->
 </script>
 </head>
 
@@ -311,22 +305,26 @@ document.form.copybox.select();
 		src="img/tweetbutton.png" height="30" alt="ツイートする"></a>
 	<p style="font-size: 12px;">
 		画像を保存してから押してください。<br /> 公式クライアントがインストールされている必要があります。<br />
-		ツイート欄が開いたら画像を添付してツイートしてください。
+		ツイート欄が開いたら画像を添付してツイートしてください。<br /> <br />
+		現在一部の端末から画像が保存できない現象を確認しています。お手数ですがスクリーンショットでの代用をお願いします。<br />
+		保存できない場合は<a href="https://twitter.com/Slime_hatena" target=_blank>@Slime_hatena</a>に端末、ブラウザ名をお知らせいただけると助かります。
+	</p>
 
-<hr>
+	<hr>
 	<p style="font-size: 12px;">
-		以下コピペ用<br /> 公式クライアントをインストールしていない時などにお使いください。	</p>
+		以下コピペ用<br /> 公式クライアントをインストールしていない時などにお使いください。
+	</p>
 
 
-		<p style="font-size: 9px"><?php echo $tweet; ?> #デレステ</p>
+	<p style="font-size: 9px"><?php echo $tweet; ?> #デレステ</p>
 
-<hr>
-
-
-
+	<hr>
 
 	<img style="width: 100%;"
 		src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+
+
+
 
 </body>
 </html>
