@@ -173,6 +173,9 @@ td {
 .bg31 {
 	background: url("bg/31.jpg");
 }
+.bg32 {
+	background: url("bg/32.jpg");
+}
 
 .bg51 {
 	background: url("bg/51.jpg");
@@ -192,6 +195,10 @@ td {
 
 .bg91 {
 	background: url("bg/91.jpg");
+}
+
+.bg92 {
+	background: url("bg/92.jpg");
 }
 
 tr {
