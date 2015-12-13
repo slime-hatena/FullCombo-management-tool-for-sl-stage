@@ -2,7 +2,7 @@
 
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "151128";
-$rating_all = 2367; // 全曲のレベルを足した数値
+$rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます)
 $music_max = 38; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
 
@@ -32,14 +32,6 @@ $yellow = ImageColorAllocate ( $img, 0xBD, 0xB7, 0x6B );
 $red = ImageColorAllocate ( $img, 0xDC, 0x14, 0x3C );
 $dark_purple = ImageColorAllocate ( $img, 0x48, 0x3D, 0x8B );
 
-if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
-	$upper_limit = $_POST ["limit_2"];
-	$lower_limit = $_POST ["limit_1"];
-}else{
-	$upper_limit = $_POST ["limit_1"];
-	$lower_limit = $_POST ["limit_2"];
-
-}
 
 if ($handle = opendir ( 'songs' )) {
 	echo "Directory handle: $handle<br />";
@@ -50,8 +42,18 @@ if ($handle = opendir ( 'songs' )) {
 	closedir ( $handle );
 }
 
+$arr =  $_POST['arr']; //postだと長ったらしくて毎回入力するのが面倒なのでぶち込む
+
 rsort($img_songs);
 print_r ( array_values ( $img_songs ) );
+
+echo "<br>----------------------------------------------<br>";
+
+
+
+
+rsort($arr);
+print_r ( array_values ( $arr ) );
 
 
 
@@ -106,11 +108,54 @@ switch (mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' )) {
  * 曲idはgoogleSpreadsheetに保存してあるアレ (随分前に作ったので0は存在しない ここで使うと思ってなかったんやで・・・)
  *
  * lv○○[]の中身に 曲id難易度の順番で送られてくる
- * Ex おねシンPro → 012 (曲IDは01)
- * トラパルmas → 273 (曲IDは27)
- *
- *
+ * Ex Lv8の8曲目 → 08_8
+ *      Lv28の3曲目 → 28_3
  */
+//レベル何処まで作るかの設定
+if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
+	$upper_limit = $_POST ["limit_2"];
+	$lower_limit = $_POST ["limit_1"];
+}else{
+	$upper_limit = $_POST ["limit_1"];
+	$lower_limit = $_POST ["limit_2"];
+}
+
+$set_x = 270;
+$set_y = 5;
+$img_music_size = 52;
+
+foreach ($arr as $pref){
+
+
+
+
+
+$file = "songs/".
+		$pref.
+		".png";
+$img_music = imagecreatefrompng ( $file ) ;
+
+if($set_x +$img_music_size > 1024 ){
+	$set_x = 270;
+	$set_y = $set_y + $img_music_size;
+
+}
+
+//縮小処理
+$width = ImageSx($img_music);
+$height = ImageSy($img_music);
+$resize = ImageCreateTrueColor($img_music_size, $img_music_size);
+imagealphablending($resize, false);
+imagesavealpha($resize, true);
+ImageCopyResampled($resize, $img_music,0,0,0,0, $img_music_size, $img_music_size, $width, $height);
+
+
+
+		imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
+
+		$set_x = $set_x +$img_music_size;
+
+}//foreachおわり
 
 // プロデューサー情報を入れる処理
 
@@ -171,6 +216,8 @@ imagedestroy ( $img_stamp );
 <title>result - fcManagementTool 4 sl-stage</title>
 <meta name="viewport"
 	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
+	<!-- favicon -->
+<link rel="shortcut icon" href="img/icon/favicon.ico">
 </head>
 
 

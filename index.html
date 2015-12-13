@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fcManagementTool 4 sl-stage ver2</title>
+<link rel="stylesheet" type="text/css" href="form.css">
+<link rel="stylesheet" type="text/css" href="check.css">
+
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/cookiesave.js"></script>
+
+<script type="text/javascript">
+	CookieSave.expires = 360 * 24 * 60 * 60 * 1000;
+</script>
+
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+
+<script type="text/javascript">
+	$(function() {
+		$('.checkAll').on('change', function() {
+			$('.' + this.id).prop('checked', this.checked);
+		});
+	});
+</script>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="img/icon/favicon.ico">
+<!-- iOS Safari -->
+<link rel="apple-touch-icon" sizes="120x120"
+	href="img/icon/apple-touch-icon.png">
+<!-- iOS Safari(旧) / Android標準ブラウザ(一部) -->
+<link rel="apple-touch-icon-precomposed"
+	href="img/icon/apple-touch-icon.png">
+<!-- Android標準ブラウザ(一部) -->
+<link rel="shortcut icon" href="img/icon/apple-touch-icon.png">
+<!-- Android Chrome -->
+<link rel="icon" sizes="120x120" href="img/icon/apple-touch-icon.png">
+
+</head>
+
+<body>
+
+	<h1 style="font-size: 32px">fcManagementTool 4 sl-stage ver2</h1>
+	<h2 style="font-size: 18px">デレステのフルコン状況を画像に纏めます。</h2>
+	<p>
+		入力内容はお使いの端末のCookieを使用して保存されます。<br />
+		保存期間は360日ですがCookieの削除等をしてしまうと消えてしまうのでご注意ください。
+	</p>
+
+	<p>
+		使用条件等はページ下部に記述してあるライセンスの通りです。<br /> 使用する前に目を通して同意いただける場合はお使いください。
+	</p>
+
+	<h3>以下のフォームを入力して送信してください。</h3>
+
+	<form name="main" method="post" action="process.php">
+
+		<p>
+			P名<br /> &ensp;<input type="text" name="name" size="20"
+				maxlength="10"><br /> Twitter<br /> &ensp;＠<input
+				type="text" name="twitter" size="15" maxlength="15"><br />
+			PRP<br /> &ensp;<input type="text" name="prp" size="4" maxlength="4"><br />
+			PLv<br /> &ensp;<input type="text" name="plv" size="4" maxlength="4"><br />
+			ゲームid<br /> &ensp;<input type="text" name="game_id" size="11"
+				maxlength="9"><br /> P Rank<br /> &ensp;<select
+				name="p_rank">
+				<option value="F">F : 見習いプロデューサー</option>
+				<option value="E">E : 駆け出しプロデューサー</option>
+				<option value="D">D : 新米プロデューサー</option>
+				<option value="C">C : 普通プロデューサー</option>
+				<option value="B">B : 中堅プロデューサー</option>
+				<option value="A">A : 敏腕プロデューサー</option>
+				<option value="S">S : 売れっ子プロデューサー</option>
+				<option value="SS">SS : 超売れっ子プロデューサー</option>
+			</select>
+		</p>
+
+		<p>
+			<b>生成する難易度を選択してください</b><br /> &ensp;
+			<select name="limit_1">
+			<option disabled>--Master--</option>
+				<option value="28" selected>28</option>
+				<option value="27">27</option>
+				<option value="26">26</option>
+				<option value="25">25</option>
+				<option value="24">24</option>
+				<option value="23">23</option>
+				<option value="22">22</option>
+				<option value="21">21</option>
+				<option value="20">20</option>
+				<option disabled>--Pro--</option>
+				<option value="19">19</option>
+				<option value="18">18</option>
+				<option value="17">17</option>
+				<option value="16">16</option>
+				<option value="15">15</option>
+				<option disabled>--Regular--</option>
+				<option value="14">14</option>
+				<option value="13">13</option>
+				<option value="12">12</option>
+				<option value="11">11</option>
+				<option value="10">10</option>
+				<option disabled>--Debut--</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+			</select>
+			から
+				<select name="limit_2">
+				<option value="28">28</option>
+				<option value="27">27</option>
+				<option value="26">26</option>
+				<option value="25">25</option>
+				<option value="24">24</option>
+				<option value="23">23</option>
+				<option value="22">22</option>
+				<option value="21">21</option>
+				<option value="20" selected>20</option>
+				<option disabled>--Pro--</option>
+				<option value="19">19</option>
+				<option value="18">18</option>
+				<option value="17">17</option>
+				<option value="16">16</option>
+				<option value="15">15</option>
+				<option disabled>--,Regular--</option>
+				<option value="14">14</option>
+				<option value="13">13</option>
+				<option value="12">12</option>
+				<option value="11">11</option>
+				<option value="10">10</option>
+				<option disabled>--Debut--</option>
+				<option value="9">9</option>
+				<option value="8">8</option>
+				<option value="7">7</option>
+				<option value="6">6</option>
+				<option value="5">5</option>
+			</select>
+			までを生成する。<br />
+			<span style="font-size: 80%;">
+				上から４つ目以降の難易度は小さめに表示されます<br />
+				たくさん選ぶとはみ出るかもしれません(ごめんなさい)<br />
+				選択していない難易度でも総合評価には含まれます。(別々にしろという要望が多ければ対応するかもしれません)
+			</span>
+		</p>
+
+		<p>
+			集計方法：<select name=limited_1>
+				<option value="All">全楽曲で生成する</option>
+				<option value="Limited">限定楽曲を除く</option>
+				<option value="CD">先行解禁曲を除く</option>
+			</select><br /> <span style="font-size: 80%;">
+				"限定楽曲を除く"はススメオトメなどを含む限定タブにある曲全てを集計しません。<br />
+				曜日違いで出てない曲の状況がわからない時に使ってください。<br />
+				"先行解禁曲を除く"はCDのシリアルコードやイベント達成での先行解禁曲を集計しません。
+			</span>
+
+		</p>
+
+
+
+		<table cellspacing="1" cellpadding="5" rules="cols">
+			<tr>
+				<th class="heading">-</th>
+				<td class="heading">Debut</td>
+				<td class="heading">Regular</td>
+				<td class="heading">Pro</td>
+				<td class="heading">Master</td>
+			</tr>
+			<tr>
+				<th class="heading">難易度ごとに全てチェック</th>
+				<td><input type="checkbox" id="Debut" class="checkAll"></td>
+				<td><input type="checkbox" id="Regular" class="checkAll"></td>
+				<td><input type="checkbox" id="Pro" class="checkAll"></td>
+				<td><input type="checkbox" id="Master" class="checkAll"></td>
+			</tr>
+
+			<tr class="bg01">
+				<th class="index"><div class="wrapper">お願い!シンデレラ</div></th>
+				<td><input id="01_1" class="Debut" type="checkbox" name="arr[]"
+					value="05_0"></td>
+				<td><input id="01_2" class="Regular" type="checkbox"
+					name="arr[]" value="10_0"></td>
+				<td><input id="01_3" class="Pro" type="checkbox" name="arr[]"
+					value="15_0"></td>
+				<td><input id="01_4" class="Master" type="checkbox"
+					name="arr[]" value="20_0"></td>
+			</tr>
+			<tr class="bg02">
+				<th class="index"><div class="wrapper">とどけ！アイドル</div></th>
+				<td><input id="02_1" class="Debut" type="checkbox" name="arr[]"
+					value="05_1"></td>
+				<td><input id="02_2" class="Regular" type="checkbox"
+					name="arr[]" value="11_0"></td>
+				<td><input id="02_3" class="Pro" type="checkbox" name="arr[]"
+					value="15_1"></td>
+				<td><input id="02_4" class="Master" type="checkbox"
+					name="arr[]" value="21_0"></td>
+			</tr>
+			<tr class="bg03">
+				<th class="index"><div class="wrapper">輝く世界の魔法</div></th>
+				<td><input id="03_1" class="Debut" type="checkbox" name="arr[]"
+					value="07_0"></td>
+				<td><input id="03_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_0"></td>
+				<td><input id="03_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_0"></td>
+				<td><input id="03_1" class="Master" type="checkbox"
+					name="arr[]" value="25_0"></td>
+			</tr>
+			<tr class="bg04">
+				<th class="index"><div class="wrapper">We're the friends!</div></th>
+				<td><input id="04_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_0"></td>
+				<td><input id="04_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_0"></td>
+				<td><input id="04_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_0"></td>
+				<td><input id="04_4" class="Master" type="checkbox"
+					name="arr[]" value="25_1"></td>
+			</tr>
+			<tr class="bg05">
+				<th class="index"><div class="wrapper">メッセージ</div></th>
+				<td><input id="05_1" class="Debut" type="checkbox" name="arr[]"
+					value="07_1"></td>
+				<td><input id="05_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_1"></td>
+				<td><input id="05_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_1"></td>
+				<td><input id="05_4" class="Master" type="checkbox"
+					name="arr[]" value="25_4"></td>
+			</tr>
+			<tr class="bg06">
+				<th class="index"><div class="wrapper">S(mile)ING!</div></th>
+				<td><input id="06_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_1"></td>
+				<td><input id="06_2" class="Regular" type="checkbox"
+					name="arr[]" value="11_1"></td>
+				<td><input id="06_3" class="Pro" type="checkbox" name="arr[]"
+					value="15_3"></td>
+				<td><input id="06_4" class="Master" type="checkbox"
+					name="arr[]" value="21_1"></td>
+			</tr>
+			<tr class="bg07">
+				<th class="index"><div class="wrapper">Never say never</div></th>
+				<td><input id="07_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_2"></td>
+				<td><input id="07_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_1"></td>
+				<td><input id="07_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_0"></td>
+				<td><input id="07_4" class="Master" type="checkbox"
+					name="arr[]" value="25_2"></td>
+			</tr>
+			<tr class="bg08">
+				<th class="index"><div class="wrapper">ミツボシ☆☆★</div></th>
+				<td><input id="08_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_0"></td>
+				<td><input id="08_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_2"></td>
+				<td><input id="08_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_1"></td>
+				<td><input id="08_4" class="Master" type="checkbox"
+					name="arr[]" value="24_0"></td>
+			</tr>
+			<tr class="bg09">
+				<th class="index"><div class="wrapper">おねだりShall We~?</div></th>
+				<td><input id="09_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_1"></td>
+				<td><input id="09_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_2"></td>
+				<td><input id="09_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_1"></td>
+				<td><input id="09_4" class="Master" type="checkbox"
+					name="arr[]" value="25_3"></td>
+			</tr>
+			<tr class="bg10">
+				<th class="index"><div class="wrapper">Twilight Sky</div></th>
+				<td><input id="10_1" class="Debut" type="checkbox" name="arr[]"
+					value="07_2"></td>
+				<td><input id="10_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_3"></td>
+				<td><input id="10_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_2"></td>
+				<td><input id="10_4" class="Master" type="checkbox"
+					name="arr[]" value="24_1"></td>
+			</tr>
+			<tr class="bg11">
+				<th class="index"><div class="wrapper">DOKIDOKIリズム</div></th>
+				<td><input id="11_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_2"></td>
+				<td><input id="11_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_4"></td>
+				<td><input id="11_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_2"></td>
+				<td><input id="11_4" class="Master" type="checkbox"
+					name="arr[]" value="24_2"></td>
+			</tr>
+			<tr class="bg12">
+				<th class="index"><div class="wrapper">風色メロディ</div></th>
+				<td><input id="12_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_3"></td>
+				<td><input id="12_2" class="Regular" type="checkbox"
+					name="arr[]" value="11_2"></td>
+				<td><input id="12_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_2"></td>
+				<td><input id="12_4" class="Master" type="checkbox"
+					name="arr[]" value="23_0"></td>
+			</tr>
+			<tr class="bg13">
+				<th class="index"><div class="wrapper">ましゅまろ☆キッス</div></th>
+				<td><input id="13_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_3"></td>
+				<td><input id="13_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_5"></td>
+				<td><input id="13_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_3"></td>
+				<td><input id="13_4" class="Master" type="checkbox"
+					name="arr[]" value="24_3"></td>
+			</tr>
+			<tr class="bg14">
+				<th class="index"><div class="wrapper">あんずのうた</div></th>
+				<td><input id="14_1" class="Debut" type="checkbox" name="arr[]"
+					value="09_0"></td>
+				<td><input id="14_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_0"></td>
+				<td><input id="14_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_0"></td>
+				<td><input id="14_4" class="Master" type="checkbox"
+					name="arr[]" value="28_0"></td>
+			</tr>
+			<tr class="bg15">
+				<th class="index"><div class="wrapper">華蕾夢ミル狂詩曲～魂ノ導～</div></th>
+				<td><input id="15_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_4"></td>
+				<td><input id="15_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_6"></td>
+				<td><input id="15_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_4"></td>
+				<td><input id="15_4" class="Master" type="checkbox"
+					name="arr[]" value="27_0"></td>
+			</tr>
+			<tr class="bg16">
+				<th class="index"><div class="wrapper">ショコラ・ティアラ</div></th>
+				<td><input id="16_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_5"></td>
+				<td><input id="16_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_7"></td>
+				<td><input id="16_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_5"></td>
+				<td><input id="16_4" class="Master" type="checkbox"
+					name="arr[]" value="26_0"></td>
+			</tr>
+			<tr class="bg28">
+				<th class="index"><div class="wrapper">ヴィーナスシンドローム</div></th>
+				<td><input id="28_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_8"></td>
+				<td><input id="28_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_5"></td>
+				<td><input id="28_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_4"></td>
+				<td><input id="28_4" class="Master" type="checkbox"
+					name="arr[]" value="26_4"></td>
+			</tr>
+			<tr class="bg30">
+				<th class="index"><div class="wrapper">Romantic Now</div></th>
+				<td><input id="30_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_10"></td>
+				<td><input id="30_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_7"></td>
+				<td><input id="30_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_5"></td>
+				<td><input id="30_4" class="Master" type="checkbox"
+					name="arr[]" value="27_3"></td>
+			</tr>
+			<tr class="bg32">
+				<th class="index"><div class="wrapper">You're stars shine
+						on me</div></th>
+				<td><input id="32_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_8"></td>
+				<td><input id="32_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_5"></td>
+				<td><input id="32_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_5"></td>
+				<td><input id="32_4" class="Master" type="checkbox"
+					name="arr[]" value="23_2"></td>
+			</tr>
+			<tr class="bg17">
+				<th class="index"><div class="wrapper">Star!!</div></th>
+				<td><input id="17_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_6"></td>
+				<td><input id="17_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_3"></td>
+				<td><input id="17_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_3"></td>
+				<td><input id="17_4" class="Master" type="checkbox"
+					name="arr[]" value="25_4"></td>
+			</tr>
+			<tr class="bg18">
+				<th class="index"><div class="wrapper">夕映えプレゼント</div></th>
+				<td><input id="18_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_4"></td>
+				<td><input id="18_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_1"></td>
+				<td><input id="18_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_6"></td>
+				<td><input id="18_4" class="Master" type="checkbox"
+					name="arr[]" value="26_1"></td>
+			</tr>
+			<tr class="bg19">
+				<th class="index"><div class="wrapper">Memories</div></th>
+				<td><input id="19_1" class="Debut" type="checkbox" name="arr[]"
+					value="06_7"></td>
+				<td><input id="19_2" class="Regular" type="checkbox"
+					name="arr[]" value="11_3"></td>
+				<td><input id="19_3" class="Pro" type="checkbox" name="arr[]"
+					value="16_4"></td>
+				<td><input id="19_4" class="Master" type="checkbox"
+					name="arr[]" value="22_1"></td>
+			</tr>
+			<tr class="bg20">
+				<th class="index"><div class="wrapper">LEGNE 仇なす剣 光の旋律</div></th>
+				<td><input id="20_1" class="Debut" type="checkbox" name="arr[]"
+					value="09_1"></td>
+				<td><input id="20_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_2"></td>
+				<td><input id="20_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_1"></td>
+				<td><input id="20_4" class="Master" type="checkbox"
+					name="arr[]" value="28_1"></td>
+			</tr>
+			<tr class="bg21">
+				<th class="index"><div class="wrapper">Happy×2 Days</div></th>
+				<td><input id="21_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_5"></td>
+				<td><input id="21_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_8"></td>
+				<td><input id="21_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_3"></td>
+				<td><input id="21_4" class="Master" type="checkbox"
+					name="arr[]" value="23_1"></td>
+			</tr>
+			<tr class="bg22">
+				<th class="index"><div class="wrapper">LET'S GO HAPPY!!</div></th>
+				<td><input id="22_1" class="Debut" type="checkbox" name="arr[]"
+					value="07_3"></td>
+				<td><input id="22_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_9"></td>
+				<td><input id="22_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_7"></td>
+				<td><input id="22_4" class="Master" type="checkbox"
+					name="arr[]" value="27_1"></td>
+			</tr>
+			<tr class="bg23">
+				<th class="index"><div class="wrapper">ΦωΦver！！</div></th>
+				<td><input id="23_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_6"></td>
+				<td><input id="23_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_4"></td>
+				<td><input id="23_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_4"></td>
+				<td><input id="23_4" class="Master" type="checkbox"
+					name="arr[]" value="26_2"></td>
+			</tr>
+			<tr class="bg24">
+				<th class="index"><div class="wrapper">できたて
+						Evo！Revo！Generation！</div></th>
+				<td><input id="24_1" class="Debut" type="checkbox" name="arr[]"
+					value="07_4"></td>
+				<td><input id="24_2" class="Regular" type="checkbox"
+					name="arr[]" value="11_4"></td>
+				<td><input id="24_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_2"></td>
+				<td><input id="24_4" class="Master" type="checkbox"
+					name="arr[]" value="26_3"></td>
+			</tr>
+			<tr class="bg25">
+				<th class="index"><div class="wrapper">GOIN'!!</div></th>
+				<td><input id="25_1" class="Debut" type="checkbox" name="arr[]"
+					value="09_2"></td>
+				<td><input id="25_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_10"></td>
+				<td><input id="25_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_5"></td>
+				<td><input id="25_4" class="Master" type="checkbox"
+					name="arr[]" value="27_2"></td>
+			</tr>
+			<tr class="bg26">
+				<th class="index"><div class="wrapper">Shine!!</div></th>
+				<td><input id="26_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_7"></td>
+				<td><input id="26_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_3"></td>
+				<td><input id="26_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_8"></td>
+				<td><input id="26_4" class="Master" type="checkbox"
+					name="arr[]" value="25_5"></td>
+			</tr>
+			<tr class="bg29">
+				<th class="index"><div class="wrapper">夢色ハーモニー</div></th>
+				<td><input id="28_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_9"></td>
+				<td><input id="28_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_6"></td>
+				<td><input id="28_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_9"></td>
+				<td><input id="28_4" class="Master" type="checkbox"
+					name="arr[]" value="26_5"></td>
+			</tr>
+			<tr class="bg27">
+				<th class="index"><div class="wrapper">Trancing Pulse</div></th>
+				<td><input id="27_1" class="Debut" type="checkbox" name="arr[]"
+					value="09_3"></td>
+				<td><input id="27_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_4"></td>
+				<td><input id="27_3" class="Pro" type="checkbox" name="arr[]"
+					value="19_3"></td>
+				<td><input id="27_4" class="Master" type="checkbox"
+					name="arr[]" value="28_2"></td>
+			</tr>
+			<tr class="bg51">
+				<th class="limited"><div class="wrapper">ススメ☆オトメ ~jewel
+						parade~</div></th>
+				<td><input id="51_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_12"></td>
+				<td><input id="51_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_11"></td>
+				<td><input id="51_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_11"></td>
+				<td><input id="51_4" class="Master" type="checkbox"
+					name="arr[]" value="25_6"></td>
+			</tr>
+			<tr class="bg52">
+				<th class="limited"><div class="wrapper">
+						ススメ☆オトメ ~jewel parade~ <br />Cute Side.
+					</div></th>
+				<td><input id="52_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_13"></td>
+				<td><input id="52_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_12"></td>
+				<td><input id="52_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_6"></td>
+				<td><input id="52_4" class="Master" type="checkbox"
+					name="arr[]" value="24_4"></td>
+			</tr>
+			<tr class="bg53">
+				<th class="limited"><div class="wrapper">
+						ススメ☆オトメ ~jewel parade~ <br />Cool Side.
+					</div></th>
+				<td><input id="53_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_14"></td>
+				<td><input id="53_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_13"></td>
+				<td><input id="53_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_7"></td>
+				<td><input id="53_4" class="Master" type="checkbox"
+					name="arr[]" value="24_5"></td>
+			</tr>
+			<tr class="bg54">
+				<th class="limited"><div class="wrapper">
+						ススメ☆オトメ ~jewel parade~ <br />Passion Side.
+					</div></th>
+				<td><input id="54_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_15"></td>
+				<td><input id="54_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_14"></td>
+				<td><input id="54_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_8"></td>
+				<td><input id="54_4" class="Master" type="checkbox"
+					name="arr[]" value="24_6"></td>
+			</tr>
+			<tr class="bg91">
+				<th class="limited"><div class="wrapper">アタシポンコツアンドロイド</div></th>
+				<td><input id="91_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_16"></td>
+				<td><input id="91_2" class="Regular" type="checkbox"
+					name="arr[]" value="12_6"></td>
+				<td><input id="91_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_9"></td>
+				<td><input id="91_4" class="Master" type="checkbox"
+					name="arr[]" value="26_6"></td>
+			</tr>
+			<tr class="bg92">
+				<th class="limited"><div class="wrapper">Nation Blue</div></th>
+				<td><input id="92_1" class="Debut" type="checkbox" name="arr[]"
+					value="09_4"></td>
+				<td><input id="92_2" class="Regular" type="checkbox"
+					name="arr[]" value="13_15"></td>
+				<td><input id="92_3" class="Pro" type="checkbox" name="arr[]"
+					value="17_10"></td>
+				<td><input id="92_4" class="Master" type="checkbox"
+					name="arr[]" value="26_7"></td>
+			</tr>
+			<tr class="bg31">
+				<th class="limited"><div class="wrapper">M@GIC☆</div></th>
+				<td><input id="31_1" class="Debut" type="checkbox" name="arr[]"
+					value="08_11"></td>
+				<td><input id="31_2" class="Regular" type="checkbox"
+					name="arr[]" value="14_8"></td>
+				<td><input id="31_3" class="Pro" type="checkbox" name="arr[]"
+					value="18_10"></td>
+				<td><input id="31_4" class="Master" type="checkbox"
+					name="arr[]" value="28_3"></td>
+			</tr>
+
+		</table>
+		<br />
+
+		<script async
+			src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage/form.html -->
+		<ins class="adsbygoogle" style="display: block"
+			data-ad-client="ca-pub-5232158002747798" data-ad-slot="5731797260"
+			data-ad-format="auto"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		<br />
+
+		<p>
+			<input class="btn" type="submit" value="送信する"> <input
+				class="btn" style="margin-left: 20px;" type="reset" value="リセット">
+		</p>
+
+
+	</form>
+
+
+
+	<br>
+	<textarea cols="70" rows="7"
+		style="border: solid 1px #000000; color: #000000; background-color: #FFFFFF;"
+		readonly>
+ver.151126
+ Nation Blue (9 / 13 / 17 / 26)
+ You're stars shine on me (6 / 12 / 16 / 23)
+  上記2曲を追加
+
+ver.151126
+ 夢色ハーモニーの壁紙が美波さんになっていたのを修正
+
+ver.151125
+ M@GIC! 追加
+ ツイート文を修正
+ ツイート欄でRatingがxx.00の時xxと表示されてしまう問題を修正
+  例) 12.00→12 を 12.00 と表示されるように
+ %が一部端末で化けることを受けて全角(％)に変更
+ Trancing Pulseを通常楽曲へ
+
+ver.151116
+ フォーム部分の背景が端末によって2段に表示されてしまう問題を修正
+
+ver.151113
+ form.htmlを全体的に改修
+ 表示できない方向けに最低限の機能の旧フォームを設置
+  iPhoneからのコピーが困難だったので結果画面のテンプレをプレーンテキストに
+
+ver.151110
+  Ratingの計算式を公開
+  コピペ用のテキストに#デレステ がなかったのを修正
+
+ver.151108
+  初公開
+</textarea>
+
+	<p style="font-size: 13px;">
+		権利者からの申立て等は速やかに対応します。<br /> <br /> Ratingの計算式は " (
+		フルコン曲のレベル合計÷全曲のレベル合計 ) ×15 "です。<br />不具合報告やご意見などは<a
+			href="https://twitter.com/Slime_hatena">Twitter</a>または<a
+			href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/issues">Github
+			Issues</a>にお気軽にどうぞ。<br />TwitterのDMはフォローしていなくても送れると思います。
+	</p>
+	<p style="font-size: 13px;">サーバーの維持費を少しでも軽減するため広告を設置させていただきました。ご理解の程よろしくおねがいします。</p>
+	<p style="font-size: 9px;">現在は入力されたデータの収集はしていませんが、今後○○のフルコンレートは○○%みたいな機能を実装したいなとは思ってます。予定ですが。
+	</p>
+
+	<h3>
+		fcManagementTool 4 sl-stage Created by <a
+			href="https://twitter.com/Slime_hatena">@Slime_hatena</a>
+	</h3>
+	<div
+		onclick="obj=document.getElementById('open_2').style; obj.display=(obj.display=='none')?'block':'none';">
+		<a style="font-size: 12px; cursor: pointer;">▼ クリックでライセンスを表示</a>
+	</div>
+	<div id="open_2" style="font-size: 12px; display: none; clear: both;">
+		MIT license.<br /> <br />Copyright (c) 2015 Slime_hatena All Rights
+		Reserved. Permission is hereby granted, free of charge, to any person
+		obtaining a copy of this software and associated documentation files
+		(the "Software"), to deal in the Software without restriction,
+		including without limitation the rights to use, copy, modify, merge,
+		publish, distribute, sublicense, and/or sell copies of the Software,
+		and to permit persons to whom the Software is furnished to do so,
+		subject to the following conditions: <br /> <br /> The above
+		copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software. <br /> THE SOFTWARE
+		IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+		INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+		SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+		DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+		OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+		THE USE OR OTHER DEALINGS IN THE SOFTWARE<br /> <br /> <br />
+		以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、
+		ソフトウェアを無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、
+		サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。<br /> <br />
+		上記の著作権表示および本許諾表示を、ソフトウェアのすべての複製または重要な部分に記載するものとします。
+
+		ソフトウェアは「現状のまま」で、明示であるか暗黙であるかを問わず、何らの保証もなく提供されます。ここでいう保証とは、
+		商品性、特定の目的への適合性、および権利非侵害についての保証も含みますが、それに限定されるものではありません。<br />
+		作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、
+		あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、 その他の義務について何らの責任も負わないものとします。<br />
+	</div>
+
+	<h3>お借りしているもの</h3>
+
+	<h4>
+		<a href="http://massacre.s59.xrea.com/game/cookiesave/">CookieSave.js</a>
+		by <a href="http://massacre.s59.xrea.com/">猫と重金属</a>
+	</h4>
+	<h4>
+		<a href="https://jquery.com/">jQuery.js</a>
+	</h4>
+
+
+
+
+</body>
+</html>
