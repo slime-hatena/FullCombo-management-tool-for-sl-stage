@@ -43,10 +43,10 @@ Temporary Items
 .apdisk
 
 #自分で追加したやつ
-.setting
-.gitattributes
-.gitignore
-.project
-.ttf
-jquery-2.1.4
-/font
+*.setting
+*.gitattributes
+*.gitignore
+*.project
+*.ttf
+js/
+font/

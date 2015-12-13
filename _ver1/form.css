@@ -1,0 +1,215 @@
+table {
+	border-collapse: collapse;
+	border-style: solid; /* ˜g‚Ìí—Ş */
+	border-color: #ffffff; /* ˜g‚ÌF */
+	border-width: 1px; /* ˜g‚Ì• */
+}
+
+th {
+	width: 220px;
+	height: 30px;
+	color: #000000; /* •¶š‚ÌF */
+	border-style: solid; /* ˜g‚Ìí—Ş */
+	border-color: #ffffff; /* ˜g‚ÌF */
+	border-width: 1px 0px; /* ˜g‚Ì• */
+}
+
+td {
+	color: #000000; /* •¶š‚ÌF */
+	border-style: solid; /* ˜g‚Ìí—Ş */
+	border-color: #ffffff; /* ˜g‚ÌF */
+	border-width: 1px 0px; /* ˜g‚Ì• */
+	width: 40px;
+	text-align: center;
+	background: #ffffff;
+}
+
+*.heading {
+	background: #f0f8ff;
+	text-align: center;
+	font-weight: bold;
+}
+
+*.index {
+	/*
+	background: #f0f8ff;
+	*/
+	text-align: center;
+	font-weight: bold;
+}
+
+*.limited {
+	/*
+	background: #faf0ff;
+	*/
+	text-align: center;
+	font-weight: bold;
+}
+
+.wrapper {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+.bg01 {
+	background: url("bg/01.jpg");
+}
+
+.bg02 {
+	background: url("bg/02.jpg");
+}
+
+.bg03 {
+	background: url("bg/03.jpg");
+}
+
+.bg04 {
+	background: url("bg/04.jpg");
+}
+
+.bg05 {
+	background: url("bg/05.jpg");
+}
+
+.bg06 {
+	background: url("bg/06.jpg");
+}
+
+.bg07 {
+	background: url("bg/07.jpg");
+}
+
+.bg08 {
+	background: url("bg/08.jpg");
+}
+
+.bg09 {
+	background: url("bg/09.jpg");
+}
+
+.bg10 {
+	background: url("bg/10.jpg");
+}
+
+.bg11 {
+	background: url("bg/11.jpg");
+}
+
+.bg12 {
+	background: url("bg/12.jpg");
+}
+
+.bg13 {
+	background: url("bg/13.jpg");
+}
+
+.bg14 {
+	background: url("bg/14.jpg");
+}
+
+.bg15 {
+	background: url("bg/15.jpg");
+}
+
+.bg16 {
+	background: url("bg/16.jpg");
+}
+
+.bg17 {
+	background: url("bg/17.jpg");
+}
+
+.bg18 {
+	background: url("bg/18.jpg");
+}
+
+.bg19 {
+	background: url("bg/19.jpg");
+}
+
+.bg20 {
+	background: url("bg/20.jpg");
+}
+
+.bg21 {
+	background: url("bg/21.jpg");
+}
+
+.bg22 {
+	background: url("bg/22.jpg");
+}
+
+.bg23 {
+	background: url("bg/23.jpg");
+}
+
+.bg24 {
+	background: url("bg/24.jpg");
+}
+
+.bg25 {
+	background: url("bg/25.jpg");
+}
+
+.bg26 {
+	background: url("bg/26.jpg");
+}
+
+.bg27 {
+	background: url("bg/27.jpg");
+}
+
+.bg28 {
+	background: url("bg/28.jpg");
+}
+
+.bg29 {
+	background: url("bg/29.jpg");
+}
+
+.bg30 {
+	background: url("bg/30.jpg");
+}
+
+.bg31 {
+	background: url("bg/31.jpg");
+}
+.bg32 {
+	background: url("bg/32.jpg");
+}
+
+.bg51 {
+	background: url("bg/51.jpg");
+}
+
+.bg52 {
+	background: url("bg/52.jpg");
+}
+
+.bg53 {
+	background: url("bg/53.jpg");
+}
+
+.bg54 {
+	background: url("bg/54.jpg");
+}
+
+.bg91 {
+	background: url("bg/91.jpg");
+}
+
+.bg92 {
+	background: url("bg/92.jpg");
+}
+
+tr {
+	background-attachment: scroll !important;
+	background-position: right center !important;
+	background-repeat : no-repeat !important;
+
+
+}
+
+/*
+‚æ‚±240
+‚½‚Ä 48
+*/
