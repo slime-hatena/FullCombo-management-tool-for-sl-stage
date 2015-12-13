@@ -32,30 +32,17 @@ $yellow = ImageColorAllocate ( $img, 0xBD, 0xB7, 0x6B );
 $red = ImageColorAllocate ( $img, 0xDC, 0x14, 0x3C );
 $dark_purple = ImageColorAllocate ( $img, 0x48, 0x3D, 0x8B );
 
+$img_songs = glob ( 'songs/*.png' );
 
-if ($handle = opendir ( 'songs' )) {
-	echo "Directory handle: $handle<br />";
-
-	while ( false !== ($file = readdir ( $handle )) ) {
-		$img_songs [] = $file;
-	}
-	closedir ( $handle );
-}
-
-$arr =  $_POST['arr']; //postだと長ったらしくて毎回入力するのが面倒なのでぶち込む
-
-rsort($img_songs);
+rsort ( $img_songs );
 print_r ( array_values ( $img_songs ) );
 
-echo "<br>----------------------------------------------<br>";
+echo "<br><br>----------------------------------------------<br><br>";
 
-
-
-
-rsort($arr);
+$arr = $_POST ['arr']; // postだと長ったらしくて毎回入力するのが面倒なのでぶち込む
+rsort ( $arr );
 print_r ( array_values ( $arr ) );
-
-
+echo "<br><br>";
 
 // 画像を作成する
 
@@ -109,58 +96,88 @@ switch (mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' )) {
  *
  * lv○○[]の中身に 曲id難易度の順番で送られてくる
  * Ex Lv8の8曲目 → 08_8
- *      Lv28の3曲目 → 28_3
+ * Lv28の3曲目 → 28_3
  */
-//レベル何処まで作るかの設定
+// レベル何処まで作るかの設定
 if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
 	$upper_limit = $_POST ["limit_2"];
 	$lower_limit = $_POST ["limit_1"];
-}else{
+} else {
 	$upper_limit = $_POST ["limit_1"];
 	$lower_limit = $_POST ["limit_2"];
 }
 
+$size_down = $upper_limit - 3;
 $set_x = 270;
 $set_y = 5;
-$img_music_size = 52;
+$img_music_size = 55;//画像サイズ Lv3先は-10されるので注意
 
-foreach ($arr as $pref){
+foreach ( $img_songs as $pref ) { // ここから配列がカラになるまでループ
 
+	//端っこまで行ったら折り返す処理
+	if ($set_x + $img_music_size > 1024) {
+		$set_x = 270;
+		$set_y = $set_y + $img_music_size;
+	}
 
+	// 指定下限まで来たら抜ける処理
+	if (substr ( $pref, 6, 2 ) < $lower_limit) {
+		break 1;
+	}
 
+	// 上限の4レベル以降は小さくする処理
+	if (substr ( $pref, 6, 2 ) == $size_down) {
+		$set_x = 270;
+		$set_y = $set_y + $img_music_size;
+		$img_music_size = $img_music_size - 10;
+		$size_down =false;
+	}
 
+	// 区切り画像追加する処理
+	if (substr ( $pref, 6, 2 ) == $upper_limit) {
+		$upper_limit --;
 
-$file = "songs/".
-		$pref.
-		".png";
-$img_music = imagecreatefrompng ( $file ) ;
+		if ($set_x + $img_music_size + $img_music_size > 1024) {
+			$set_x = 270;
+			$set_y = $set_y + $img_music_size ;
+		}
 
-if($set_x +$img_music_size > 1024 ){
-	$set_x = 270;
-	$set_y = $set_y + $img_music_size;
-
-}
-
-//縮小処理
-$width = ImageSx($img_music);
-$height = ImageSy($img_music);
-$resize = ImageCreateTrueColor($img_music_size, $img_music_size);
-imagealphablending($resize, false);
-imagesavealpha($resize, true);
-ImageCopyResampled($resize, $img_music,0,0,0,0, $img_music_size, $img_music_size, $width, $height);
-
-
-
+		$img_lv = imagecreatefrompng ( "img/lv/" . substr ( $pref, 6, 2 ) . ".png" );
+		$width = ImageSx ( $img_lv );
+		$height = ImageSy ( $img_lv );
+		$resize = ImageCreateTrueColor ( $img_music_size, $img_music_size );
+		imagealphablending ( $resize, false );
+		imagesavealpha ( $resize, true );
+		ImageCopyResampled ( $resize, $img_lv, 0, 0, 0, 0, $img_music_size, $img_music_size, $width, $height );
 		imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
 
-		$set_x = $set_x +$img_music_size;
+		$set_x = $set_x + $img_music_size;
 
-}//foreachおわり
+
+	}
+
+
+
+
+	$img_music = imagecreatefrompng ( $pref );
+
+	// 縮小処理
+	$width = ImageSx ( $img_music );
+	$height = ImageSy ( $img_music );
+	$resize = ImageCreateTrueColor ( $img_music_size, $img_music_size );
+	imagealphablending ( $resize, false );
+	imagesavealpha ( $resize, true );
+	ImageCopyResampled ( $resize, $img_music, 0, 0, 0, 0, $img_music_size, $img_music_size, $width, $height );
+
+	imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
+
+	$set_x = $set_x + $img_music_size;
+} // foreachおわり
 
 // プロデューサー情報を入れる処理
 
 // -- P名
-// P名の文字数を判断してフォントサイズ変える処理
+  // P名の文字数を判断してフォントサイズ変える処理
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
 if (mb_strlen ( $name ) <= 5) {
 	$name_size = 30;
@@ -216,7 +233,7 @@ imagedestroy ( $img_stamp );
 <title>result - fcManagementTool 4 sl-stage</title>
 <meta name="viewport"
 	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
-	<!-- favicon -->
+<!-- favicon -->
 <link rel="shortcut icon" href="img/icon/favicon.ico">
 </head>
 
