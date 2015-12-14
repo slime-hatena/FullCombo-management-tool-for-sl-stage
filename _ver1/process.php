@@ -1,9 +1,9 @@
 <?php
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "ver." . "151128";
-$rating_all = 2367; // 全曲のレベルを足した数値
-$music_max = 38;  //全曲数
+$version = "ver." . "151215";
+$rating_all = 2367 + 134; // 全曲のレベルを足した数値
+$music_max = 40;  //全曲数
 $music_max_masplus = 0; //マスプラの曲数
 
 // わざとらしくLVごとにx-pxを指定
