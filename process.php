@@ -53,7 +53,7 @@ $rating = 0;
 // プロデューサーランクを入れる処理
 $p_rank = array (
 		20, // x
-		220
+		185
 ); // y
 
 switch (mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' )) {
@@ -107,14 +107,26 @@ if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
 	$lower_limit = $_POST ["limit_2"];
 }
 
+$level_counts = 23 - ($upper_limit - $lower_limit);
+
 $size_down = $upper_limit - 3;
+$current_level = $upper_limit;
 $set_x = 270;
 $set_y = 5;
-$img_music_size = 55;//画像サイズ Lv3先は-10されるので注意
+$img_music_size = 60 + ($level_counts - 1); // 画像サイズ
+$img_music_size_default = $img_music_size;
+$down_size = 15; // Lv3先どれぐらい小さくするか
+
+$music_position = array (); // 曲の位置を記録するためのやつ
 
 foreach ( $img_songs as $pref ) { // ここから配列がカラになるまでループ
 
-	//端っこまで行ったら折り返す処理
+	// 上限レベル以上だった場合スキップする処理
+	if (substr ( $pref, 6, 2 ) > $upper_limit) {
+		continue;
+	}
+
+	// 端っこまで行ったら折り返す処理
 	if ($set_x + $img_music_size > 1024) {
 		$set_x = 270;
 		$set_y = $set_y + $img_music_size;
@@ -129,17 +141,17 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 	if (substr ( $pref, 6, 2 ) == $size_down) {
 		$set_x = 270;
 		$set_y = $set_y + $img_music_size;
-		$img_music_size = $img_music_size - 10;
-		$size_down =false;
+		$img_music_size = $img_music_size - $down_size;
+		$size_down = false;
 	}
 
 	// 区切り画像追加する処理
-	if (substr ( $pref, 6, 2 ) == $upper_limit) {
-		$upper_limit --;
+	if (substr ( $pref, 6, 2 ) == $current_level) {
+		$current_level --;
 
 		if ($set_x + $img_music_size + $img_music_size > 1024) {
 			$set_x = 270;
-			$set_y = $set_y + $img_music_size ;
+			$set_y = $set_y + $img_music_size;
 		}
 
 		$img_lv = imagecreatefrompng ( "img/lv/" . substr ( $pref, 6, 2 ) . ".png" );
@@ -152,12 +164,7 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 		imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
 
 		$set_x = $set_x + $img_music_size;
-
-
 	}
-
-
-
 
 	$img_music = imagecreatefrompng ( $pref );
 
@@ -171,25 +178,74 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 
 	imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
 
+	$str0 = str_replace ( "songs/", "", $pref );
+	$str = str_replace ( ".png", "", $str0 );
+
+	$music_position += array (
+			$set_x . "_" . $set_y => $str
+	);
+
 	$set_x = $set_x + $img_music_size;
 } // foreachおわり
+
+echo "<br>-----------------------------------------<br>";
+foreach ( $music_position as $key => $value ) {
+	echo "$key: $value<br />\n";
+}
+
+// フルコンのスタンプ付ける処理
+$size_down = $upper_limit - 3;
+$img_music_size = $img_music_size_default;
+$img_stamp = imagecreatefrompng ( 'img/stamp.png' );
+
+foreach ( $arr as $pref ) {
+
+	// 上限の4レベル以降は小さくする処理
+	if (substr ( $pref, 0, 2 ) == $size_down) {
+		$set_x = 270;
+		$set_y = $set_y + $img_music_size;
+		$img_music_size = $img_music_size - $down_size;
+		$size_down = false;
+	}
+
+	$key = array_search ( $pref, $music_position );
+
+	if ($key == FALSE) {
+		continue;
+	} else {
+
+		$key1 = strstr($key,'_',true);
+		$key2 = str_replace ( $key1. "_" , "", $key );
+
+
+
+		$width = ImageSx ( $img_stamp );
+		$height = ImageSy ( $img_stamp );
+		$resize = ImageCreateTrueColor ( $img_music_size, $img_music_size );
+		imagealphablending ( $resize, false );
+		imagesavealpha ( $resize, true );
+		ImageCopyResampled ( $resize, $img_stamp, 0, 0, 0, 0, $img_music_size, $img_music_size, $width, $height );
+
+		imagecopy ( $img, $resize, $key1, $key2, 0, 0, $img_music_size, $img_music_size );
+	}
+}
 
 // プロデューサー情報を入れる処理
 
 // -- P名
-  // P名の文字数を判断してフォントサイズ変える処理
+// P名の文字数を判断してフォントサイズ変える処理
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
 if (mb_strlen ( $name ) <= 5) {
-	$name_size = 30;
+	$name_size = 28;
 } elseif (mb_strlen ( $name ) <= 7) {
 	$name_size = 26;
 } else {
 	$name_size = 19;
 }
-ImageTTFText ( $img, $name_size, 0, 10, 128, $black, $font, $name );
+ImageTTFText ( $img, $name_size, 0, 10, 95, $black, $font, $name );
 
 // -- Twitter
-ImageTTFText ( $img, 20, 0, 11, 162, $black, $font, "@" . mb_convert_encoding ( $_POST ["twitter"], 'UTF-8', 'auto' ) );
+ImageTTFText ( $img, 20, 0, 11, 127, $black, $font, "@" . mb_convert_encoding ( $_POST ["twitter"], 'UTF-8', 'auto' ) );
 
 // -- PRP
 $prp = mb_convert_encoding ( $_POST ["prp"], 'UTF-8', 'auto' );
@@ -198,13 +254,13 @@ if (mb_strlen ( $prp ) <= 3) {
 } else {
 	$prp;
 }
-ImageTTFText ( $img, 24, 0, 185, 240, $black, $font, $prp );
+ImageTTFText ( $img, 24, 0, 185, 203, $black, $font, $prp );
 
 // -- PLv
-ImageTTFText ( $img, 24, 0, 185, 280, $black, $font, "  " . $_POST ["plv"] );
+ImageTTFText ( $img, 24, 0, 185, 243, $black, $font, "  " . $_POST ["plv"] );
 
 // -- ゲームID
-ImageTTFText ( $img, 22, 0, 90, 200, $black, $font, $_POST ["game_id"] );
+ImageTTFText ( $img, 22, 0, 90, 165, $black, $font, $_POST ["game_id"] );
 
 // 生成方法表示
 if ($_POST ["limited_1"] == "Limited") {
