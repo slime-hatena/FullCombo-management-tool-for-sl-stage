@@ -3,7 +3,7 @@
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "151128";
 $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます)
-$music_max = 38; // 全曲数
+$music_max = 40; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
@@ -17,6 +17,12 @@ $img_c = imagecreatefrompng ( 'img/c.png' );
 $img_d = imagecreatefrompng ( 'img/d.png' );
 $img_e = imagecreatefrompng ( 'img/e.png' );
 $img_f = imagecreatefrompng ( 'img/f.png' );
+
+$debut = 0;
+$regular = 0;
+$pro = 0;
+$master = 0;
+$maspuls = 0;
 
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
@@ -33,22 +39,10 @@ $red = ImageColorAllocate ( $img, 0xDC, 0x14, 0x3C );
 $dark_purple = ImageColorAllocate ( $img, 0x48, 0x3D, 0x8B );
 
 $img_songs = glob ( 'songs/*.png' );
-
 rsort ( $img_songs );
-print_r ( array_values ( $img_songs ) );
-
-echo "<br><br>----------------------------------------------<br><br>";
 
 $arr = $_POST ['arr']; // postだと長ったらしくて毎回入力するのが面倒なのでぶち込む
 rsort ( $arr );
-print_r ( array_values ( $arr ) );
-echo "<br><br>";
-
-// 画像を作成する
-
-// 受け渡された文字列を代入
-
-$rating = 0;
 
 // プロデューサーランクを入れる処理
 $p_rank = array (
@@ -94,7 +88,6 @@ switch (mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' )) {
  *
  * 曲idはgoogleSpreadsheetに保存してあるアレ (随分前に作ったので0は存在しない ここで使うと思ってなかったんやで・・・)
  *
- * lv○○[]の中身に 曲id難易度の順番で送られてくる
  * Ex Lv8の8曲目 → 08_8
  * Lv28の3曲目 → 28_3
  */
@@ -188,17 +181,25 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 	$set_x = $set_x + $img_music_size;
 } // foreachおわり
 
-echo "<br>-----------------------------------------<br>";
-foreach ( $music_position as $key => $value ) {
-	echo "$key: $value<br />\n";
-}
-
 // フルコンのスタンプ付ける処理
 $size_down = $upper_limit - 3;
 $img_music_size = $img_music_size_default;
 $img_stamp = imagecreatefrompng ( 'img/stamp.png' );
 
 foreach ( $arr as $pref ) {
+
+	// 合計曲数を出す処理
+	if (substr ( $pref, 0, 2 ) <= 9) {
+		$debut ++;
+	} elseif (substr ( $pref, 0, 2 ) <= 14) {
+		$regular ++;
+	} elseif (substr ( $pref, 0, 2 ) <= 19) {
+		$pro ++;
+	} elseif (substr ( $pref, 0, 2 ) <= 28) {
+		$master ++;
+	} elseif (substr ( $pref, 0, 2 )) {
+		$masplus ++;
+	}
 
 	// 上限の4レベル以降は小さくする処理
 	if (substr ( $pref, 0, 2 ) == $size_down) {
@@ -214,26 +215,42 @@ foreach ( $arr as $pref ) {
 		continue;
 	} else {
 
-		$key1 = strstr($key,'_',true);
-		$key2 = str_replace ( $key1. "_" , "", $key );
+		$stamp_size = $img_music_size;
 
+		$key1 = strstr ( $key, '_', true );
+		$key2 = str_replace ( $key1 . "_", "", $key );
 
+		if ($pref == "23_0") {
+			$img_stamp = imagecreatefrompng ( 'img/stamp_c.png' );
+			;
+		} else {
+			$img_stamp = imagecreatefrompng ( 'img/stamp.png' );
+		}
 
+		// 縮小処理
 		$width = ImageSx ( $img_stamp );
 		$height = ImageSy ( $img_stamp );
-		$resize = ImageCreateTrueColor ( $img_music_size, $img_music_size );
+		$resize = ImageCreateTrueColor ( $stamp_size, $stamp_size );
 		imagealphablending ( $resize, false );
 		imagesavealpha ( $resize, true );
-		ImageCopyResampled ( $resize, $img_stamp, 0, 0, 0, 0, $img_music_size, $img_music_size, $width, $height );
+		ImageCopyResampled ( $resize, $img_stamp, 0, 0, 0, 0, $stamp_size, $stamp_size, $width, $height );
 
-		imagecopy ( $img, $resize, $key1, $key2, 0, 0, $img_music_size, $img_music_size );
+		imagecopymerge ( $img, $resize, $key1, $key2, 0, 0, $stamp_size, $stamp_size, 55 );
+
+
 	}
-}
+} // foreachおわり
+
+//合計曲数を入れる
+ImageTTFText ( $img, 20, 0, 160, 280, $black, $font, $debut . " / " . $music_max );
+ImageTTFText ( $img, 20, 0, 160, 311, $black, $font, $regular . " / " . $music_max );
+ImageTTFText ( $img, 20, 0, 160, 342, $black, $font, $pro . " / " . $music_max );
+ImageTTFText ( $img, 20, 0, 160, 373, $black, $font, $master . " / " . $music_max );
 
 // プロデューサー情報を入れる処理
 
 // -- P名
-// P名の文字数を判断してフォントサイズ変える処理
+  // P名の文字数を判断してフォントサイズ変える処理
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
 if (mb_strlen ( $name ) <= 5) {
 	$name_size = 28;
@@ -268,6 +285,16 @@ if ($_POST ["limited_1"] == "Limited") {
 } elseif ($_POST ["limited_1"] == "CD") {
 	ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※先行解禁曲を除く" );
 }
+
+// バージョン表記
+ImageTTFText ( $img, 10, 0, 270, 572, $green, $font, "Powered by fcManagementTool 4 sl-stage (svr.aki-memo.net)" );
+imagefttext ( $img, 10, 0, 678, 518, $green, $font, "
+©BANDAI NAMCO Entertainment Inc.
+©BNEI / PROJECT CINDERELLA
+Created by Slime_hatena
+画像データをはじめとした著作物は著作者様に帰属します。", $extrainfo = Array (
+		"linespacing" => 0.7
+) );
 
 // 画像をbase64でimgタグに突っ込むための処理
 ob_start ();
