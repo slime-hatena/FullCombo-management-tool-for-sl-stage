@@ -9,6 +9,8 @@
   --------------------------------------------------------------
 
 こちらを参考にさせていただきました
+
 [【PHP】2015版！TwitterOAuthでログイン機能を実装する](http://qiita.com/sofpyon/items/982fe3a9ccebd8702867)
+
 [abraham/twitteroauthを使う](http://qiita.com/kino0104/items/9f9e6f75d58b40663673)
 
