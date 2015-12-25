@@ -1,3 +1,12 @@
+body {
+  margin: 1;
+  padding: 0;
+  font-family: "Roboto Condensed", "ƒqƒ‰ƒMƒmŠpƒS Pro W3", "Hiragino Kaku Gothic Pro", "ƒƒCƒŠƒI", "Meiryo" sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+
+  }
+
 table {
 	border-collapse: collapse;
 	border-style: solid; /* ˜g‚Ìí—Ş */
@@ -173,6 +182,7 @@ td {
 .bg31 {
 	background: url("bg/31.jpg");
 }
+
 .bg32 {
 	background: url("bg/32.jpg");
 }
@@ -212,12 +222,5 @@ td {
 tr {
 	background-attachment: scroll !important;
 	background-position: right center !important;
-	background-repeat : no-repeat !important;
-
-
+	background-repeat: no-repeat !important;
 }
-
-/*
-‚æ‚±240
-‚½‚Ä 48
-*/

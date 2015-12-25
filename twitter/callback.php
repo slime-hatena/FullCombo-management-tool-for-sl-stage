@@ -30,7 +30,7 @@ $_SESSION['access_token'] = $connection->oauth("oauth/access_token", array("oaut
 session_regenerate_id();
 
 //マイページへリダイレクト
-header( 'location: /FullCombo-management-tool-for-sl-stage/twitter/mypage.php' );
+header( 'location: /FullCombo-management-tool-for-sl-stage/index.php' );
 //header( 'location: /FullCombo-management-tool-for-sl-stage/index.html' );
 
 ?>

@@ -23,7 +23,7 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 
  // ユーザーネームを取得
  echo "<pre>";
- 		var_dump($user -> screen_name);
+ echo $user -> screen_name;
  echo "</pre>";
 
 //画像投稿処理
