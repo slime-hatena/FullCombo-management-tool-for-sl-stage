@@ -1,83 +1,4 @@
-<?php
-session_start ();
-
-require_once 'twitter/common.php';
-require_once 'twitter/twitteroauth/autoload.php';
-
-use Abraham\TwitterOAuth\TwitterOAuth;
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>fcManagementTool 4 sl-stage ver2</title>
-<link rel="stylesheet" type="text/css" href="form.css">
-<link rel="stylesheet" type="text/css" href="check.css">
-<link rel="stylesheet" type="text/css" href="accordion.css">
-
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript" src="js/cookiesave.js"></script>
-<script src="js/accordion.js"></script>
-
-<script type="text/javascript">
-	CookieSave.expires = 360 * 24 * 60 * 60 * 1000;
-</script>
-
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-
-
-<script type="text/javascript">
-	$(function() {
-		$('.checkAll').on('change', function() {
-			$('.' + this.id).prop('checked', this.checked);
-		});
-	});
-</script>
-
-<!-- favicon -->
-<link rel="shortcut icon" href="img/icon/favicon.ico">
-<!-- iOS Safari -->
-<link rel="apple-touch-icon" sizes="120x120"
-	href="img/icon/apple-touch-icon.png">
-<!-- iOS Safari(旧) / Android標準ブラウザ(一部) -->
-<link rel="apple-touch-icon-precomposed"
-	href="img/icon/apple-touch-icon.png">
-<!-- Android標準ブラウザ(一部) -->
-<link rel="shortcut icon" href="img/icon/apple-touch-icon.png">
-<!-- Android Chrome -->
-<link rel="icon" sizes="120x120" href="img/icon/apple-touch-icon.png">
-
-<!--  アコーディオンメニュー用 -->
-<script type="text/javascript">
-function demo02() {
-    $(this).toggleClass("active").next().slideToggle(300);
-}
-$(".switch .toggle").click(demo02);
-</script>
-
-</head>
-
-<body>
-
-	<noscript>
-		<div style="color: red">JavaScriptが無効になっています。サイトの大部分が正常に表示できない可能性があります。ｂ</div>
-	</noscript>
-
-
-	<div class="demo demo04 switch">
-		<ul>
-			<li><a class="toggle menu">	<h1 style="font-size: 1.4rem">fcManagementTool 4 sl-stage</h1></a>
-				<ul class="inner child child01">
-				<li>tool ver. : beta 2.0<br />
-				img ver. : 151226</li>
-				<li>更新履歴</li>
-					<li>利用規約・プライバシーポリシー</li>
-					<li>ライセンス</li>
-				</ul></li>
-		</ul>
-	</div>
+<?php include("header.php"); ?>
 
 
 	<h2 style="font-size: 18px">デレステのフルコン状況を画像に纏めます。</h2>
@@ -90,25 +11,7 @@ $(".switch .toggle").click(demo02);
 		使用条件等はページ下部に記述してあるライセンスの通りです。<br /> 使用する前に目を通して同意いただける場合はお使いください。
 	</p>
 
-	<?php
-	// セッションに入れておいたさっきの配列
-	if (isset ( $_SESSION ['access_token'] )) {
-		$access_token = $_SESSION ['access_token'];
 
-		// OAuthトークンとシークレットも使って TwitterOAuth をインスタンス化
-		$connection = new TwitterOAuth ( CONSUMER_KEY, CONSUMER_SECRET, $access_token ['oauth_token'], $access_token ['oauth_token_secret'] );
-
-		// ユーザー情報をGET
-		$user = $connection->get ( "account/verify_credentials" );
-
-		// ユーザーネームを取得
-		echo "ログイン中です：@";
-		echo $user->screen_name;
-	} else {
-		echo "ログインしていないか、セッションの有効期限が切れています。再度ログインしてください。";
-	}
-
-	?>
 
 	<h3>以下のフォームを入力して送信してください。</h3>
 
@@ -687,8 +590,19 @@ $(".switch .toggle").click(demo02);
 		<p>
 			<b>生成後の処理を選択してください</b><br /> <label for="download"><input
 				type="radio" name="process" id="download" value="download" checked>画像をダウンロードする</label><br>
-			<label for="tweet"><input type="radio" name="process" id="tweet"
-				value="tweet"> ツイートする</label><br> <span style="font-size: 80%;">ツイートする場合はTwitterへのログインが必要です。</span>
+	<?php
+	// セッションに入れておいたさっきの配列
+	if (isset ( $_SESSION ['access_token'] )) {
+		$access_token = $_SESSION ['access_token'];
+		// 取得できたらツイートを選択できるように
+		echo "<label for=\"tweet\"><input type=\"radio\" name=\"process\" id=\"tweet\"
+				value=\"tweet\"> ツイートする</label>";
+	} else {
+		echo "<label for=\"tweet\"><input type=\"radio\" name=\"process\" id=\"tweet\"
+				value=\"tweet\" disabled> ツイートする</label><br />";
+		echo "<span style=\"font-size: 80%;\">ツイートする場合はTwitterへのログインが必要です。</span>";
+	}
+	?>
 		</p>
 
 		<script async
@@ -711,10 +625,10 @@ $(".switch .toggle").click(demo02);
 	</form>
 
 
-
+<hr />
 
 	<p style="font-size: 13px;">
-		権利者からの申立て等は速やかに対応します。<br /> <br /> Ratingの計算式は " (
+		権利者様からの申立て等は速やかに対応します。<br /> <br /> Ratingの計算式は " (
 		フルコン曲のレベル合計÷全曲のレベル合計 ) ×15 "です。<br />不具合報告やご意見などは<a
 			href="https://twitter.com/Slime_hatena">Twitter</a>または<a
 			href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/issues">Github
@@ -724,58 +638,8 @@ $(".switch .toggle").click(demo02);
 	<p style="font-size: 9px;">現在は入力されたデータの収集はしていませんが、今後○○のフルコンレートは○○%みたいな機能を実装したいなとは思ってます。予定ですが。
 	</p>
 
-	<h3>
-		fcManagementTool 4 sl-stage Created by <a
-			href="https://twitter.com/Slime_hatena">@Slime_hatena</a>
-	</h3>
-	<div
-		onclick="obj=document.getElementById('open_2').style; obj.display=(obj.display=='none')?'block':'none';">
-		<a style="font-size: 12px; cursor: pointer;">▼ クリックでライセンスを表示</a>
-	</div>
-	<div id="open_2" style="font-size: 12px; display: none; clear: both;">
-		MIT license.<br /> <br />Copyright (c) 2015 Slime_hatena All Rights
-		Reserved. Permission is hereby granted, free of charge, to any person
-		obtaining a copy of this software and associated documentation files
-		(the "Software"), to deal in the Software without restriction,
-		including without limitation the rights to use, copy, modify, merge,
-		publish, distribute, sublicense, and/or sell copies of the Software,
-		and to permit persons to whom the Software is furnished to do so,
-		subject to the following conditions: <br /> <br /> The above copyright
-		notice and this permission notice shall be included in all copies or
-		substantial portions of the Software. <br /> THE SOFTWARE IS PROVIDED
-		"AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-		BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-		PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
-		OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-		ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-		OTHER DEALINGS IN THE SOFTWARE<br /> <br /> <br />
-		以下に定める条件に従い、本ソフトウェアおよび関連文書のファイル（以下「ソフトウェア」）の複製を取得するすべての人に対し、
-		ソフトウェアを無制限に扱うことを無償で許可します。これには、ソフトウェアの複製を使用、複写、変更、結合、掲載、頒布、
-		サブライセンス、および/または販売する権利、およびソフトウェアを提供する相手に同じことを許可する権利も無制限に含まれます。<br /> <br />
-		上記の著作権表示および本許諾表示を、ソフトウェアのすべての複製または重要な部分に記載するものとします。
 
-		ソフトウェアは「現状のまま」で、明示であるか暗黙であるかを問わず、何らの保証もなく提供されます。ここでいう保証とは、
-		商品性、特定の目的への適合性、および権利非侵害についての保証も含みますが、それに限定されるものではありません。<br />
-		作者または著作権者は、契約行為、不法行為、またはそれ以外であろうと、ソフトウェアに起因または関連し、
-		あるいはソフトウェアの使用またはその他の扱いによって生じる一切の請求、損害、 その他の義務について何らの責任も負わないものとします。<br />
-	</div>
-
-	<h3>お借りしているもの</h3>
-
-	<h4>
-		<a href="http://massacre.s59.xrea.com/game/cookiesave/">CookieSave.js</a>
-		by <a href="http://massacre.s59.xrea.com/">猫と重金属</a>
-	</h4>
-	<h4>
-		<a href="https://jquery.com/">jQuery.js</a>
-	</h4>
-	<h4>
-		<a href="https://twitteroauth.com/">TwitterOAuth</a>
-	</h4>
-
-
-
+<?php include("footer.html"); ?>
 
 </body>
 </html>
