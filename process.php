@@ -1,12 +1,18 @@
 <?php
 
+require_once 'twitter/common.php';
+require_once 'twitter/twitteroauth/autoload.php';
+use Abraham\TwitterOAuth\TwitterOAuth;
+require_once('config.php');
+
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "151128";
 $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます)
-$music_max = 40; // 全曲数
+$music_max = 42; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
+
 $img = imagecreatefrompng ( 'img/body.png' );
 $img_stamp = imagecreatefrompng ( 'img/stamp.png' );
 $img_ss = imagecreatefrompng ( 'img/ss.png' );
@@ -108,7 +114,7 @@ $set_x = 270;
 $set_y = 5;
 $img_music_size = 60 + ($level_counts - 1); // 画像サイズ
 $img_music_size_default = $img_music_size;
-$down_size = 15; // Lv3先どれぐらい小さくするか
+$down_size = 20; // Lv3先どれぐらい小さくするか
 
 $music_position = array (); // 曲の位置を記録するためのやつ
 
@@ -181,12 +187,20 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 	$set_x = $set_x + $img_music_size;
 } // foreachおわり
 
-// フルコンのスタンプ付ける処理
+$level_sum = 0;
+/*
+ * ##################################################
+ * フルコンのスタンプ付ける処理
+ * #################################################
+ */
+
 $size_down = $upper_limit - 3;
 $img_music_size = $img_music_size_default;
 $img_stamp = imagecreatefrompng ( 'img/stamp.png' );
 
 foreach ( $arr as $pref ) {
+
+	$level_sum += (substr ( $pref, 0, 2 ));
 
 	// 合計曲数を出す処理
 	if (substr ( $pref, 0, 2 ) <= 9) {
@@ -236,21 +250,29 @@ foreach ( $arr as $pref ) {
 		ImageCopyResampled ( $resize, $img_stamp, 0, 0, 0, 0, $stamp_size, $stamp_size, $width, $height );
 
 		imagecopymerge ( $img, $resize, $key1, $key2, 0, 0, $stamp_size, $stamp_size, 55 );
-
-
 	}
 } // foreachおわり
 
-//合計曲数を入れる
+// 合計曲数を入れる
 ImageTTFText ( $img, 20, 0, 160, 280, $black, $font, $debut . " / " . $music_max );
 ImageTTFText ( $img, 20, 0, 160, 311, $black, $font, $regular . " / " . $music_max );
 ImageTTFText ( $img, 20, 0, 160, 342, $black, $font, $pro . " / " . $music_max );
 ImageTTFText ( $img, 20, 0, 160, 373, $black, $font, $master . " / " . $music_max );
 
-// プロデューサー情報を入れる処理
+// 全曲総合処理
+$music_sum = $debut + $regular + $pro + $master + $maspuls;
+$music_all = $music_max * 4 + $music_max_masplus;
+$music_par = $music_sum / ($music_max * 4 + $music_max_masplus) * 100;
+
+ImageTTFText ( $img, 36, 0, 30, 423, $black, $font, $music_sum . " / " . $music_all );
+ImageTTFText ( $img, 20, 0, 50, 455, $black, $font, sprintf ( "達成度:" . '%.2f', $music_par ) . "%" );
+
+// レーティング演算処理
+$rating = ($level_sum / $rating_all) * 15;
+ImageTTFText ( $img, 20, 0, 50, 482, $black, $font, "Rating : " . sprintf ( '%.2f', round ( $rating, 2 ) ) );
 
 // -- P名
-  // P名の文字数を判断してフォントサイズ変える処理
+// P名の文字数を判断してフォントサイズ変える処理
 $name = mb_convert_encoding ( $_POST ["name"], 'UTF-8', 'auto' );
 if (mb_strlen ( $name ) <= 5) {
 	$name_size = 28;
@@ -279,15 +301,17 @@ ImageTTFText ( $img, 24, 0, 185, 243, $black, $font, "  " . $_POST ["plv"] );
 // -- ゲームID
 ImageTTFText ( $img, 22, 0, 90, 165, $black, $font, $_POST ["game_id"] );
 
-// 生成方法表示
-if ($_POST ["limited_1"] == "Limited") {
-	ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※限定楽曲を除く" );
-} elseif ($_POST ["limited_1"] == "CD") {
-	ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※先行解禁曲を除く" );
-}
+/*
+ * // 生成方法表示
+ * if ($_POST ["limited_1"] == "Limited") {
+ * ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※限定楽曲を除く" );
+ * } elseif ($_POST ["limited_1"] == "CD") {
+ * ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※先行解禁曲を除く" );
+ * }
+ */
 
 // バージョン表記
-ImageTTFText ( $img, 10, 0, 270, 572, $green, $font, "Powered by fcManagementTool 4 sl-stage (svr.aki-memo.net)" );
+ImageTTFText ( $img, 10, 0, 270, 572, $green, $font, "fcManagementTool 4 sl-stage (svr.aki-memo.net)" );
 imagefttext ( $img, 10, 0, 678, 518, $green, $font, "
 ©BANDAI NAMCO Entertainment Inc.
 ©BNEI / PROJECT CINDERELLA
@@ -296,61 +320,67 @@ Created by Slime_hatena
 		"linespacing" => 0.7
 ) );
 
-// 画像をbase64でimgタグに突っ込むための処理
+$tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " , Ratingは" . sprintf ( '%.2f', $rating ) . "です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
+
+if ($_POST ["process"] == "download") {
+
+	ob_start ();
+	imagePNG ( $img );
+	$content = base64_encode ( ob_get_contents () );
+	ob_end_clean ();
+
+	include ("header.php");
+	?>
+<img style="width: 100%;"
+	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+<hr>
+<p>
+	<span style="font-size: 1.2rem">コピペ用</span><br />
+		<?php echo $tweet; ?> #デレステ
+		</p>
+
+<?php include("footer.html"); ?>
+</body>
+</html>
+
+<?php
+} elseif ($_POST ["process"] == "tweet") {
+
+	include ("header.php");
+
+
+		$access_token = $_SESSION ['access_token'];
+
+		$file_name = "userimg/" . $_POST ["twitter"] .".png";
+
+
+		imagepng($img , $file_name);
+
+
+		// OAuthトークンとシークレットも使って TwitterOAuth をインスタンス化
+		$connection = new TwitterOAuth ( CONSUMER_KEY, CONSUMER_SECRET,
+				$access_token ['oauth_token'], $access_token ['oauth_token_secret'] );
+
+$media_id = $connection->upload("media/upload", array("media" =>$file_name  ));
+
+$parameters = array(
+    'status' => $tweet . " #デレステ"  ,
+    'media_ids' => $media_id->media_id_string,
+);
+$result = $connection->post('statuses/update', $parameters);
+
+echo "<br />ツイートを試みました。Twitterを確認してみてください。<br /><hr>";
+
 ob_start ();
 imagePNG ( $img );
 $content = base64_encode ( ob_get_contents () );
 ob_end_clean ();
 
-// ファイル消しておわり
-imagedestroy ( $img );
-imagedestroy ( $img_stamp );
-
 ?>
+<img style="width: 100%;"
+	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+<?php
 
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-<meta charset="utf-8">
-<title>result - fcManagementTool 4 sl-stage</title>
-<meta name="viewport"
-	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; maximum-scale=10; user-scalable=1">
-<!-- favicon -->
-<link rel="shortcut icon" href="img/icon/favicon.ico">
-</head>
-
-
-
-<body bgcolor="#EFEFEF" text="#000000">
-
-
-	<a href="twitter://post?message=<?php echo $tweet; ?> %23デレステ"><img
-		src="img/tweetbutton.png" height="30" alt="ツイートする"></a>
-	<p style="font-size: 12px;">
-		画像を保存してから押してください。<br /> 公式クライアントがインストールされている必要があります。<br />
-		ツイート欄が開いたら画像を添付してツイートしてください。<br /> <br />
-		現在一部の端末から画像が保存できない現象を確認しています。お手数ですがスクリーンショットでの代用をお願いします。<br />
-		保存できない場合は<a href="https://twitter.com/Slime_hatena" target=_blank>@Slime_hatena</a>に端末、ブラウザ名をお知らせいただけると助かります。
-	</p>
-
-	<hr>
-	<p style="font-size: 12px;">
-		以下コピペ用<br /> 公式クライアントをインストールしていない時などにお使いください。
-	</p>
-
-
-	<!--  <p style="font-size: 9px"><?php echo $tweet; ?> #デレステ</p> -->
-
-	<hr>
-
-	<img style="width: 100%;"
-		src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
-
-
-
-
-</body>
-</html>
-
-
+include("footer.html");
+}
+?>

@@ -3,12 +3,13 @@ session_start ();
 require_once 'twitter/common.php';
 require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
+require_once('config.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>fcManagementTool 4 sl-stage ver2</title>
+<title>fcManagementTool 4 sl-stage</title>
 <link rel="stylesheet" type="text/css" href="form.css">
 <link rel="stylesheet" type="text/css" href="check.css">
 <link rel="stylesheet" type="text/css" href="accordion.css">
@@ -68,17 +69,33 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 					<h1 style="font-size: 1.4rem">fcManagementTool 4 sl-stage</h1>
 			</a>
 				<ul class="inner child child01">
-					<li><a href="twitter/login.php"><span style="color: #6CADDE;"><i
-								class="fa fa-twitter"></i></span>ログイン画面を開く</a></li>
-
-					<li><a href="index.php">topページ</a></li>
 					<li>tool ver. : beta 2.0<br /> img ver. : 151226
 					</li>
+					<li></li>
+					<li><a href="index.php">TOPページ</a></li>
+					<li><a href="policy.php">免責事項 ・ プライバシーポリシー</a></li>
+					<li><a href="license.php">ライセンス</a></li>
 					<li><a
 						href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/releases"
 						target="_blank">更新履歴(Github)</a></li>
-					<li><a href="policy.php">免責事項 ・ プライバシーポリシー</a></li>
-					<li><a href="license.php">ライセンス</a></li>
+					<li></li>
+					<li><a href="https://twitter.com/Slime_hatena" target="_blank">作者Twitter
+							(@</i></span>Slime_hatena)
+					</a></li>
+					<li><a href="https://twitter.com/fcMgt4slStage"
+						target="_blank">お知らせ用Twitter (@fcMgt4slStage) </a></li>
+					<li><a href="https://twitter.com/imascg_stage" target="_blank">アイドルマスターシンデレラガールズスターライトステージ公式Twitter
+							(@imascg_stage) </a></li>
+					<li></li>
+					<li><a href="twitter/login.php"><span
+							style="color: #6CADDE;"><i class="fa fa-twitter"></i></span>ログイン画面を開く
+							(ブラウザを閉じるとログアウトされます)</a></li>
+					<li><a href="twitter/destroy.php"><span
+							style="color: #6CADDE;"><i class="fa fa-twitter"></i></span>セッションを破棄する
+							(Twitter関連で挙動がおかしい場合お試しください)</a></li>
+					<li><a href="mypage.php"><span style="color: #6CADDE;"><i
+								class="fa fa-twitter"></i></span>ログイン情報を確認する</a></li>
+
 				</ul></li>
 		</ul>
 	</div>
