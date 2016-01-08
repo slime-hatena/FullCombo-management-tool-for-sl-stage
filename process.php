@@ -1,15 +1,19 @@
 <?php
-
 require_once 'twitter/common.php';
 require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
-require_once('config.php');
+
 
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "151128";
-$rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます)
+//$rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
 $music_max = 42; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
+
+
+
+
+
 
 // 画像読み込み
 
@@ -24,11 +28,7 @@ $img_d = imagecreatefrompng ( 'img/d.png' );
 $img_e = imagecreatefrompng ( 'img/e.png' );
 $img_f = imagecreatefrompng ( 'img/f.png' );
 
-$debut = 0;
-$regular = 0;
-$pro = 0;
-$master = 0;
-$maspuls = 0;
+$debut  = $regular = $pro = $master = $maspuls =  0;
 
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
@@ -191,7 +191,7 @@ $level_sum = 0;
 /*
  * ##################################################
  * フルコンのスタンプ付ける処理
- * #################################################
+ * ##################################################
  */
 
 $size_down = $upper_limit - 3;
@@ -216,7 +216,7 @@ foreach ( $arr as $pref ) {
 	}
 
 	// 上限の4レベル以降は小さくする処理
-	if (substr ( $pref, 0, 2 ) == $size_down) {
+	if (substr ( $pref, 0, 2 ) <= $size_down) {
 		$set_x = 270;
 		$set_y = $set_y + $img_music_size;
 		$img_music_size = $img_music_size - $down_size;
@@ -267,9 +267,7 @@ $music_par = $music_sum / ($music_max * 4 + $music_max_masplus) * 100;
 ImageTTFText ( $img, 36, 0, 30, 423, $black, $font, $music_sum . " / " . $music_all );
 ImageTTFText ( $img, 20, 0, 50, 455, $black, $font, sprintf ( "達成度:" . '%.2f', $music_par ) . "%" );
 
-// レーティング演算処理
-$rating = ($level_sum / $rating_all) * 15;
-ImageTTFText ( $img, 20, 0, 50, 482, $black, $font, "Rating : " . sprintf ( '%.2f', round ( $rating, 2 ) ) );
+
 
 // -- P名
 // P名の文字数を判断してフォントサイズ変える処理
@@ -287,19 +285,30 @@ ImageTTFText ( $img, $name_size, 0, 10, 95, $black, $font, $name );
 ImageTTFText ( $img, 20, 0, 11, 127, $black, $font, "@" . mb_convert_encoding ( $_POST ["twitter"], 'UTF-8', 'auto' ) );
 
 // -- PRP
-$prp = mb_convert_encoding ( $_POST ["prp"], 'UTF-8', 'auto' );
-if (mb_strlen ( $prp ) <= 3) {
-	$prp = "  " . $prp;
-} else {
-	$prp;
+if ($_POST ["prp"] =="" ){
+	ImageTTFText ( $img, 24, 0, 185, 208, $black, $font, "   ***" );
+}else{
+	$prp = mb_convert_encoding ( $_POST ["prp"], 'UTF-8', 'auto' );
+	if (mb_strlen ( $prp ) <= 3) {
+		$prp = "  " . $prp;
+	} else {
+		$prp;
+	}
+	ImageTTFText ( $img, 24, 0, 185, 203, $black, $font, $prp );
 }
-ImageTTFText ( $img, 24, 0, 185, 203, $black, $font, $prp );
-
 // -- PLv
-ImageTTFText ( $img, 24, 0, 185, 243, $black, $font, "  " . $_POST ["plv"] );
+if ($_POST ["plv"] =="" ){
+ ImageTTFText ( $img, 24, 0, 185, 248, $black, $font, "   ***" );
+}else{
+	ImageTTFText ( $img, 24, 0, 185, 243, $black, $font, "  " .  $_POST ["plv"] );
+}
 
 // -- ゲームID
-ImageTTFText ( $img, 22, 0, 90, 165, $black, $font, $_POST ["game_id"] );
+if ($_POST ["game_id"] =="" ){
+	ImageTTFText ( $img, 24, 0, 90, 170, $black, $font, "   *********" );
+}else{
+	ImageTTFText ( $img, 24, 0, 84, 165, $black, $font,  $_POST ["game_id"] );
+}
 
 /*
  * // 生成方法表示
@@ -311,25 +320,29 @@ ImageTTFText ( $img, 22, 0, 90, 165, $black, $font, $_POST ["game_id"] );
  */
 
 // バージョン表記
-ImageTTFText ( $img, 10, 0, 270, 572, $green, $font, "fcManagementTool 4 sl-stage (svr.aki-memo.net)" );
-imagefttext ( $img, 10, 0, 678, 518, $green, $font, "
-©BANDAI NAMCO Entertainment Inc.
+imagefttext ( $img, 10, 0, 270, 554, $green, $font,
+"fcManagementTool 4 sl-stage (svr.aki-memo.net)
+Created by Slime_hatena"
+		, $extrainfo = Array (
+		"linespacing" => 0.7
+) );
+imagefttext ( $img, 10, 0, 678, 524, $green, $font, "
+©BANDAI NAMCO Entertainment Inc.z
 ©BNEI / PROJECT CINDERELLA
-Created by Slime_hatena
 画像データをはじめとした著作物は著作者様に帰属します。", $extrainfo = Array (
 		"linespacing" => 0.7
 ) );
 
-$tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " , Ratingは" . sprintf ( '%.2f', $rating ) . "です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
+$tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
 
-if ($_POST ["process"] == "download") {
+if ( isset($_POST ["process"]) == "download"  || isset($_POST ["process"]) == FALSE ) {
 
 	ob_start ();
 	imagePNG ( $img );
 	$content = base64_encode ( ob_get_contents () );
 	ob_end_clean ();
 
-	include ("header.php");
+	include ("header.php" );
 	?>
 <img style="width: 100%;"
 	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
@@ -346,16 +359,12 @@ if ($_POST ["process"] == "download") {
 <?php
 } elseif ($_POST ["process"] == "tweet") {
 
+
 	include ("header.php");
 
 
 		$access_token = $_SESSION ['access_token'];
-
-		$file_name = "userimg/" . $_POST ["twitter"] .".png";
-
-
-		imagepng($img , $file_name);
-
+		imagepng($img , "userimg/" . $_POST ["twitter"] .".png");
 
 		// OAuthトークンとシークレットも使って TwitterOAuth をインスタンス化
 		$connection = new TwitterOAuth ( CONSUMER_KEY, CONSUMER_SECRET,

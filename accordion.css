@@ -2,17 +2,14 @@
 
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
 
-
-
-ul{
- width:100%;
+ul {
+	width: 100%;
 }
 
 ul {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
-
 }
 
 .text {
@@ -108,4 +105,3 @@ ul {
 	background: #0079c2;
 	text-decoration: none;
 }
-

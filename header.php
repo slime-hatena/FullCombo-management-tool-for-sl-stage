@@ -3,13 +3,13 @@ session_start ();
 require_once 'twitter/common.php';
 require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
-require_once('config.php');
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>fcManagementTool 4 sl-stage</title>
+<title>fcManagementTool 4 sl-stage  - aki-memo.net</title>
 <link rel="stylesheet" type="text/css" href="form.css">
 <link rel="stylesheet" type="text/css" href="check.css">
 <link rel="stylesheet" type="text/css" href="accordion.css">
