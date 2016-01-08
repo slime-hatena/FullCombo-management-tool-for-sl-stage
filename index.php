@@ -649,7 +649,7 @@
 				<div class="wrapper">Orange Sapphire</div>
 			</th>
 			<td><input class="Debut" id="93_1" name="arr[]" type="checkbox"
-				value="8_18"></td>
+				value=08_18></td>
 			<td><input class="Regular" id="93_2" name="arr[]" type="checkbox"
 				value="13_17"></td>
 			<td><input class="Pro" id="93_3" name="arr[]" type="checkbox"
