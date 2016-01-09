@@ -15,8 +15,8 @@
 		<br> PRP<br> &ensp;<input maxlength="4" name="prp" size="4"
 			type="text"><br> PLv<br> &ensp;<input maxlength="4" name="plv"
 			size="4" type="text"><br> ゲームid<br> &ensp;<input maxlength="9"
-			name="game_id" size="11" type="text"><br>
-		<span style="font-size: 85%"><b>PRPとPLv ゲームidは入力されていないと*に置き換わります。</b></span>
+			name="game_id" size="11" type="text"><br> <span
+			style="font-size: 85%"><b>PRPとPLv ゲームidは入力されていないと*に置き換わります。</b></span>
 	</p>
 	P Rank<br> &ensp;<select name="p_rank">
 		<option value="F">F : 見習いプロデューサー</option>
@@ -391,6 +391,19 @@
 			<td><input class="Master" id="35_4" name="arr[]" type="checkbox"
 				value="26_9"></td>
 		</tr>
+		<tr class="bg36">
+			<th class="index">
+				<div class="wrapper">Angel Breeze</div>
+			</th>
+			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
+				value="09_6"></td>
+			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
+				value="14_11"></td>
+			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
+				value="17_14"></td>
+			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
+				value="24_7"></td>
+		</tr>
 		<tr class="bg17">
 			<th class="index">
 				<div class="wrapper">Star!!</div>
@@ -547,6 +560,19 @@
 			<td><input class="Master" id="27_4" name="arr[]" type="checkbox"
 				value="28_2"></td>
 		</tr>
+		<tr class="bg33">
+			<th class="index">
+				<div class="wrapper">流れ星キセキ</div>
+			</th>
+			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
+				value="08_17"></td>
+			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
+				value="14_10"></td>
+			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
+				value="17_11"></td>
+			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
+				value="26_8"></td>
+		</tr>
 		<tr class="bg31">
 			<th class="index">
 				<div class="wrapper">M@GIC☆</div>
@@ -657,18 +683,18 @@
 			<td><input class="Master" id="93_4" name="arr[]" type="checkbox"
 				value="26_10"></td>
 		</tr>
-		<tr class="bg33">
+				<tr class="bg37">
 			<th class="limited">
-				<div class="wrapper">流れ星キセキ</div>
+				<div class="wrapper">ゴキゲンParty Night!</div>
 			</th>
 			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
-				value="08_17"></td>
+				value="08_19"></td>
 			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
-				value="14_10"></td>
+				value="14_12"></td>
 			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
-				value="17_11"></td>
+				value="18_12"></td>
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
-				value="26_8"></td>
+				value="26_11"></td>
 		</tr>
 	</table>
 	<br>
@@ -705,8 +731,7 @@
 </form>
 <hr>
 <p style="font-size: 13px;">
- 不具合報告やご意見などは<a
-		href="https://twitter.com/Slime_hatena">Twitter</a>または<a
+	不具合報告やご意見などは<a href="https://twitter.com/Slime_hatena">Twitter</a>または<a
 		href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/issues">Github
 		Issues</a>にお気軽にどうぞ。<br> TwitterのDMはフォローしていなくても送れると思います。
 </p>
