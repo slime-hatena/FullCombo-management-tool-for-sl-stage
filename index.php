@@ -683,7 +683,7 @@
 			<td><input class="Master" id="93_4" name="arr[]" type="checkbox"
 				value="26_10"></td>
 		</tr>
-				<tr class="bg37">
+		<tr class="bg37">
 			<th class="limited">
 				<div class="wrapper">ゴキゲンParty Night!</div>
 			</th>

@@ -297,7 +297,7 @@ if ($_POST ["plv"] == "") {
 
 // -- ゲームID
 if ($_POST ["game_id"] == "") {
-	ImageTTFText ( $img, 24, 0, 90, 170, $black, $font, "   *********" );
+	ImageTTFText ( $img, 24, 0, 90, 170, $black, $font, "  *********" );
 } else {
 	ImageTTFText ( $img, 24, 0, 84, 165, $black, $font, $_POST ["game_id"] );
 }
@@ -331,7 +331,13 @@ if (isset ( $_POST ["process"] ) == "tweet") {
 	include ("header.php");
 
 	$access_token = $_SESSION ['access_token'];
-	imagepng ( $img, "userimg/" . $_POST ["twitter"] . ".png" );
+	$file_name = "userimg/" . $_POST ["twitter"] . ".png" ;
+
+	echo $file_name;
+
+	imagepng ( $img, $file_name );
+
+
 
 	// OAuthトークンとシークレットも使って TwitterOAuth をインスタンス化
 	$connection = new TwitterOAuth ( CONSUMER_KEY, CONSUMER_SECRET, $access_token ['oauth_token'], $access_token ['oauth_token_secret'] );
