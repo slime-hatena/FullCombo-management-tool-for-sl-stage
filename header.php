@@ -69,9 +69,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 					<h1 style="font-size: 1.4rem">fcManagementTool 4 sl-stage</h1>
 			</a>
 				<ul class="inner child child01">
-					<li>tool ver. : beta 2.0<br /> img ver. : 151226
-					</li>
-					<li></li>
 					<li><a href="index.php">TOPページ</a></li>
 					<li><a href="policy.php">免責事項 ・ プライバシーポリシー</a></li>
 					<li><a href="license.php">ライセンス</a></li>

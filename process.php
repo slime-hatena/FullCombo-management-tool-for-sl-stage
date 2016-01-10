@@ -326,29 +326,7 @@ imagefttext ( $img, 10, 0, 678, 524, $green, $font, "
 
 $tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
 
-if (isset ( $_POST ["process"] ) == "download" || isset ( $_POST ["process"] ) == FALSE) {
-
-	ob_start ();
-	imagePNG ( $img );
-	$content = base64_encode ( ob_get_contents () );
-	ob_end_clean ();
-
-	include ("header.php");
-	?>
-<img style="width: 100%;"
-	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
-<hr>
-<p>
-	<span style="font-size: 1.2rem">コピペ用</span><br />
-		<?php echo $tweet; ?> #デレステ
-		</p>
-
-<?php include("footer.html"); ?>
-</body>
-</html>
-
-<?php
-} elseif ($_POST ["process"] == "tweet") {
+if (isset ( $_POST ["process"] ) == "tweet") {
 
 	include ("header.php");
 
@@ -382,4 +360,29 @@ if (isset ( $_POST ["process"] ) == "download" || isset ( $_POST ["process"] ) =
 
 	include ("footer.html");
 }
+
+else {
+
+	ob_start ();
+	imagePNG ( $img );
+	$content = base64_encode ( ob_get_contents () );
+	ob_end_clean ();
+
+	include ("header.php");
+	?>
+<img style="width: 100%;"
+	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+<hr>
+<p>
+	<span style="font-size: 1.2rem">コピペ用</span><br />
+		<?php echo $tweet; ?> #デレステ
+		</p>
+
+<?php include("footer.html"); ?>
+</body>
+</html>
+
+<?php
+}
+
 ?>
