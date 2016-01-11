@@ -4,7 +4,7 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160110";
+$version = "160111";
 // $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
 $music_max = 44; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
@@ -326,7 +326,7 @@ imagefttext ( $img, 10, 0, 678, 524, $green, $font, "
 
 $tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
 
-if (isset ( $_POST ["process"] ) == "tweet") {
+if ($_POST ["process"]  == "tweet") {
 
 	include ("header.php");
 
