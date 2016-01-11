@@ -333,8 +333,6 @@ if ($_POST ["process"]  == "tweet") {
 	$access_token = $_SESSION ['access_token'];
 	$file_name = "userimg/" . $_POST ["twitter"] . ".png" ;
 
-	echo $file_name;
-
 	imagepng ( $img, $file_name );
 
 
