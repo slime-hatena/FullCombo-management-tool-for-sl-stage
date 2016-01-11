@@ -702,7 +702,6 @@
 		<b>生成後の処理を選択してください</b><br> <label for="download"><input checked
 			id="download" name="process" type="radio" value="download">画像をダウンロードする</label><br>
         <?php
-
 								// セッションに入れておいたさっきの配列
 								if (isset ( $_SESSION ['access_token'] )) {
 									$access_token = $_SESSION ['access_token'];

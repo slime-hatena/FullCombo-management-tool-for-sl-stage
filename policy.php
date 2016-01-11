@@ -26,6 +26,18 @@
 		<li>当サイトで活用している「Cookie」には個人情報は含まれておらず、個人を特定することはできません。また、ユーザー側で自由にブロックすることができます。詳しい設定方法は各ブラウザのヘルプをご確認ください。</li>
 	</ul>
 	<hr>
+	<h3>Debugger</h3>
+	<ul>
+			<li>デバッグをお願いしています。</li>
+		<li><a href="http://twitter.com/m__gl" target="_blank">@m__gl</a></li>
+		</ul>
+			<h3>Special Thanks</h3>
+	<ul>
+		<li>ご意見やバグ報告を頂いた方々です。</li>
+		<li><a href="http://twitter.com/klar_rinnel" target="_blank">@klar_rinnel</a></li>
+		<li><a href="http://twitter.com/Tsumugi_wak" target="_blank">@Tsumugi_wak</a></li>
+				<li><a href="http://twitter.com/eai04191" target="_blank">@eai04191</a></li>
+		</ul>
 
 	</div>
 

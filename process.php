@@ -335,31 +335,41 @@ if ($_POST ["process"]  == "tweet") {
 
 	imagepng ( $img, $file_name );
 
-
-
-	// OAuthトークンとシークレットも使って TwitterOAuth をインスタンス化
-	$connection = new TwitterOAuth ( CONSUMER_KEY, CONSUMER_SECRET, $access_token ['oauth_token'], $access_token ['oauth_token_secret'] );
-
-	$media_id = $connection->upload ( "media/upload", array (
-			"media" => $file_name
-	) );
-
-	$parameters = array (
-			'status' => $tweet . " #デレステ",
-			'media_ids' => $media_id->media_id_string
-	);
-	$result = $connection->post ( 'statuses/update', $parameters );
-
-	echo "<br />ツイートを試みました。Twitterを確認してみてください。<br /><hr>";
-
 	ob_start ();
 	imagePNG ( $img );
 	$content = base64_encode ( ob_get_contents () );
 	ob_end_clean ();
-
 	?>
+
+<h3>ツイートする内容を入力してください。</h3>
+
+<form action="tweet.php" method="post" name="fcmgt_tweet">
+<div id="realText"><input name="Insert" type="text"  size="50" maxlength="15">（最大15文字）</div>
+<div id="realWrite"><p  style="background-color: #E6E6E6; padding: 20px"><span></span> <?php  echo $tweet ?>  #デレステ</p></div>
+
+<input type="hidden" name="tweet" value="<?php  echo $tweet ?>">
+<input type="hidden" name="file_name" value="<?php  echo $file_name ?>">
+
+<input type="submit" value="送信">
+</form>
+
+<script> //動的に内容を吐き出す
+jQuery("#realText input:text").on('click blur keydown keyup keypress change',function(){
+	var textWrite = jQuery("#realText input:text").val();
+	jQuery("#realWrite span").html(textWrite);
+});
+jQuery("#realText input:text").on('click blur keydown keyup keypress change',function(){
+	var textWrite = jQuery("#realText input:text").val();
+	jQuery("#realWrite span").html(textWrite);
+});
+</script>
+
+
+		<hr>
 <img style="width: 100%;"
 	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
+
+
 <?php
 
 	include ("footer.html");
