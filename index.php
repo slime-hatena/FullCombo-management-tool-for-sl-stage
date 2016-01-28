@@ -183,6 +183,19 @@
 			<td><input class="Master" id="05_4" name="arr[]" type="checkbox"
 				value="25_1"></td>
 		</tr>
+				<tr class="bg39">
+			<th class="index">
+				<div class="wrapper">Snow Wings</div>
+			</th>
+			<td><input class="Debut" id="39_1" name="arr[]" type="checkbox"
+				value="08_20"></td>
+			<td><input class="Regular" id="39_2" name="arr[]" type="checkbox"
+				value="14_13"></td>
+			<td><input class="Pro" id="39_3" name="arr[]" type="checkbox"
+				value="17_16"></td>
+			<td><input class="Master" id="39_4" name="arr[]" type="checkbox"
+				value="26_12"></td>
+		</tr>
 		<tr class="bg06">
 			<th class="index">
 				<div class="wrapper">S(mile)ING!</div>
@@ -403,6 +416,19 @@
 				value="17_14"></td>
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="24_7"></td>
+		</tr>
+				<tr class="bg38">
+			<th class="index">
+				<div class="wrapper">アップルパイ・プリンセス</div>
+			</th>
+			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
+				value="09_9"></td>
+			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
+				value="11_5"></td>
+			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
+				value="17_15"></td>
+			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
+				value="23_3"></td>
 		</tr>
 		<tr class="bg17">
 			<th class="index">

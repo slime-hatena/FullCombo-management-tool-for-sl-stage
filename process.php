@@ -4,9 +4,9 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160111";
+$version = "160128";
 // $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
-$music_max = 44; // 全曲数
+$music_max = 46; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
@@ -106,9 +106,9 @@ $size_down = $upper_limit - 3;
 $current_level = $upper_limit;
 $set_x = 270;
 $set_y = 5;
-$img_music_size = 60 + ($level_counts - 1); // 画像サイズ
+$img_music_size = 59 + ($level_counts - 1); // 画像サイズ
 $img_music_size_default = $img_music_size;
-$down_size = 20; // Lv3先どれぐらい小さくするか
+$down_size = 18; // Lv3先どれぐらい小さくするか
 
 $music_position = array (); // 曲の位置を記録するためのやつ
 
