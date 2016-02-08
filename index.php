@@ -97,7 +97,7 @@
 		集計方法：<select disabled name="limited_1">
 			<option value="All">全楽曲で生成する</option>
 			<option value="Limited">限定楽曲を除く</option>
-			<option value="CD">先行解禁曲を除く</option>
+			<option value="Event">先行解禁曲を除く</option>
 		</select><br> <span style="font-size: 80%;"><span style="color: red"><b>まだ選択できません。近日実装予定です</b></span><br>
 			"限定楽曲を除く"はススメオトメなどを含む限定タブにある曲全てを集計しません。<br>
 			曜日違いで出てない曲の状況がわからない時に使ってください。<br> <br>
@@ -430,6 +430,19 @@
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="23_3"></td>
 		</tr>
+						<tr class="bg41">
+			<th class="index">
+				<div class="wrapper">エヴリデイドリーム</div>
+			</th>
+			<td><input class="Debut" id="41_1" name="arr[]" type="checkbox"
+				value="08_22"></td>
+			<td><input class="Regular" id="41_2" name="arr[]" type="checkbox"
+				value="13_18"></td>
+			<td><input class="Pro" id="41_3" name="arr[]" type="checkbox"
+				value="17_17"></td>
+			<td><input class="Master" id="41_4" name="arr[]" type="checkbox"
+				value="25_7"></td>
+		</tr>
 		<tr class="bg17">
 			<th class="index">
 				<div class="wrapper">Star!!</div>
@@ -721,6 +734,19 @@
 				value="18_12"></td>
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="26_11"></td>
+		</tr>
+				<tr class="bg40">
+			<th class="limited">
+				<div class="wrapper">Tulip</div>
+			</th>
+			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
+				value="08_21"></td>
+			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
+				value="14_14"></td>
+			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
+				value="18_13"></td>
+			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
+				value="26_13"></td>
 		</tr>
 	</table>
 	<br>

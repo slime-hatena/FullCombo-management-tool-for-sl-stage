@@ -6,7 +6,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "160128";
 // $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
-$music_max = 46; // 全曲数
+$music_max = 48; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
@@ -100,15 +100,15 @@ if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
 	$lower_limit = $_POST ["limit_2"];
 }
 
-$level_counts = 23 - ($upper_limit - $lower_limit);
+$level_counts = 27 - ($upper_limit - $lower_limit); // 最初のサイズ
 
 $size_down = $upper_limit - 3;
 $current_level = $upper_limit;
 $set_x = 270;
 $set_y = 5;
-$img_music_size = 59 + ($level_counts - 1); // 画像サイズ
+$img_music_size = 50 + ($level_counts - 1); // 画像サイズ
 $img_music_size_default = $img_music_size;
-$down_size = 18; // Lv3先どれぐらい小さくするか
+$down_size = 15; // Lv3先どれぐらい小さくするか
 
 $music_position = array (); // 曲の位置を記録するためのやつ
 
@@ -132,8 +132,10 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 
 	// 上限の4レベル以降は小さくする処理
 	if (substr ( $pref, 6, 2 ) == $size_down) {
+
 		$set_x = 270;
 		$set_y = $set_y + $img_music_size;
+
 		$img_music_size = $img_music_size - $down_size;
 		$size_down = false;
 	}
@@ -302,14 +304,12 @@ if ($_POST ["game_id"] == "") {
 	ImageTTFText ( $img, 24, 0, 84, 165, $black, $font, $_POST ["game_id"] );
 }
 
-/*
- * // 生成方法表示
- * if ($_POST ["limited_1"] == "Limited") {
- * ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※限定楽曲を除く" );
- * } elseif ($_POST ["limited_1"] == "CD") {
- * ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※先行解禁曲を除く" );
- * }
- */
+// 生成方法表示
+if ($_POST ["limited_1"] == "Limited") {
+	ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※限定楽曲を除く" );
+} elseif ($_POST ["limited_1"] == "Event") {
+	ImageTTFText ( $img, 12, 0, 0, 570, $black, $font, "※先行解禁曲を除く" );
+}
 
 // バージョン表記
 imagefttext ( $img, 10, 0, 270, 544, $green, $font, "
@@ -326,12 +326,12 @@ imagefttext ( $img, 10, 0, 678, 524, $green, $font, "
 
 $tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_all . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
 
-if ($_POST ["process"]  == "tweet") {
+if ($_POST ["process"] == "tweet") {
 
 	include ("header.php");
 
 	$access_token = $_SESSION ['access_token'];
-	$file_name = "userimg/" . $_POST ["twitter"] . ".png" ;
+	$file_name = "userimg/" . $_POST ["twitter"] . ".png";
 
 	imagepng ( $img, $file_name );
 
@@ -344,13 +344,17 @@ if ($_POST ["process"]  == "tweet") {
 <h3>ツイートする内容を入力してください。</h3>
 
 <form action="tweet.php" method="post" name="fcmgt_tweet">
-<div id="realText"><input name="Insert" type="text"  size="50" maxlength="15">（最大15文字）</div>
-<div id="realWrite"><p  style="background-color: #E6E6E6; padding: 20px"><span></span> <?php  echo $tweet ?>  #デレステ</p></div>
+	<div id="realText">
+		<input name="Insert" type="text" size="50" maxlength="15">（最大15文字）
+	</div>
+	<div id="realWrite">
+		<p style="background-color: #E6E6E6; padding: 20px">
+			<span></span> <?php  echo $tweet ?>  #デレステ</p>
+	</div>
 
-<input type="hidden" name="tweet" value="<?php  echo $tweet ?>">
-<input type="hidden" name="file_name" value="<?php  echo $file_name ?>">
-
-<input type="submit" value="送信">
+	<input type="hidden" name="tweet" value="<?php  echo $tweet ?>"> <input
+		type="hidden" name="file_name" value="<?php  echo $file_name ?>"> <input
+		type="submit" value="送信">
 </form>
 
 <script> //動的に内容を吐き出す
@@ -365,7 +369,7 @@ jQuery("#realText input:text").on('click blur keydown keyup keypress change',fun
 </script>
 
 
-		<hr>
+<hr>
 <img style="width: 100%;"
 	src="data:image/png;base64,<?php echo $content; ?>" alt="img" />
 
