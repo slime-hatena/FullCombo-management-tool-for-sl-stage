@@ -6,7 +6,11 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "160214";
 // $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
-// $music_max = 48; // 全曲数
+$music_max = 48  *  4; // 全曲数
+
+$music_ignore_a = 7  *  4;     //限定楽曲数
+$music_ignore_b = 2  *  4;    //先行解禁曲数
+
 $music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
@@ -86,14 +90,15 @@ if ($_POST ['limited_1'] == "Limited") { // 限定タブにある楽曲全て
 	$ignore_songs_a = file ( $file, FILE_IGNORE_NEW_LINES );
 	$ignore_songs_b = file ( $file2, FILE_IGNORE_NEW_LINES );
 	$ignore_songs = array_merge ( $ignore_songs_a, $ignore_songs_b );
+	$music_max = $music_max - $music_ignore_a - $music_ignore_b;
 }
 
 if ($_POST ['limited_1'] == "Event") { // 先行解禁曲
 	$file = dirname ( __FILE__ ) . '/resources/Event.txt';
 	// 配列に格納
 	$ignore_songs = file ( $file, FILE_IGNORE_NEW_LINES );
+	$music_max = $music_max - $music_ignore_b;
 }
-$music_max = 0;
 /*
  * // 曲情報を取得する処理
  * 後で困らないためのメモ
@@ -194,7 +199,6 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 	ImageCopyResampled ( $resize, $img_music, 0, 0, 0, 0, $img_music_size, $img_music_size, $width, $height );
 
 	imagecopy ( $img, $resize, $set_x, $set_y, 0, 0, $img_music_size, $img_music_size );
-	$music_max ++;
 
 	$str0 = str_replace ( "songs/", "", $pref );
 	$str = str_replace ( ".png", "", $str0 );
@@ -292,7 +296,7 @@ ImageTTFText ( $img, 20, 0, 160, 373, $black, $font, $master . " / " . $music_ma
 
 // 全曲総合処理
 $music_sum = $debut + $regular + $pro + $master + $maspuls;
-$music_all = $music_max * 4 + $music_max_masplus;
+$music_all = $music_max  + $music_max_masplus;
 $music_par = $music_sum / ($music_max  + $music_max_masplus) * 100;
 
 ImageTTFText ( $img, 36, 0, 30, 423, $black, $font, $music_sum . " / " . $music_max );
