@@ -4,7 +4,7 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160214";
+$version = "160128";
 // $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
 // $music_max = 48; // 全曲数
 $music_max_masplus = 0; // マスプラの曲数

@@ -94,11 +94,11 @@
 		</span>
 	</p>
 	<p>
-		集計方法：<select disabled name="limited_1">
+		集計方法：<select  name="limited_1">
 			<option value="All">全楽曲で生成する</option>
 			<option value="Limited">限定楽曲を除く</option>
 			<option value="Event">先行解禁曲を除く</option>
-		</select><br> <span style="font-size: 80%;"><span style="color: red"><b>まだ選択できません。近日実装予定です</b></span><br>
+		</select><br>
 			"限定楽曲を除く"はススメオトメなどを含む限定タブにある曲全てを集計しません。<br>
 			曜日違いで出てない曲の状況がわからない時に使ってください。<br> <br>
 			"先行解禁曲を除く"はCDのシリアルコードやイベント達成での先行解禁曲を集計しません。</span>

@@ -22,9 +22,11 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 	$result = $connection->post ( 'statuses/update', $parameters );
 
 	echo "<br />ツイートを試みました。Twitterを確認してみてください。<br /><hr>";
-
+	echo "当サイト公式アカウントのフォローをお願いしますm(_ _)m<br />";
 
 	?>
+	<a href="https://twitter.com/fcMgt4slStage" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @fcMgt4slStage</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <img style="width: 100%;"
 	src="<?php echo $_POST ["file_name"]; ?>" alt="img" />
 <?php
