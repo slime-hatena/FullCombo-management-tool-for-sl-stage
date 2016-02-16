@@ -14,3 +14,12 @@
 
 [abraham/twitteroauthを使う](http://qiita.com/kino0104/items/9f9e6f75d58b40663673)
 
+  --------------------------------------------------------------
+
+Copyright © 2015 Slime_hatena All Rights Reserved.
+
+©BANDAI NAMCO Entertainment Inc.
+©BNEI / PROJECT CINDERELLA
+
+画像データをはじめとした著作物は著作者様に帰属します。
+

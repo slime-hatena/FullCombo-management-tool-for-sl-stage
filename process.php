@@ -4,14 +4,13 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160214";
-// $rating_all = 2367; // Rating基準値 (アーニャソロまでのレベル合計になってます) (！廃止しました 160109)
-$music_max = 48  *  4; // 全曲数
+$version = "160217";
+$music_max = 49  *  4; // 全曲数
+$music_max_masplus = 0  *  4; // マスプラの曲数
 
-$music_ignore_a = 7  *  4;     //限定楽曲数
-$music_ignore_b = 2  *  4;    //先行解禁曲数
+$music_ignore_a = 8  *  4;     //限定楽曲数
+$music_ignore_b = 1  *  4;    //先行解禁曲数
 
-$music_max_masplus = 0; // マスプラの曲数
 
 // 画像読み込み
 
