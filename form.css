@@ -59,211 +59,211 @@ td {
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
-.bg01 {
+#bg01 {
 	background: url("bg/01.jpg");
 }
 
-.bg02 {
+#bg02 {
 	background: url("bg/02.jpg");
 }
 
-.bg03 {
+#bg03 {
 	background: url("bg/03.jpg");
 }
 
-.bg04 {
+#bg04 {
 	background: url("bg/04.jpg");
 }
 
-.bg05 {
+#bg05 {
 	background: url("bg/05.jpg");
 }
 
-.bg06 {
+#bg06 {
 	background: url("bg/06.jpg");
 }
 
-.bg07 {
+#bg07 {
 	background: url("bg/07.jpg");
 }
 
-.bg08 {
+#bg08 {
 	background: url("bg/08.jpg");
 }
 
-.bg09 {
+#bg09 {
 	background: url("bg/09.jpg");
 }
 
-.bg10 {
+#bg10 {
 	background: url("bg/10.jpg");
 }
 
-.bg11 {
+#bg11 {
 	background: url("bg/11.jpg");
 }
 
-.bg12 {
+#bg12 {
 	background: url("bg/12.jpg");
 }
 
-.bg13 {
+#bg13 {
 	background: url("bg/13.jpg");
 }
 
-.bg14 {
+#bg14 {
 	background: url("bg/14.jpg");
 }
 
-.bg15 {
+#bg15 {
 	background: url("bg/15.jpg");
 }
 
-.bg16 {
+#bg16 {
 	background: url("bg/16.jpg");
 }
 
-.bg17 {
+#bg17 {
 	background: url("bg/17.jpg");
 }
 
-.bg18 {
+#bg18 {
 	background: url("bg/18.jpg");
 }
 
-.bg19 {
+#bg19 {
 	background: url("bg/19.jpg");
 }
 
-.bg20 {
+#bg20 {
 	background: url("bg/20.jpg");
 }
 
-.bg21 {
+#bg21 {
 	background: url("bg/21.jpg");
 }
 
-.bg22 {
+#bg22 {
 	background: url("bg/22.jpg");
 }
 
-.bg23 {
+#bg23 {
 	background: url("bg/23.jpg");
 }
 
-.bg24 {
+#bg24 {
 	background: url("bg/24.jpg");
 }
 
-.bg25 {
+#bg25 {
 	background: url("bg/25.jpg");
 }
 
-.bg26 {
+#bg26 {
 	background: url("bg/26.jpg");
 }
 
-.bg27 {
+#bg27 {
 	background: url("bg/27.jpg");
 }
 
-.bg28 {
+#bg28 {
 	background: url("bg/28.jpg");
 }
 
-.bg29 {
+#bg29 {
 	background: url("bg/29.jpg");
 }
 
-.bg30 {
+#bg30 {
 	background: url("bg/30.jpg");
 }
 
-.bg31 {
+#bg31 {
 	background: url("bg/31.jpg");
 }
 
-.bg32 {
+#bg32 {
 	background: url("bg/32.jpg");
 }
 
-.bg33 {
+#bg33 {
 	background: url("bg/33.jpg");
 }
 
-.bg34 {
+#bg34 {
 	background: url("bg/34.jpg");
 }
 
-.bg35 {
+#bg35 {
 	background: url("bg/35.jpg");
 }
 
-.bg36 {
+#bg36 {
 	background: url("bg/36.jpg");
 }
 
-.bg37 {
+#bg37 {
 	background: url("bg/37.jpg");
 }
 
-.bg38 {
+#bg38 {
 	background: url("bg/38.jpg");
 }
 
-.bg39 {
+#bg39 {
 	background: url("bg/39.jpg");
 }
 
-.bg40 {
+#bg40 {
 	background: url("bg/40.jpg");
 }
 
-.bg41 {
+#bg41 {
 	background: url("bg/41.jpg");
 }
 
-.bg51 {
+#bg51 {
 	background: url("bg/51.jpg");
 }
 
-.bg52 {
+#bg52 {
 	background: url("bg/52.jpg");
 }
 
-.bg53 {
+#bg53 {
 	background: url("bg/53.jpg");
 }
 
-.bg54 {
+#bg54 {
 	background: url("bg/54.jpg");
 }
 
-.bg55 {
+#bg55 {
 	background: url("bg/55.jpg");
 }
 
-.bg56 {
+#bg56 {
 	background: url("bg/56.jpg");
 }
 
-.bg57 {
+#bg57 {
 	background: url("bg/57.jpg");
 }
 
-.bg91 {
+#bg91 {
 	background: url("bg/91.jpg");
 }
 
-.bg92 {
+#bg92 {
 	background: url("bg/92.jpg");
 }
 
-.bg93 {
+#bg93 {
 	background: url("bg/93.jpg");
 }
 
-tr {
+.index, .limited {
 	background-attachment: scroll !important;
 	background-position: right center !important;
 	background-repeat: no-repeat !important;
