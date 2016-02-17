@@ -1,46 +1,59 @@
+/* Orange Sapphire */
 08_18
 13_17
 17_13
 26_10
 
+/* Nation Blue  */
 09_4
 13_15
 17_10
 26_7
 
+/* アタシポンコツアンドロイド  */
 08_16
 12_6
 17_9
 26_6
 
+/* ススメ☆オトメ ~jewel parade~ Passion Side.  */
 08_15
 13_14
 17_8
 24_6
 
+/* ススメ☆オトメ ~jewel parade~ Cool Side.  */
 08_14
 13_13
 17_7
 24_5
 
+/* ススメ☆オトメ ~jewel parade~ Cute Side.  */
 08_13
 13_12
 17_6
 24_4
 
+/* ススメ☆オトメ ~jewel parade~  */
 08_12
 13_11
 18_11
 25_6
 
-/* ゴキパ cute */
+/* ゴキゲンParty Night! */
 08_19
 14_12
 18_12
 26_11
 
-/* ゴキパ cute */
+/* ゴキゲンParty Night! Cute Side. */
 08_23
 13_19
 17_18
 25_8
+
+/* ゴキゲンParty Night! Cool Side. */
+08_24
+13_20
+17_19
+25_9

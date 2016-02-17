@@ -4,11 +4,11 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160217";
-$music_max = 49  *  4; // 全曲数
-$music_max_masplus = 0  *  4; // マスプラの曲数
+$version = "160218";
+$music_max = 50  *  4;      // 全曲数
+$music_max_masplus = 0  *  4;      // マスプラの曲数
 
-$music_ignore_a = 8  *  4;     //限定楽曲数
+$music_ignore_a = 10  *  4;     //限定楽曲数
 $music_ignore_b = 1  *  4;    //先行解禁曲数
 
 

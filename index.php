@@ -748,6 +748,19 @@
 			<td><input class="Master" id="55_4" name="arr[]" type="checkbox"
 				value="25_8"></td>
 		</tr>
+				<tr class="bg56">
+			<th class="limited">
+				<div class="wrapper">ゴキゲンParty Night!<br> Cool Side.</div>
+			</th>
+			<td><input class="Debut" id="55_1" name="arr[]" type="checkbox"
+				value="08_24"></td>
+			<td><input class="Regular" id="55_2" name="arr[]" type="checkbox"
+				value="13_20"></td>
+			<td><input class="Pro" id="55_3" name="arr[]" type="checkbox"
+				value="17_19"></td>
+			<td><input class="Master" id="55_4" name="arr[]" type="checkbox"
+				value="25_9"></td>
+		</tr>
 				<tr class="bg40">
 			<th class="limited">
 				<div class="wrapper">Tulip</div>
