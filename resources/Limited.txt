@@ -10,50 +10,56 @@
 17_10
 26_7
 
-/* ƒAƒ^ƒVƒ|ƒ“ƒRƒcƒAƒ“ƒhƒƒCƒh  */
+/* ã‚¢ã‚¿ã‚·ãƒãƒ³ã‚³ãƒ„ã‚¢ãƒ³ãƒ‰ãƒ­ã‚¤ãƒ‰  */
 08_16
 12_6
 17_9
 26_6
 
-/* ƒXƒXƒ™ƒIƒgƒ ~jewel parade~ Passion Side.  */
+/* ã‚¹ã‚¹ãƒ¡â˜†ã‚ªãƒˆãƒ¡ ~jewel parade~ Passion Side.  */
 08_15
 13_14
 17_8
 24_6
 
-/* ƒXƒXƒ™ƒIƒgƒ ~jewel parade~ Cool Side.  */
+/* ã‚¹ã‚¹ãƒ¡â˜†ã‚ªãƒˆãƒ¡ ~jewel parade~ Cool Side.  */
 08_14
 13_13
 17_7
 24_5
 
-/* ƒXƒXƒ™ƒIƒgƒ ~jewel parade~ Cute Side.  */
+/* ã‚¹ã‚¹ãƒ¡â˜†ã‚ªãƒˆãƒ¡ ~jewel parade~ Cute Side.  */
 08_13
 13_12
 17_6
 24_4
 
-/* ƒXƒXƒ™ƒIƒgƒ ~jewel parade~  */
+/* ã‚¹ã‚¹ãƒ¡â˜†ã‚ªãƒˆãƒ¡ ~jewel parade~  */
 08_12
 13_11
 18_11
 25_6
 
-/* ƒSƒLƒQƒ“Party Night! */
+/* ã‚´ã‚­ã‚²ãƒ³Party Night! */
 08_19
 14_12
 18_12
 26_11
 
-/* ƒSƒLƒQƒ“Party Night! Cute Side. */
+/* ã‚´ã‚­ã‚²ãƒ³Party Night! Cute Side. */
 08_23
 13_19
 17_18
 25_8
 
-/* ƒSƒLƒQƒ“Party Night! Cool Side. */
+/* ã‚´ã‚­ã‚²ãƒ³Party Night! Cool Side. */
 08_24
 13_20
 17_19
 25_9
+
+/* ã‚´ã‚­ã‚²ãƒ³Party Night! Passion Side. */
+08_25
+13_21
+17_20
+25_10
