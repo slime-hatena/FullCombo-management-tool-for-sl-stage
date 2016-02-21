@@ -4,13 +4,12 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160219";
-$music_max = 51  *  4;      // 全曲数
-$music_max_masplus = 0  *  4;      // マスプラの曲数
+$version = "160221";
+$music_max = 51 * 4; // 全曲数
+$music_max_masplus = 0 * 4; // マスプラの曲数
 
-$music_ignore_a = 11  *  4;     //限定楽曲数
-$music_ignore_b = 1  *  4;    //先行解禁曲数
-
+$music_ignore_a = 11 * 4; // 限定楽曲数
+$music_ignore_b = 1 * 4; // 先行解禁曲数
 
 // 画像読み込み
 
@@ -81,7 +80,7 @@ switch (mb_convert_encoding ( $_POST ["p_rank"], 'UTF-8', 'auto' )) {
 }
 
 // 除外曲をファイルから読み込む
-$ignore_songs = array();
+$ignore_songs = array ();
 if ($_POST ['limited_1'] == "Limited") { // 限定タブにある楽曲全て
 	$file = dirname ( __FILE__ ) . '/resources/Event.txt';
 	$file2 = dirname ( __FILE__ ) . '/resources/Limited.txt';
@@ -98,6 +97,11 @@ if ($_POST ['limited_1'] == "Event") { // 先行解禁曲
 	$ignore_songs = file ( $file, FILE_IGNORE_NEW_LINES );
 	$music_max = $music_max - $music_ignore_b;
 }
+
+if ($_POST ["process"] == "tweet") { // ツイート時に保存用のデータを前もって読み込んでおく
+	include ("hidden/rateConnection.php");
+}
+
 /*
  * // 曲情報を取得する処理
  * 後で困らないためのメモ
@@ -207,8 +211,13 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 	);
 
 	$set_x = $set_x + $img_music_size;
-} // foreachおわり
 
+	if ($_POST ["process"] == "tweet") { // ツイート時に保存用のデータを前もって読み込んでおく ※これは初期化
+		$date_clear = true;
+		$pref = str_replace ( ".png", "", str_replace ( "songs/", "", $pref ) );
+		include ("hidden/rateRecorder.php");
+	}
+} // foreachおわり
 
 /*
  * ##################################################
@@ -229,12 +238,16 @@ $img_stamp = imagecreatefrompng ( 'img/stamp.png' );
 
 foreach ( $arr as $pref ) {
 
-	// 除外曲の判定
-
-	if (in_array ( $pref , $ignore_songs ) ) {
-		continue;
+	if ($_POST ["process"] == "tweet") { // ツイート時に保存用のデータを前もって読み込んでおく
+		$date_clear = false;
+		include ("hidden/rateRecorder.php");
 	}
 
+	// 除外曲の判定
+
+	if (in_array ( $pref, $ignore_songs )) {
+		continue;
+	}
 
 	// 合計曲数を出す処理
 	if (substr ( $pref, 0, 2 ) <= 9) {
@@ -295,8 +308,8 @@ ImageTTFText ( $img, 20, 0, 160, 373, $black, $font, $master . " / " . $music_ma
 
 // 全曲総合処理
 $music_sum = $debut + $regular + $pro + $master + $maspuls;
-$music_all = $music_max  + $music_max_masplus;
-$music_par = $music_sum / ($music_max  + $music_max_masplus) * 100;
+$music_all = $music_max + $music_max_masplus;
+$music_par = $music_sum / ($music_max + $music_max_masplus) * 100;
 
 ImageTTFText ( $img, 36, 0, 30, 423, $black, $font, $music_sum . " / " . $music_max );
 ImageTTFText ( $img, 20, 0, 50, 455, $black, $font, sprintf ( "達成度:" . '%.2f', $music_par ) . "%" );
@@ -364,7 +377,7 @@ imagefttext ( $img, 10, 0, 678, 524, $green, $font, "
 
 $tweet = $name . "さんのフルコンボ曲数は" . $music_sum . "/" . $music_max . "(" . sprintf ( '%.2f', $music_par ) . "％) " . " です。fcManagementTool 4 sl-stage｜http://svr.aki-memo.net/FullCombo-management-tool-for-sl-stage";
 
-if ($_POST ["process"] == "tweet") {
+if ($_POST ["process"] == "tweet") { // ツイートするかDLするか判定
 
 	include ("header.php");
 
@@ -377,6 +390,17 @@ if ($_POST ["process"] == "tweet") {
 	imagePNG ( $img );
 	$content = base64_encode ( ob_get_contents () );
 	ob_end_clean ();
+
+	// IDにダメな文字があるかどうか確認する
+	/*
+	 * if (ctype_alnum ( $_POST ["twitter"] ) == FALSE) {
+	 * if (strpos ( $_POST ["twitter"] , '_' ) == FALSE) {
+	 *
+	 * echo "<br>Twitter IDの欄に英数字意外の文字が入力されています。";
+	 * exit ();
+	 * }
+	 * }
+	 */
 	?>
 
 <h3>ツイートする内容を入力してください。</h3>
@@ -415,9 +439,7 @@ jQuery("#realText input:text").on('click blur keydown keyup keypress change',fun
 <?php
 
 	include ("footer.html");
-}
-
-else {
+} else {
 
 	ob_start ();
 	imagePNG ( $img );
