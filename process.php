@@ -5,11 +5,11 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
 $version = "160227";
-$music_max = 53 * 4; // 全曲数
+$music_max = 55 * 4; // 全曲数
 $music_max_masplus = 0 * 4; // マスプラの曲数
 
 $music_ignore_a = 12 * 4; // 限定楽曲数
-$music_ignore_b = 1 * 4; // 先行解禁曲数
+$music_ignore_b = 2 * 4; // 先行解禁曲数
 
 // 画像読み込み
 
@@ -131,7 +131,7 @@ $size_down = $upper_limit - 3;
 $current_level = $upper_limit;
 $set_x = 270;
 $set_y = 5;
-$img_music_size = 50 + ($level_counts - 1); // 画像サイズ
+$img_music_size = 49 + ($level_counts - 1); // 画像サイズ
 $img_music_size_default = $img_music_size;
 $down_size = 14; // Lv3先どれぐらい小さくするか
 

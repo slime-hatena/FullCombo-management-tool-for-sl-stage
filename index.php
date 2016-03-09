@@ -460,6 +460,19 @@
 			<td><input class="Master" id="42_4" name="arr[]" type="checkbox"
 				value="23_4"></td>
 		</tr>
+						<tr>
+			<th class="limited" id="bg43">
+				<div class="wrapper">Rockin' Emotion</div>
+			</th>
+			<td><input class="Debut" id="43_1" name="arr[]" type="checkbox"
+				value="09_10"></td>
+			<td><input class="Regular" id="43_2" name="arr[]" type="checkbox"
+				value="13_22"></td>
+			<td><input class="Pro" id="43_3" name="arr[]" type="checkbox"
+				value="18_15"></td>
+			<td><input class="Master" id="43_4" name="arr[]" type="checkbox"
+				value="26_15"></td>
+		</tr>
 		<tr>
 			<th class="index" id="bg17">
 				<div class="wrapper">Star!!</div>
@@ -822,6 +835,19 @@
 				value="18_13"></td>
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="26_13"></td>
+		</tr>
+				<tr>
+			<th class="limited" id="bg44">
+				<div class="wrapper">Absolute Nine</div>
+			</th>
+			<td><input class="Debut" id="44_1" name="arr[]" type="checkbox"
+				value="09_11"></td>
+			<td><input class="Regular" id="44_2" name="arr[]" type="checkbox"
+				value="13_23"></td>
+			<td><input class="Pro" id="44_3" name="arr[]" type="checkbox"
+				value="18_16"></td>
+			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
+				value="26_16"></td>
 		</tr>
 	</table>
 	<br>

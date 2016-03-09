@@ -1,11 +1,11 @@
 body {
-  margin: 1;
-  padding: 0;
-  font-family: "Roboto Condensed", "ƒqƒ‰ƒMƒmŠpƒS Pro W3", "Hiragino Kaku Gothic Pro", "ƒƒCƒŠƒI", "Meiryo" sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.4;
-
-  }
+	margin: 1;
+	padding: 0;
+	font-family: "Roboto Condensed", "ƒqƒ‰ƒMƒmŠpƒS Pro W3",
+		"Hiragino Kaku Gothic Pro", "ƒƒCƒŠƒI", "Meiryo" sans-serif;
+	font-size: 0.85rem;
+	line-height: 1.4;
+}
 
 table {
 	border-collapse: collapse;
@@ -225,6 +225,14 @@ td {
 
 #bg42 {
 	background: url("bg/42.jpg");
+}
+
+#bg43 {
+	background: url("bg/43.jpg");
+}
+
+#bg44 {
+	background: url("bg/44.jpg");
 }
 
 #bg51 {
