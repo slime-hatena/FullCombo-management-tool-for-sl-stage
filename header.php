@@ -75,6 +75,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 					<li><a
 						href="https://github.com/Slime-hatena/FullCombo-management-tool-for-sl-stage/releases"
 						target="_blank">更新履歴(Github)</a></li>
+										<li><a href="http://svr.aki-memo.net/fcRate4slStage/"
+			target="_blank">fcRate 4 sl-stage (姉妹ツール)</a></li>
 					<li></li>
 					<li><a href="https://twitter.com/Slime_hatena" target="_blank">作者Twitter
 							(@</i></span>Slime_hatena)

@@ -223,6 +223,10 @@ td {
 	background: url("bg/41.jpg");
 }
 
+#bg42 {
+	background: url("bg/42.jpg");
+}
+
 #bg51 {
 	background: url("bg/51.jpg");
 }
@@ -261,6 +265,10 @@ td {
 
 #bg93 {
 	background: url("bg/93.jpg");
+}
+
+#bg94 {
+	background: url("bg/94.jpg");
 }
 
 .index, .limited {

@@ -6,9 +6,9 @@
 	保存期間は360日ですがCookieの削除等をしてしまうと消えてしまうのでご注意ください。
 </p>
 <p>
-サーバー側でどの曲をフルコンしているか(twitterログイン時のみ)、アクセスログを記録しています。<br>
-各データは記名での公開はいたしません。ご了承いただける場合のみご利用ください。<br><br>
-メニューから免責事項・プライバシーポリシーを一読してからご利用ください。
+	サーバー側でどの曲をフルコンしているか(twitterログイン時のみ)、アクセスログを記録しています。<br>
+	各データは記名での公開はいたしません。ご了承いただける場合のみご利用ください。<br> <br>
+	メニューから免責事項・プライバシーポリシーを一読してからご利用ください。
 </p>
 <h3>以下のフォームを入力して送信してください。</h3>
 <form action="process.php" id="main" method="post" name="main">
@@ -99,14 +99,13 @@
 		</span>
 	</p>
 	<p>
-		集計方法：<select  name="limited_1">
+		集計方法：<select name="limited_1">
 			<option value="All">全楽曲で生成する</option>
 			<option value="Limited">限定楽曲を除く</option>
 			<option value="Event">先行解禁曲を除く</option>
-		</select><br>
-			"限定楽曲を除く"はススメオトメなどを含む限定タブにある曲全てを集計しません。<br>
-			曜日違いで出てない曲の状況がわからない時に使ってください。<br> <br>
-			"先行解禁曲を除く"はCDのシリアルコードやイベント達成での先行解禁曲を集計しません。</span>
+		</select><br> "限定楽曲を除く"はススメオトメなどを含む限定タブにある曲全てを集計しません。<br>
+		曜日違いで出てない曲の状況がわからない時に使ってください。<br> <br>
+		"先行解禁曲を除く"はCDのシリアルコードやイベント達成での先行解禁曲を集計しません。</span>
 	</p>
 	<table cellpadding="5" cellspacing="1" rules="cols">
 		<tr>
@@ -449,6 +448,19 @@
 				value="25_7"></td>
 		</tr>
 		<tr>
+			<th class="index" id="bg42">
+				<div class="wrapper">Bright Blue</div>
+			</th>
+			<td><input class="Debut" id="42_1" name="arr[]" type="checkbox"
+				value="06_9"></td>
+			<td><input class="Regular" id="42_2" name="arr[]" type="checkbox"
+				value="11_6"></td>
+			<td><input class="Pro" id="42_3" name="arr[]" type="checkbox"
+				value="16_6"></td>
+			<td><input class="Master" id="42_4" name="arr[]" type="checkbox"
+				value="23_4"></td>
+		</tr>
+		<tr>
 			<th class="index" id="bg17">
 				<div class="wrapper">Star!!</div>
 			</th>
@@ -742,7 +754,9 @@
 		</tr>
 		<tr>
 			<th class="limited" id="bg55">
-				<div class="wrapper">ゴキゲンParty Night!<br> Cute Side.</div>
+				<div class="wrapper">
+					ゴキゲンParty Night!<br> Cute Side.
+				</div>
 			</th>
 			<td><input class="Debut" id="55_1" name="arr[]" type="checkbox"
 				value="08_23"></td>
@@ -753,9 +767,11 @@
 			<td><input class="Master" id="55_4" name="arr[]" type="checkbox"
 				value="25_8"></td>
 		</tr>
-				<tr>
+		<tr>
 			<th class="limited" id="bg56">
-				<div class="wrapper">ゴキゲンParty Night!<br> Cool Side.</div>
+				<div class="wrapper">
+					ゴキゲンParty Night!<br> Cool Side.
+				</div>
 			</th>
 			<td><input class="Debut" id="55_1" name="arr[]" type="checkbox"
 				value="08_24"></td>
@@ -766,9 +782,11 @@
 			<td><input class="Master" id="55_4" name="arr[]" type="checkbox"
 				value="25_9"></td>
 		</tr>
-						<tr>
+		<tr>
 			<th class="limited" id="bg57">
-				<div class="wrapper">ゴキゲンParty Night!<br> Passion Side.</div>
+				<div class="wrapper">
+					ゴキゲンParty Night!<br> Passion Side.
+				</div>
 			</th>
 			<td><input class="Debut" id="55_1" name="arr[]" type="checkbox"
 				value="08_25"></td>
@@ -778,6 +796,19 @@
 				value="17_20"></td>
 			<td><input class="Master" id="55_4" name="arr[]" type="checkbox"
 				value="25_10"></td>
+		</tr>
+		<tr>
+			<th class="limited" id="bg94">
+				<div class="wrapper">パステルピンクの恋</div>
+			</th>
+			<td><input class="Debut" id="94_1" name="arr[]" type="checkbox"
+				value="08_26"></td>
+			<td><input class="Regular" id="94_2" name="arr[]" type="checkbox"
+				value="14_15"></td>
+			<td><input class="Pro" id="94_3" name="arr[]" type="checkbox"
+				value="18_14"></td>
+			<td><input class="Master" id="94_4" name="arr[]" type="checkbox"
+				value="26_14"></td>
 		</tr>
 		<tr>
 			<th class="limited" id="bg40">
