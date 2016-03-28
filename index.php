@@ -201,6 +201,19 @@
 				value="26_12"></td>
 		</tr>
 		<tr>
+			<th class="index" id="bg40">
+				<div class="wrapper">Tulip</div>
+			</th>
+			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
+				value="08_21"></td>
+			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
+				value="14_14"></td>
+			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
+				value="18_13"></td>
+			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
+				value="26_13"></td>
+		</tr>
+		<tr>
 			<th class="index" id="bg06">
 				<div class="wrapper">S(mile)ING!</div>
 			</th>
@@ -460,7 +473,7 @@
 			<td><input class="Master" id="42_4" name="arr[]" type="checkbox"
 				value="23_4"></td>
 		</tr>
-						<tr>
+		<tr>
 			<th class="limited" id="bg43">
 				<div class="wrapper">Rockin' Emotion</div>
 			</th>
@@ -473,6 +486,20 @@
 			<td><input class="Master" id="43_4" name="arr[]" type="checkbox"
 				value="26_15"></td>
 		</tr>
+		<tr>
+			<th class="index" id="bg45">
+				<div class="wrapper">花簪 HANAKANZASHI</div>
+			</th>
+			<td><input class="Debut" id="45_1" name="arr[]" type="checkbox"
+				value="06_10"></td>
+			<td><input class="Regular" id="45_2" name="arr[]" type="checkbox"
+				value="13_24"></td>
+			<td><input class="Pro" id="45_3" name="arr[]" type="checkbox"
+				value="19_7"></td>
+			<td><input class="Master" id="45_4" name="arr[]" type="checkbox"
+				value="27_4"></td>
+		</tr>
+
 		<tr>
 			<th class="index" id="bg17">
 				<div class="wrapper">Star!!</div>
@@ -824,19 +851,19 @@
 				value="26_14"></td>
 		</tr>
 		<tr>
-			<th class="limited" id="bg40">
-				<div class="wrapper">Tulip</div>
+			<th class="limited" id="bg95">
+				<div class="wrapper">オルゴールの小箱</div>
 			</th>
-			<td><input class="Debut" id="31_1" name="arr[]" type="checkbox"
-				value="08_21"></td>
-			<td><input class="Regular" id="31_2" name="arr[]" type="checkbox"
-				value="14_14"></td>
-			<td><input class="Pro" id="31_3" name="arr[]" type="checkbox"
-				value="18_13"></td>
-			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
-				value="26_13"></td>
+			<td><input class="Debut" id="95_1" name="arr[]" type="checkbox"
+				value=06_11></td>
+			<td><input class="Regular" id="95_2" name="arr[]" type="checkbox"
+				value="11_7"></td>
+			<td><input class="Pro" id="95_3" name="arr[]" type="checkbox"
+				value="16_7"></td>
+			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
+				value="25_11"></td>
 		</tr>
-				<tr>
+		<tr>
 			<th class="limited" id="bg44">
 				<div class="wrapper">Absolute Nine</div>
 			</th>
@@ -849,6 +876,7 @@
 			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
 				value="26_16"></td>
 		</tr>
+
 	</table>
 	<br>
 	<p>

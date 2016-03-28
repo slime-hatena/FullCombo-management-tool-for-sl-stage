@@ -4,12 +4,12 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160227";
-$music_max = 55 * 4; // 全曲数
+$version = "160329";
+$music_max = 57 * 4; // 全曲数
 $music_max_masplus = 0 * 4; // マスプラの曲数
 
-$music_ignore_a = 12 * 4; // 限定楽曲数
-$music_ignore_b = 2 * 4; // 先行解禁曲数
+$music_ignore_a = 13 * 4; // 限定楽曲数
+$music_ignore_b = 1 * 4; // 先行解禁曲数
 
 // 画像読み込み
 
@@ -125,7 +125,7 @@ if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
 	$lower_limit = $_POST ["limit_2"];
 }
 
-$level_counts = 25 - ($upper_limit - $lower_limit); // 最初のサイズ
+$level_counts = 22 - ($upper_limit - $lower_limit); // 最初のサイズ
 
 $size_down = $upper_limit - 3;
 $current_level = $upper_limit;
@@ -133,7 +133,7 @@ $set_x = 270;
 $set_y = 5;
 $img_music_size = 49 + ($level_counts - 1); // 画像サイズ
 $img_music_size_default = $img_music_size;
-$down_size = 14; // Lv3先どれぐらい小さくするか
+$down_size = 10; // Lv3先どれぐらい小さくするか
 
 $music_position = array (); // 曲の位置を記録するためのやつ
 
