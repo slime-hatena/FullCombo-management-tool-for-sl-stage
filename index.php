@@ -213,6 +213,19 @@
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="26_13"></td>
 		</tr>
+				<tr>
+			<th class="index" id="bg44">
+				<div class="wrapper">Absolute Nine</div>
+			</th>
+			<td><input class="Debut" id="44_1" name="arr[]" type="checkbox"
+				value="09_11"></td>
+			<td><input class="Regular" id="44_2" name="arr[]" type="checkbox"
+				value="13_23"></td>
+			<td><input class="Pro" id="44_3" name="arr[]" type="checkbox"
+				value="18_16"></td>
+			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
+				value="26_16"></td>
+		</tr>
 		<tr>
 			<th class="index" id="bg06">
 				<div class="wrapper">S(mile)ING!</div>
@@ -499,7 +512,19 @@
 			<td><input class="Master" id="45_4" name="arr[]" type="checkbox"
 				value="27_4"></td>
 		</tr>
-
+				<tr>
+			<th class="limited" id="bg47">
+				<div class="wrapper">Hotel Moonside</div>
+			</th>
+			<td><input class="Debut" id="47_1" name="arr[]" type="checkbox"
+				value=09_12></td>
+			<td><input class="Regular" id="47_2" name="arr[]" type="checkbox"
+				value="14_16"></td>
+			<td><input class="Pro" id="47_3" name="arr[]" type="checkbox"
+				value="19_8"></td>
+			<td><input class="Master" id="47_4" name="arr[]" type="checkbox"
+				value="27_5"></td>
+		</tr>
 		<tr>
 			<th class="index" id="bg17">
 				<div class="wrapper">Star!!</div>
@@ -863,19 +888,20 @@
 			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
 				value="25_11"></td>
 		</tr>
-		<tr>
-			<th class="limited" id="bg44">
-				<div class="wrapper">Absolute Nine</div>
+				<tr>
+			<th class="limited" id="bg46">
+				<div class="wrapper">ハイファイ☆デイズ</div>
 			</th>
-			<td><input class="Debut" id="44_1" name="arr[]" type="checkbox"
-				value="09_11"></td>
-			<td><input class="Regular" id="44_2" name="arr[]" type="checkbox"
-				value="13_23"></td>
-			<td><input class="Pro" id="44_3" name="arr[]" type="checkbox"
-				value="18_16"></td>
-			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
-				value="26_16"></td>
+			<td><input class="Debut" id="46_1" name="arr[]" type="checkbox"
+				value=07_06></td>
+			<td><input class="Regular" id="46_2" name="arr[]" type="checkbox"
+				value="13_25"></td>
+			<td><input class="Pro" id="46_3" name="arr[]" type="checkbox"
+				value="18_17"></td>
+			<td><input class="Master" id="46_4" name="arr[]" type="checkbox"
+				value="24_8"></td>
 		</tr>
+
 
 	</table>
 	<br>
