@@ -4,11 +4,11 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160531";
-$music_max = 65 * 4; // 全曲数
+$version = "160703";
+$music_max = 69 * 4; // 全曲数
 $music_max_masplus = 0 * 4; // マスプラの曲数
 
-$music_ignore_a = 14 * 4; // 限定楽曲数
+$music_ignore_a = 15 * 4; // 限定楽曲数
 $music_ignore_b = 1 * 4; // 先行解禁曲数
 
 // 画像読み込み
@@ -222,13 +222,6 @@ foreach ( $img_songs as $pref ) { // ここから配列がカラになるまで�
 /*
  * ##################################################
  * フルコンのスタンプ付ける処理
- *
- *
- *
- *
- *
- *
- *
  * ##################################################
  */
 
@@ -456,11 +449,10 @@ jQuery("#realText input:text").on('click blur keydown keyup keypress change',fun
 		<?php echo $tweet; ?> #デレステ
 		</p>
 
-<?php include("footer.html"); ?>
-</body>
+<?php include("footer.html");  ?>
+
+
+ </body>
 </html>
 
-<?php
-}
-
-?>
+<?php } ?>

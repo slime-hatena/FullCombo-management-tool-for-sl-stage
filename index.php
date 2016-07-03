@@ -253,6 +253,19 @@
 					   value="24_8"></td>
 		</tr>
 		<tr>
+			<th class="index" id="bg50">
+				<div class="wrapper">生存本能ヴァルキュリア</div>
+			</th>
+			<td><input class="Debut" id="95_1" name="arr[]" type="checkbox"
+					   value=09_14></td>
+			<td><input class="Regular" id="95_2" name="arr[]" type="checkbox"
+					   value="13_27"></td>
+			<td><input class="Pro" id="95_3" name="arr[]" type="checkbox"
+					   value="19_10"></td>
+			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
+					   value="26_18"></td>
+		</tr>
+		<tr>
 			<th class="index" id="bg06">
 				<div class="wrapper">S(mile)ING!</div>
 			</th>
@@ -589,6 +602,32 @@
 					   value="17_22"></td>
 			<td><input class="Master" id="61_4" name="arr[]" type="checkbox"
 					   value="25_12"></td>
+		</tr>
+		<tr>
+			<th class="index" id="bg63">
+				<div class="wrapper">熱血乙女A</div>
+			</th>
+			<td><input class="Debut" id="63_1" name="arr[]" type="checkbox"
+					   value=6_12></td>
+			<td><input class="Regular" id="63_2" name="arr[]" type="checkbox"
+					   value="11_8"></td>
+			<td><input class="Pro" id="63_3" name="arr[]" type="checkbox"
+					   value="16_8"></td>
+			<td><input class="Master" id="63_4" name="arr[]" type="checkbox"
+					   value="22_2"></td>
+		</tr>
+		<tr>
+			<th class="index" id="bg64">
+				<div class="wrapper">き・ま・ぐ・れ☆Cafe au lait!</div>
+			</th>
+			<td><input class="Debut" id="64_1" name="arr[]" type="checkbox"
+					   value=07_9></td>
+			<td><input class="Regular" id="64_2" name="arr[]" type="checkbox"
+					   value="13_29"></td>
+			<td><input class="Pro" id="64_3" name="arr[]" type="checkbox"
+					   value="17_23"></td>
+			<td><input class="Master" id="64_4" name="arr[]" type="checkbox"
+					   value="25_15"></td>
 		</tr>
 		<tr>
 			<th class="index" id="bg17">
@@ -967,17 +1006,30 @@
 					   value="27_6"></td>
 		</tr>
 		<tr>
-			<th class="limited" id="bg50">
-				<div class="wrapper">生存本能ヴァルキュリア</div>
+			<th class="limited" id="bg66">
+				<div class="wrapper">明日また会えるよね</div>
 			</th>
-			<td><input class="Debut" id="95_1" name="arr[]" type="checkbox"
-					   value=09_14></td>
-			<td><input class="Regular" id="95_2" name="arr[]" type="checkbox"
-					   value="13_27"></td>
-			<td><input class="Pro" id="95_3" name="arr[]" type="checkbox"
-					   value="19_10"></td>
-			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
-					   value="26_18"></td>
+			<td><input class="Debut" id="6_1" name="arr[]" type="checkbox"
+					   value=08_30></td>
+			<td><input class="Regular" id="66_2" name="arr[]" type="checkbox"
+					   value="13_30"></td>
+			<td><input class="Pro" id="66_3" name="arr[]" type="checkbox"
+					   value="17_24"></td>
+			<td><input class="Master" id="66_4" name="arr[]" type="checkbox"
+					   value="25_14"></td>
+		</tr>
+		<tr>
+			<th class="limited" id="bg65">
+				<div class="wrapper">純情Midnight伝説</div>
+			</th>
+			<td><input class="Debut" id="65_1" name="arr[]" type="checkbox"
+					   value=08_29></td>
+			<td><input class="Regular" id="65_2" name="arr[]" type="checkbox"
+					   value="13_31"></td>
+			<td><input class="Pro" id="65_3" name="arr[]" type="checkbox"
+					   value="18_20"></td>
+			<td><input class="Master" id="65_4" name="arr[]" type="checkbox"
+					   value="25_13"></td>
 		</tr>
 	</table>
 	<br>
