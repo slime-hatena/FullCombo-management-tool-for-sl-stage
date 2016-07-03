@@ -1,33 +1,33 @@
 body {
 	margin: 1;
 	padding: 0;
-	font-family: "Roboto Condensed", "ƒqƒ‰ƒMƒmŠpƒS Pro W3",
-		"Hiragino Kaku Gothic Pro", "ƒƒCƒŠƒI", "Meiryo" sans-serif;
+	font-family: "Roboto Condensed", "ï¿½qï¿½ï¿½ï¿½Mï¿½mï¿½pï¿½S Pro W3",
+		"Hiragino Kaku Gothic Pro", "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I", "Meiryo" sans-serif;
 	font-size: 0.85rem;
 	line-height: 1.4;
 }
 
 table {
 	border-collapse: collapse;
-	border-style: solid; /* ˜g‚Ìí—Ş */
-	border-color: #ffffff; /* ˜g‚ÌF */
-	border-width: 1px; /* ˜g‚Ì• */
+	border-style: solid; /* ï¿½gï¿½Ìï¿½ï¿½ */
+	border-color: #ffffff; /* ï¿½gï¿½ÌF */
+	border-width: 1px; /* ï¿½gï¿½Ì•ï¿½ */
 }
 
 th {
 	width: 220px;
 	height: 30px;
-	color: #000000; /* •¶š‚ÌF */
-	border-style: solid; /* ˜g‚Ìí—Ş */
-	border-color: #ffffff; /* ˜g‚ÌF */
-	border-width: 1px 0px; /* ˜g‚Ì• */
+	color: #000000; /* ï¿½ï¿½ï¿½ï¿½ï¿½ÌF */
+	border-style: solid; /* ï¿½gï¿½Ìï¿½ï¿½ */
+	border-color: #ffffff; /* ï¿½gï¿½ÌF */
+	border-width: 1px 0px; /* ï¿½gï¿½Ì•ï¿½ */
 }
 
 td {
-	color: #000000; /* •¶š‚ÌF */
-	border-style: solid; /* ˜g‚Ìí—Ş */
-	border-color: #ffffff; /* ˜g‚ÌF */
-	border-width: 1px 0px; /* ˜g‚Ì• */
+	color: #000000; /* ï¿½ï¿½ï¿½ï¿½ï¿½ÌF */
+	border-style: solid; /* ï¿½gï¿½Ìï¿½ï¿½ */
+	border-color: #ffffff; /* ï¿½gï¿½ÌF */
+	border-width: 1px 0px; /* ï¿½gï¿½Ì•ï¿½ */
 	width: 40px;
 	text-align: center;
 	background: #ffffff;
@@ -247,6 +247,19 @@ td {
 	background: url("bg/47.jpg");
 }
 
+
+#bg48 {
+	background: url("bg/48.jpg");
+}
+
+#bg49 {
+	background: url("bg/49.jpg");
+}
+
+#bg50 {
+	background: url("bg/50.jpg");
+}
+
 #bg51 {
 	background: url("bg/51.jpg");
 }
@@ -275,6 +288,14 @@ td {
 	background: url("bg/57.jpg");
 }
 
+#bg61 {
+	background: url("bg/61.jpg");
+}
+
+#bg62 {
+	background: url("bg/62.jpg");
+}
+
 #bg91 {
 	background: url("bg/91.jpg");
 }
@@ -294,6 +315,10 @@ td {
 #bg95 {
 	background: url("bg/95.jpg");
 }
+#bg96 {
+	background: url("bg/96.jpg");
+}
+
 
 .index, .limited {
 	background-attachment: scroll !important;

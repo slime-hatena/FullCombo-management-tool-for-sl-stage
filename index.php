@@ -188,6 +188,32 @@
 				value="25_1"></td>
 		</tr>
 		<tr>
+			<th class="index" id="bg44">
+				<div class="wrapper">Absolute Nine</div>
+			</th>
+			<td><input class="Debut" id="44_1" name="arr[]" type="checkbox"
+					   value="09_11"></td>
+			<td><input class="Regular" id="44_2" name="arr[]" type="checkbox"
+					   value="13_23"></td>
+			<td><input class="Pro" id="44_3" name="arr[]" type="checkbox"
+					   value="18_16"></td>
+			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
+					   value="26_16"></td>
+		</tr>
+		<tr>
+			<th class="index" id="bg62">
+				<div class="wrapper">つぼみ</div>
+			</th>
+			<td><input class="Debut" id="62_1" name="arr[]" type="checkbox"
+					   value="08_28"></td>
+			<td><input class="Regular" id="62_2" name="arr[]" type="checkbox"
+					   value="14_18"></td>
+			<td><input class="Pro" id="62_3" name="arr[]" type="checkbox"
+					   value="18_19"></td>
+			<td><input class="Master" id="62_4" name="arr[]" type="checkbox"
+					   value="26_19"></td>
+		</tr>
+		<tr>
 			<th class="index" id="bg39">
 				<div class="wrapper">Snow Wings</div>
 			</th>
@@ -213,18 +239,18 @@
 			<td><input class="Master" id="31_4" name="arr[]" type="checkbox"
 				value="26_13"></td>
 		</tr>
-				<tr>
-			<th class="index" id="bg44">
-				<div class="wrapper">Absolute Nine</div>
+		<tr>
+			<th class="index" id="bg46">
+				<div class="wrapper">ハイファイ☆デイズ</div>
 			</th>
-			<td><input class="Debut" id="44_1" name="arr[]" type="checkbox"
-				value="09_11"></td>
-			<td><input class="Regular" id="44_2" name="arr[]" type="checkbox"
-				value="13_23"></td>
-			<td><input class="Pro" id="44_3" name="arr[]" type="checkbox"
-				value="18_16"></td>
-			<td><input class="Master" id="44_4" name="arr[]" type="checkbox"
-				value="26_16"></td>
+			<td><input class="Debut" id="46_1" name="arr[]" type="checkbox"
+					   value=07_06></td>
+			<td><input class="Regular" id="46_2" name="arr[]" type="checkbox"
+					   value="13_25"></td>
+			<td><input class="Pro" id="46_3" name="arr[]" type="checkbox"
+					   value="18_17"></td>
+			<td><input class="Master" id="46_4" name="arr[]" type="checkbox"
+					   value="24_8"></td>
 		</tr>
 		<tr>
 			<th class="index" id="bg06">
@@ -524,6 +550,45 @@
 				value="19_8"></td>
 			<td><input class="Master" id="47_4" name="arr[]" type="checkbox"
 				value="27_5"></td>
+		</tr>
+		<tr>
+			<th class="limited" id="bg48">
+				<div class="wrapper">お散歩カメラ</div>
+			</th>
+			<td><input class="Debut" id="48_1" name="arr[]" type="checkbox"
+					   value=08_27></td>
+			<td><input class="Regular" id="48_2" name="arr[]" type="checkbox"
+					   value="13_26"></td>
+			<td><input class="Pro" id="48_3" name="arr[]" type="checkbox"
+					   value="18_18"></td>
+			<td><input class="Master" id="48_4" name="arr[]" type="checkbox"
+					   value="26_17"></td>
+		</tr>
+		<tr>
+			<th class="index" id="bg49">
+				<div class="wrapper">メルヘンデビュー！</div>
+			</th>
+			<td><input class="Debut" id="48_1" name="arr[]" type="checkbox"
+					   value=07_7></td>
+			<td><input class="Regular" id="48_2" name="arr[]" type="checkbox"
+					   value="13_28"></td>
+			<td><input class="Pro" id="48_3" name="arr[]" type="checkbox"
+					   value="17_21"></td>
+			<td><input class="Master" id="48_4" name="arr[]" type="checkbox"
+					   value="27_7"></td>
+		</tr>
+		<tr>
+			<th class="index" id="bg61">
+				<div class="wrapper">2nd SIDE</div>
+			</th>
+			<td><input class="Debut" id="61_1" name="arr[]" type="checkbox"
+					   value=07_8></td>
+			<td><input class="Regular" id="61_2" name="arr[]" type="checkbox"
+					   value="12_7"></td>
+			<td><input class="Pro" id="61_3" name="arr[]" type="checkbox"
+					   value="17_22"></td>
+			<td><input class="Master" id="61_4" name="arr[]" type="checkbox"
+					   value="25_12"></td>
 		</tr>
 		<tr>
 			<th class="index" id="bg17">
@@ -888,21 +953,32 @@
 			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
 				value="25_11"></td>
 		</tr>
-				<tr>
-			<th class="limited" id="bg46">
-				<div class="wrapper">ハイファイ☆デイズ</div>
+		<tr>
+			<th class="limited" id="bg96">
+				<div class="wrapper">絶対特権主張しますっ！</div>
 			</th>
-			<td><input class="Debut" id="46_1" name="arr[]" type="checkbox"
-				value=07_06></td>
-			<td><input class="Regular" id="46_2" name="arr[]" type="checkbox"
-				value="13_25"></td>
-			<td><input class="Pro" id="46_3" name="arr[]" type="checkbox"
-				value="18_17"></td>
-			<td><input class="Master" id="46_4" name="arr[]" type="checkbox"
-				value="24_8"></td>
+			<td><input class="Debut" id="95_1" name="arr[]" type="checkbox"
+					   value=09_13></td>
+			<td><input class="Regular" id="95_2" name="arr[]" type="checkbox"
+					   value="14_17"></td>
+			<td><input class="Pro" id="95_3" name="arr[]" type="checkbox"
+					   value="19_9"></td>
+			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
+					   value="27_6"></td>
 		</tr>
-
-
+		<tr>
+			<th class="limited" id="bg50">
+				<div class="wrapper">生存本能ヴァルキュリア</div>
+			</th>
+			<td><input class="Debut" id="95_1" name="arr[]" type="checkbox"
+					   value=09_14></td>
+			<td><input class="Regular" id="95_2" name="arr[]" type="checkbox"
+					   value="13_27"></td>
+			<td><input class="Pro" id="95_3" name="arr[]" type="checkbox"
+					   value="19_10"></td>
+			<td><input class="Master" id="95_4" name="arr[]" type="checkbox"
+					   value="26_18"></td>
+		</tr>
 	</table>
 	<br>
 	<p>

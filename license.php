@@ -5,7 +5,7 @@
 	<h3>fcManagementTool 4 sl-stage</h3>
 	<p>
 		Created by <a href="https://twitter.com/Slime_hatena">@Slime_hatena</a><br />
-		<br /> MIT license.<br /> Copyright (c) 2015 Slime_hatena All Rights
+		<br /> MIT license.<br /> Copyright (c) 2015 - <?php echo date('Y'); ?> Slime_hatena All Rights
 		Reserved. Permission is hereby granted, free of charge, to any person
 		obtaining a copy of this software and associated documentation files
 		(the "Software"), to deal in the Software without restriction,
