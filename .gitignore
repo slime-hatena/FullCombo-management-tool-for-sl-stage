@@ -44,8 +44,6 @@ Temporary Items
 
 #自分で追加したやつ
 *.setting
-*.gitattributes
-*.gitignore
 *.project
 *.ttf
 font/
