@@ -4,8 +4,8 @@ require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160703";
-$music_max = 69 * 4; // 全曲数
+$version = "160710";
+$music_max = 71 * 4; // 全曲数
 $music_max_masplus = 0 * 4; // マスプラの曲数
 
 $music_ignore_a = 15 * 4; // 限定楽曲数
@@ -24,7 +24,7 @@ $img_d = imagecreatefrompng ( 'img/d.png' );
 $img_e = imagecreatefrompng ( 'img/e.png' );
 $img_f = imagecreatefrompng ( 'img/f.png' );
 
-$debut = $regular = $pro = $master = $maspuls = 0;
+$debut = $regular = $pro = $master = $masplus = 0;
 
 // フォントの指定
 $font = 'font/mplus-2c-regular.ttf';
@@ -125,7 +125,7 @@ if ($_POST ["limit_1"] < $_POST ["limit_2"]) {
 	$lower_limit = $_POST ["limit_2"];
 }
 
-$level_counts = 22 - ($upper_limit - $lower_limit); // 最初のサイズ
+$level_counts = 20 - ($upper_limit - $lower_limit); // 最初のサイズ
 
 $size_down = $upper_limit - 3;
 $current_level = $upper_limit;
@@ -300,7 +300,7 @@ ImageTTFText ( $img, 20, 0, 160, 342, $black, $font, $pro . " / " . $music_max /
 ImageTTFText ( $img, 20, 0, 160, 373, $black, $font, $master . " / " . $music_max / 4 );
 
 // 全曲総合処理
-$music_sum = $debut + $regular + $pro + $master + $maspuls;
+$music_sum = $debut + $regular + $pro + $master + $masplus;
 $music_all = $music_max + $music_max_masplus;
 $music_par = $music_sum / ($music_max + $music_max_masplus) * 100;
 
