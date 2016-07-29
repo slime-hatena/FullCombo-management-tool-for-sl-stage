@@ -3,9 +3,11 @@ require_once 'twitter/common.php';
 require_once 'twitter/twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+// todo  次回更新時に咲いてjewelの画像をデレステのものに差し替える
+
 // 更新時に真っ先に変えなきゃいけないゾーン
-$version = "160710";
-$music_max = 71 * 4; // 全曲数
+$version = "160730";
+$music_max = 73 * 4; // 全曲数
 $music_max_masplus = 0 * 4; // マスプラの曲数
 
 $music_ignore_a = 15 * 4; // 限定楽曲数

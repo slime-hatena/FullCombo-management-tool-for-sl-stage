@@ -656,6 +656,19 @@
 					   value="24_9"></td>
 		</tr>
 		<tr>
+			<th class="index" id="bg70">
+				<div class="wrapper">毒茸伝説</div>
+			</th>
+			<td><input class="Debut" id="70_1" name="arr[]" type="checkbox"
+					   value=09_15></td>
+			<td><input class="Regular" id="70_2" name="arr[]" type="checkbox"
+					   value="14_20"></td>
+			<td><input class="Pro" id="70_3" name="arr[]" type="checkbox"
+					   value="19_12"></td>
+			<td><input class="Master" id="70_4" name="arr[]" type="checkbox"
+					   value="28_5"></td>
+		</tr>
+		<tr>
 			<th class="index" id="bg17">
 				<div class="wrapper">Star!!</div>
 			</th>
@@ -1043,6 +1056,19 @@
 					   value="17_24"></td>
 			<td><input class="Master" id="66_4" name="arr[]" type="checkbox"
 					   value="25_14"></td>
+		</tr>
+		<tr>
+			<th class="limited" id="bg69">
+				<div class="wrapper">咲いてJewel</div>
+			</th>
+			<td><input class="Debut" id="69_1" name="arr[]" type="checkbox"
+					   value=08_32></td>
+			<td><input class="Regular" id="69_2" name="arr[]" type="checkbox"
+					   value="14_21"></td>
+			<td><input class="Pro" id="69_3" name="arr[]" type="checkbox"
+					   value="18_21"></td>
+			<td><input class="Master" id="69_4" name="arr[]" type="checkbox"
+					   value="25_16"></td>
 		</tr>
 		<tr>
 			<th class="limited" id="bg67">
